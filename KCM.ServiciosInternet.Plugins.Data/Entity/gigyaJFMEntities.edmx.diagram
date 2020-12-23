@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="09e051fc9d6e4337827364f2d6583edd" Name="Diagram1" ZoomLevel="128" >
+        <EntityTypeShape EntityType="gigyaJFMEntities.Site" Width="2.125" PointX="7.125" PointY="6.5" FillColor="Goldenrod" />
+        <EntityTypeShape EntityType="gigyaJFMEntities.SitePartner" Width="1.5" PointX="7.5" PointY="12.625" FillColor="Goldenrod" />
+        <EntityTypeShape EntityType="gigyaJFMEntities.SiteUrls" Width="1.5" PointX="11.5" PointY="6.25" FillColor="Goldenrod" />
+        <EntityTypeShape EntityType="gigyaJFMEntities.SiteReCAPTCHA" Width="1.5" PointX="11.5" PointY="8.5" FillColor="Goldenrod" />
+        <EntityTypeShape EntityType="gigyaJFMEntities.CtrlPlugIn" Width="1.5" PointX="4.5" PointY="7.5" />
+        <EntityTypeShape EntityType="gigyaJFMEntities.CatView" Width="1.875" PointX="0.875" PointY="8" FillColor="Teal" />
+        <EntityTypeShape EntityType="gigyaJFMEntities.CtrlImage" Width="2.125" PointX="4.125" PointY="10.875" />
+        <AssociationConnector Association="gigyaJFMEntities.SiteSiteUrls" />
+        <AssociationConnector Association="gigyaJFMEntities.PartnerSite" />
+        <AssociationConnector Association="gigyaJFMEntities.SitereCAPTCHA" />
+        <AssociationConnector Association="gigyaJFMEntities.CtrlPlugInCatView" />
+        <AssociationConnector Association="gigyaJFMEntities.SiteCtrlPlugIn" />
+        <AssociationConnector Association="gigyaJFMEntities.CtrlPlugInCtrlImage" />
+        <EntityTypeShape EntityType="gigyaJFMEntities.Keys" Width="1.5" PointX="7.5" PointY="3.375" FillColor="SlateBlue" />
+        <EntityTypeShape EntityType="gigyaJFMEntities.CtrlCss" Width="1.5" PointX="3.875" PointY="4.875" />
+        <AssociationConnector Association="gigyaJFMEntities.SiteCtrlCss" />
+        <EntityTypeShape EntityType="gigyaJFMEntities.Service" Width="1.5" PointX="11" PointY="11.75" FillColor="DarkOrange" />
+        <AssociationConnector Association="gigyaJFMEntities.ServiceSite" />
+        <AssociationConnector Association="gigyaJFMEntities.SiteKeys" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

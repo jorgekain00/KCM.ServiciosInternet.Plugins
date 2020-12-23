@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AF99CDD9-9FE1-4D73-847E-74F6B2FB3C3D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>KCM.ServiciosInternet.Plugins</RootNamespace>
-    <AssemblyName>KCM.ServiciosInternet.Plugins</AssemblyName>
+    <ProjectGuid>{C19E4AFD-6723-4C8E-9E79-0FC4CC1A0177}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KCM.ServiciosInternet.Plugins.Business</RootNamespace>
+    <AssemblyName>KCM.ServiciosInternet.Plugins.Business</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,13 +32,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GSCSharpSDK">
-      <HintPath>..\..\..\..\Documents\Reportes\2020\10\vulnerabilidades jabones kleenex\GSCSharpSDK.dll</HintPath>
+      <HintPath>..\KCM.ServiciosInternet.Plugins.WebForms\common\dll\GSCSharpSDK.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,15 +48,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BD\SessionBD.cs" />
+    <Compile Include="clsFachada.cs" />
+    <Compile Include="Logica\clsGigyaAccounts.cs" />
+    <Compile Include="Logica\clsPlugInLogInServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Entities.csproj">
+      <Project>{66630bb2-c0cd-4669-af32-deb78f62e9a4}</Project>
+      <Name>KCM.ServiciosInternet.Plugins.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="common\" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

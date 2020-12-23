@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AF99CDD9-9FE1-4D73-847E-74F6B2FB3C3D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>KCM.ServiciosInternet.Plugins</RootNamespace>
-    <AssemblyName>KCM.ServiciosInternet.Plugins</AssemblyName>
+    <ProjectGuid>{66630BB2-C0CD-4669-AF32-DEB78F62E9A4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KCM.ServiciosInternet.Plugins.Data</RootNamespace>
+    <AssemblyName>KCM.ServiciosInternet.Plugins.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,14 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GSCSharpSDK">
-      <HintPath>..\..\..\..\Documents\Reportes\2020\10\vulnerabilidades jabones kleenex\GSCSharpSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,15 +44,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BD\clsBDConfigSession.cs" />
+    <Compile Include="clsCompleteRegistration.cs" />
+    <Compile Include="clsConfigPlugIn.cs" />
+    <Compile Include="clsDataTransfer.cs" />
+    <Compile Include="Entity\gigyaJFMEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>gigyaJFMEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="IPlugInLogInObjects.cs" />
+    <Compile Include="clsLogin.cs" />
+    <Compile Include="clsLogOut.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="clsResetPassword.cs" />
+    <Compile Include="clsSessionState.cs" />
+    <Compile Include="clsSignIn.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <EntityDeploy Include="Entity\gigyaJFMEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>gigyaJFMEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="common\" />
+    <None Include="App.Config" />
+    <None Include="Entity\gigyaJFMEntities.edmx.diagram">
+      <DependentUpon>gigyaJFMEntities.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

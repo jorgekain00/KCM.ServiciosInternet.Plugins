@@ -1,0 +1,398 @@
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("../fonts/poppins/Poppins-Regular.ttf"); }
+  @font-face {
+    font-family: "Poppins-Bold";
+    src: url("/fonts/poppins/Poppins-Bold.ttf"); }
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("../fonts/poppins/Poppins-SemiBold.ttf"); }
+
+.gigyaJFMCtrl {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    font-size: 13px;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000000006;
+    width:100%
+}
+
+    .gigyaJFMCtrl * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: Arial,Helvetica,sans-serif !important;
+        color: #333 !important;
+    }
+
+
+#gigyaJFMLOADCtrl {
+    position:initial !important;
+}
+
+.gigyaJFMCtrl img {
+    max-width: 100%;
+}
+
+.gigyaJFMCtrl ul {
+  padding-left: 0;
+  margin-bottom: 0; }
+
+.gigyaJFMCtrl a:hover {
+  text-decoration: none; }
+
+.gigyaJFMCtrl :focus {
+  outline: none; }
+
+.gigyaJFMOcultaControl{
+	display:none !important;
+}
+.gigyaJFMMuestraControl{
+	display:flex !important;
+}
+
+
+.gigyaJFMwrapper {
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*display: flex;*/
+  align-items: center; }
+
+.gigyaJFMinner {
+  padding: 20px;
+  background: #fff;
+  max-width: 750px;
+  margin: auto;
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.5);
+  position: relative;
+  display: block; 
+}
+
+.gigyaJFMinside{
+  display: flex;
+}
+
+.gigyaJFMchange{
+  display: flex;
+}
+
+.gigyaJFMicon{
+  width: 100%;
+  height: 30px;
+  text-align: right;
+}
+
+.gigyaJFMicon img{ width: 20px;
+  height: 20px;
+
+}
+
+.gigyaJFMinside .gigyaJFMimage-holder {
+   width: 50%; }
+
+
+.gigyaJFMinside .gigyaJFMform {
+  width: 50%; 
+  padding: 30px 15px;
+	position: relative;
+	border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px; }
+  
+  .gigyaJFMinside .gigyaJFMform2 {
+    width: 700px; 
+    padding: 30px 15px;
+    position: relative;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px; }
+
+    .gigyaJFMtabcontent2{
+      vertical-align: middle;
+      margin-top:21%;
+      margin-bottom: auto;
+    }
+    
+
+    .gigyaJFMtab2 {
+      margin: 5px 0 10px;
+      width: 100%;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: space-between;
+      -o-justify-content: space-between;
+      -ms-justify-content: space-between;
+      -moz-justify-content: space-between;
+      -webkit-justify-content: space-between; }
+
+.gigyaJFMtab {
+margin: 5px 0 10px;
+width: 100%;
+display: flex;
+display: -webkit-flex;
+justify-content: space-between;
+-o-justify-content: space-between;
+-ms-justify-content: space-between;
+-moz-justify-content: space-between;
+-webkit-justify-content: space-between; }
+
+.gigyaJFMtab .gigyaJFMtab-inner {
+    width: 100%; }
+  
+.gigyaJFMtab .gigyaJFMtablinks {
+  background: transparent;
+  border: none;
+  outline: none;
+  -o-outline: none;
+  -ms-outline: none;
+  -moz-outline: none;
+  -webkit-outline: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: #ccc;
+  padding-bottom: 10px;
+  border-bottom: 3px solid;
+  border-bottom-color: gray;
+  width: 100%; }
+
+.gigyaJFMtab .gigyaJFMtablinks.gigyaJFMactive {
+  font-weight: bold;
+  color: black;
+  border-bottom-color: #00a499; }
+
+.gigyaJFMpreform{
+  text-align: center;
+}
+
+.gigyaJFMpreform p{
+  font-size: 11px; 
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.gigyaJFMcall{
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.gigyaJFMpreform span{
+  font-weight: bolder;
+}
+
+.gigyaJFMicons{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.gigyaJFMicons img{
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.gigyaJFMform-wrapper {
+  position: relative; }
+
+.gigyaJFMform-wrapper i {
+    position: absolute;
+    bottom: 9px;
+    right: 0; }
+
+.gigyaJFMform-control {
+  border: 1px solid #333;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 0;
+  margin-bottom: 25px; }
+
+  .gigyaJFMform-control::-webkit-input-placeholder {
+    font-size: 13px;
+    color: #333;
+    font-family: "Poppins-Regular"; }
+  .gigyaJFMform-control::-moz-placeholder {
+    font-size: 13px;
+    color: #333;
+    font-family: "Poppins-Regular"; }
+  .gigyaJFMform-control:-ms-input-placeholder {
+    font-size: 13px;
+    color: #333;
+    font-family: "Poppins-Regular"; }
+  .gigyaJFMform-control:-moz-placeholder {
+    font-size: 13px;
+    color: #333;
+    font-family: "Poppins-Regular"; }
+
+.gigyaJFMBTN {
+  border: none;
+  width: 90%;
+  height: 40px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #fff !important;
+  background: #23357d;
+  font-size: 15px;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s; }
+
+  .gigyaJFMBTN a{
+    color: #fff!important;
+  }
+.gigyaJFMBTN:hover{
+  background-color: #00a499;
+}
+  
+
+  .gigyaJFMBTN i {
+    margin-left: 10px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0); }
+  .gigyaJFMBTN:hover i, .gigyaJFMBTN:focus i, .gigyaJFMBTN:active i {
+    -webkit-animation-name: hvr-icon-wobble-horizontal;
+    animation-name: hvr-icon-wobble-horizontal;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1; }
+
+.gigyaJFMtabcontent2{
+  vertical-align: middle;
+  margin-top: 10%;
+  margin-bottom: auto;
+}
+
+.gigyaJFMthank{
+  text-align: center;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.gigyaJFMthank p{
+  font-size: 14px; 
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.gigyaJFMthank span{
+  font-weight: bolder;
+}
+
+.gigyaJFMthank .gigyaJFMcall{
+  font-weight: bold;
+}
+
+.gigyaJFMnewpass{
+  margin-bottom: 30px;
+}
+
+@-webkit-keyframes hvr-icon-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px); }
+  33.3% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px); }
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px); }
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px); }
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px); }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+@keyframes hvr-icon-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px); }
+  33.3% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px); }
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px); }
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px); }
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px); }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+@media (max-width: 1199px) {
+  .gigyaJFMwrapper {
+    background-position: right center; } }
+@media (max-width: 991px) {
+  .gigyaJFMinner form {
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px; } }
+
+@media (max-width: 767px) {
+
+  .gigyaJFMinner {
+    padding: 10px;
+    background: #fff;
+    max-width: 550px;
+    margin: auto;
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    position: relative;
+    display: block; 
+  }
+  
+  .gigyaJFMinside .gigyaJFMimage-holder {
+     display: none; }
+  
+  .gigyaJFMinside .gigyaJFMform {
+    width: 100%; 
+    padding: 20px 10px;
+     }
+
+    .gigyaJFMinside .gigyaJFMform2 {
+      width: 100%; 
+      padding: 10px 10px;
+    }
+
+
+    .gigyaJFMtab2 {
+      margin: 5px 0 0px;
+      width: 100%;
+      display: table;
+      }
+
+    .gigyaJFMtabcontent2{
+      vertical-align: middle;
+      margin-top:0;
+      margin-bottom: auto;
+    }
+    
+    .gigyaJFMthank{
+      text-align: center;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    
+
+  .gigyaJFMBTN {
+    margin-top: 60px; } }

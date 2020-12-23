@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="gigyaJFMEntities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="gigyaJFMEntitiesTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="gigyaJFMEntities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="gigyaJFMEntitiesContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SiteSet" EntityType="gigyaJFMEntities.Site" />
+          <EntitySet Name="SitePartnerSet" EntityType="gigyaJFMEntities.SitePartner" />
+          <EntitySet Name="SiteUrlsSet" EntityType="gigyaJFMEntities.SiteUrls" />
+          <EntitySet Name="SiteReCAPTCHASet" EntityType="gigyaJFMEntities.SiteReCAPTCHA" />
+          <EntitySet Name="CtrlPlugInSet" EntityType="gigyaJFMEntities.CtrlPlugIn" />
+          <EntitySet Name="CatViewSet" EntityType="gigyaJFMEntities.CatView" />
+          <EntitySet Name="CtrlImageSet" EntityType="gigyaJFMEntities.CtrlImage" />
+          <AssociationSet Name="SiteSiteUrls" Association="gigyaJFMEntities.SiteSiteUrls">
+            <End Role="Site" EntitySet="SiteSet" />
+            <End Role="SiteUrls" EntitySet="SiteUrlsSet" />
+          </AssociationSet>
+          <AssociationSet Name="PartnerSite" Association="gigyaJFMEntities.PartnerSite">
+            <End Role="Partner" EntitySet="SitePartnerSet" />
+            <End Role="Site" EntitySet="SiteSet" />
+          </AssociationSet>
+          <AssociationSet Name="SitereCAPTCHA" Association="gigyaJFMEntities.SitereCAPTCHA">
+            <End Role="Site" EntitySet="SiteSet" />
+            <End Role="reCAPTCHA" EntitySet="SiteReCAPTCHASet" />
+          </AssociationSet>
+          <AssociationSet Name="CtrlPlugInCatView" Association="gigyaJFMEntities.CtrlPlugInCatView">
+            <End Role="CtrlPlugIn" EntitySet="CtrlPlugInSet" />
+            <End Role="CatView" EntitySet="CatViewSet" />
+          </AssociationSet>
+          <AssociationSet Name="SiteCtrlPlugIn" Association="gigyaJFMEntities.SiteCtrlPlugIn">
+            <End Role="Site" EntitySet="SiteSet" />
+            <End Role="CtrlPlugIn" EntitySet="CtrlPlugInSet" />
+          </AssociationSet>
+          <AssociationSet Name="CtrlPlugInCtrlImage" Association="gigyaJFMEntities.CtrlPlugInCtrlImage">
+            <End Role="CtrlPlugIn" EntitySet="CtrlPlugInSet" />
+            <End Role="CtrlImage" EntitySet="CtrlImageSet" />
+          </AssociationSet>
+          <EntitySet Name="KeysSet" EntityType="gigyaJFMEntities.Keys" />
+          <EntitySet Name="CtrlCssSet" EntityType="gigyaJFMEntities.CtrlCss" />
+          <AssociationSet Name="SiteCtrlCss" Association="gigyaJFMEntities.SiteCtrlCss">
+            <End Role="Site" EntitySet="SiteSet" />
+            <End Role="CtrlCss" EntitySet="CtrlCssSet" />
+          </AssociationSet>
+          <EntitySet Name="ServiceSet" EntityType="gigyaJFMEntities.Service" />
+          <AssociationSet Name="ServiceSite" Association="gigyaJFMEntities.ServiceSite">
+            <End Role="Service" EntitySet="ServiceSet" />
+            <End Role="Site" EntitySet="SiteSet" />
+          </AssociationSet>
+          <AssociationSet Name="SiteKeys" Association="gigyaJFMEntities.SiteKeys">
+            <End Role="Site" EntitySet="SiteSet" />
+            <End Role="Keys" EntitySet="KeysSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="ApiKeyVc" />
+          </Key>
+          <Property Name="ApiKeyVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="DomainVc" Type="String" Nullable="false" MaxLength="128" />
+          <Property Name="DescriptionVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="UserKeyVc" Type="String" MaxLength="512" Nullable="true" />
+          <Property Name="UserSecretKeyVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="ExpirationKeyInMinsIn" Type="Int32" Nullable="false" />
+          <Property Name="ExpirationSessionInMinsIn" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationDt" Type="DateTime" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="SiteUrls" Relationship="gigyaJFMEntities.SiteSiteUrls" FromRole="Site" ToRole="SiteUrls" />
+          <NavigationProperty Name="Partner" Relationship="gigyaJFMEntities.PartnerSite" FromRole="Site" ToRole="Partner" />
+          <Property Name="IsActivated" Type="String" Nullable="false" />
+          <Property Name="FolderMedia" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="Partner_idGd" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="reCAPTCHA" Relationship="gigyaJFMEntities.SitereCAPTCHA" FromRole="Site" ToRole="reCAPTCHA" />
+          <NavigationProperty Name="CtrlPlugIn" Relationship="gigyaJFMEntities.SiteCtrlPlugIn" FromRole="Site" ToRole="CtrlPlugIn" />
+          <NavigationProperty Name="CtrlCss" Relationship="gigyaJFMEntities.SiteCtrlCss" FromRole="Site" ToRole="CtrlCss" />
+          <NavigationProperty Name="Service" Relationship="gigyaJFMEntities.ServiceSite" FromRole="Site" ToRole="Service" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Keys" Relationship="gigyaJFMEntities.SiteKeys" FromRole="Site" ToRole="Keys" />
+        </EntityType>
+        <EntityType Name="SitePartner">
+          <Key>
+            <PropertyRef Name="idGd" />
+          </Key>
+          <Property Name="idGd" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameVc" Type="String" Nullable="false" MaxLength="128" />
+          <Property Name="SecretKeyVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="RegistrationDt" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Site" Relationship="gigyaJFMEntities.PartnerSite" FromRole="Partner" ToRole="Site" />
+        </EntityType>
+        <EntityType Name="SiteUrls">
+          <Key>
+            <PropertyRef Name="SiteApiKeyVc" />
+          </Key>
+          <Property Name="SiteApiKeyVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="UrlVc" Type="String" Nullable="false" MaxLength="256" />
+          <Property Name="DescriptionVc" Type="String" Nullable="false" />
+          <NavigationProperty Name="Site" Relationship="gigyaJFMEntities.SiteSiteUrls" FromRole="SiteUrls" ToRole="Site" />
+        </EntityType>
+        <EntityType Name="SiteReCAPTCHA">
+          <Key>
+            <PropertyRef Name="GGApiKeyVc" />
+          </Key>
+          <Property Name="GGApiKeyVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="GGSecretKeyVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="128" />
+          <Property Name="SiteApiKeyVc" Type="String" Nullable="false" MaxLength="512" />
+          <NavigationProperty Name="Site" Relationship="gigyaJFMEntities.SitereCAPTCHA" FromRole="reCAPTCHA" ToRole="Site" />
+        </EntityType>
+        <EntityType Name="CtrlPlugIn">
+          <Key>
+            <PropertyRef Name="IdViewIn" />
+            <PropertyRef Name="SiteApiKeyVc" />
+          </Key>
+          <Property Name="SiteApiKeyVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="IdViewIn" Nullable="false" Type="String" />
+          <Property Name="HTMLVc" Type="String" Nullable="false" />
+          <Property Name="DescriptionVc" Type="String" Nullable="false" />
+          <Property Name="PathVc" Type="String" Nullable="false" />
+          <NavigationProperty Name="CatView" Relationship="gigyaJFMEntities.CtrlPlugInCatView" FromRole="CtrlPlugIn" ToRole="CatView" />
+          <NavigationProperty Name="Site" Relationship="gigyaJFMEntities.SiteCtrlPlugIn" FromRole="CtrlPlugIn" ToRole="Site" />
+          <NavigationProperty Name="CtrlImage" Relationship="gigyaJFMEntities.CtrlPlugInCtrlImage" FromRole="CtrlPlugIn" ToRole="CtrlImage" />
+        </EntityType>
+        <EntityType Name="CatView">
+          <Key>
+            <PropertyRef Name="CtrlPlugInIdViewIn" />
+          </Key>
+          <Property Name="CtrlPlugInIdViewIn" Type="String" Nullable="false" />
+          <Property Name="DescriptionVc" Type="String" Nullable="false" />
+          <NavigationProperty Name="CtrlPlugIn" Relationship="gigyaJFMEntities.CtrlPlugInCatView" FromRole="CatView" ToRole="CtrlPlugIn" />
+        </EntityType>
+        <EntityType Name="CtrlImage">
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameVc" Type="String" Nullable="false" />
+          <Property Name="DescriptionVc" Type="String" Nullable="false" />
+          <Property Name="PathVc" Type="String" Nullable="false" />
+          <Property Name="EncodeVc" Type="String" Nullable="false" />
+          <Property Name="ImageTypeVc" Type="String" Nullable="false" />
+          <Property Name="CtrlPlugInSiteApiKeyVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="CtrlPlugInIdViewIn" Type="String" Nullable="false" />
+          <NavigationProperty Name="CtrlPlugIn" Relationship="gigyaJFMEntities.CtrlPlugInCtrlImage" FromRole="CtrlImage" ToRole="CtrlPlugIn" />
+        </EntityType>
+        <Association Name="SiteSiteUrls">
+          <End Type="gigyaJFMEntities.Site" Role="Site" Multiplicity="1" />
+          <End Type="gigyaJFMEntities.SiteUrls" Role="SiteUrls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="SiteUrls">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PartnerSite">
+          <End Type="gigyaJFMEntities.SitePartner" Role="Partner" Multiplicity="1" />
+          <End Type="gigyaJFMEntities.Site" Role="Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="idGd" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="Partner_idGd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SitereCAPTCHA">
+          <End Type="gigyaJFMEntities.Site" Role="Site" Multiplicity="1" />
+          <End Type="gigyaJFMEntities.SiteReCAPTCHA" Role="reCAPTCHA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="reCAPTCHA">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CtrlPlugInCatView">
+          <End Type="gigyaJFMEntities.CtrlPlugIn" Role="CtrlPlugIn" Multiplicity="1" />
+          <End Type="gigyaJFMEntities.CatView" Role="CatView" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CtrlPlugIn">
+              <PropertyRef Name="IdViewIn" />
+            </Principal>
+            <Dependent Role="CatView">
+              <PropertyRef Name="CtrlPlugInIdViewIn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SiteCtrlPlugIn">
+          <End Type="gigyaJFMEntities.Site" Role="Site" Multiplicity="1" />
+          <End Type="gigyaJFMEntities.CtrlPlugIn" Role="CtrlPlugIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="CtrlPlugIn">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CtrlPlugInCtrlImage">
+          <End Type="gigyaJFMEntities.CtrlPlugIn" Role="CtrlPlugIn" Multiplicity="1" />
+          <End Type="gigyaJFMEntities.CtrlImage" Role="CtrlImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CtrlPlugIn">
+              <PropertyRef Name="IdViewIn" />
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Principal>
+            <Dependent Role="CtrlImage">
+              <PropertyRef Name="CtrlPlugInIdViewIn" />
+              <PropertyRef Name="CtrlPlugInSiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Keys">
+          <Key>
+            <PropertyRef Name="HexKeyVc" />
+          </Key>
+          <Property Name="HexKeyVc" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="512" />
+          <Property Name="RandomKeyVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="RegistrationDt" Type="DateTime" Nullable="false" />
+          <Property Name="SessionVc" Type="String" MaxLength="1024" Nullable="true" />
+          <Property Name="IsResetPassword" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Site" Relationship="gigyaJFMEntities.SiteKeys" FromRole="Keys" ToRole="Site" />
+          <Property Name="SiteApiKeyVc" Type="String" Nullable="false" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="CtrlCss" >
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameVc" Type="String" Nullable="false" MaxLength="128" />
+          <Property Name="DescriptionVc" Type="String" Nullable="false" MaxLength="128" />
+          <NavigationProperty Name="Site" Relationship="gigyaJFMEntities.SiteCtrlCss" FromRole="CtrlCss" ToRole="Site" />
+          <Property Name="SiteApiKeyVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="CssTextVc" Type="String" Nullable="false" MaxLength="Max" />
+        </EntityType>
+        <Association Name="SiteCtrlCss">
+          <End Type="gigyaJFMEntities.Site" Role="Site" Multiplicity="1" />
+          <End Type="gigyaJFMEntities.CtrlCss" Role="CtrlCss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="CtrlCss">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="UrlServiceVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="PathServiceVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="ServiceNameVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="ResetFormVc" Type="String" Nullable="false" MaxLength="512" />
+          <Property Name="AfterLoginFormVc" Type="String" Nullable="false" MaxLength="512" />
+          <NavigationProperty Name="Site" Relationship="gigyaJFMEntities.ServiceSite" FromRole="Service" ToRole="Site" />
+          <Property Name="StartDt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <Association Name="ServiceSite">
+          <End Type="gigyaJFMEntities.Service" Role="Service" Multiplicity="1" />
+          <End Type="gigyaJFMEntities.Site" Role="Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SiteKeys">
+          <End Type="gigyaJFMEntities.Site" Role="Site" Multiplicity="1" />
+          <End Type="gigyaJFMEntities.Keys" Role="Keys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="Keys">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="gigyaJFMEntities" />
+        <Alias Key="Target" Value="gigyaJFMEntities.Store" />
+        <EntityContainerMapping CdmEntityContainer="gigyaJFMEntitiesContainer" StorageEntityContainer="gigyaJFMEntitiesTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
