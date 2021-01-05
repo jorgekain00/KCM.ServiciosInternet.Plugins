@@ -1,0 +1,806 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="www.kcmsso.com_1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="JFMGigyaCatView">
+          <Key>
+            <PropertyRef Name="IdTipoIn" />
+          </Key>
+          <Property Name="IdTipoIn" Type="int" Nullable="false" />
+          <Property Name="DescriptionVc" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JFMGigyaCtrlCss">
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="DescriptionVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OrdIn" Type="int" Nullable="false" />
+          <Property Name="TextVc" Type="varchar(max)" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JFMGigyaCtrlImage">
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="DescriptionVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="PathVc" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="EncodeVc" Type="varchar(max)" Nullable="false" />
+          <Property Name="ImageTypeVc" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CtrlPlugInIdViewIn" Type="int" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JFMGigyaCtrlPlugIn">
+          <Key>
+            <PropertyRef Name="IdViewIn" />
+          </Key>
+          <Property Name="IdViewIn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HTMLVc" Type="varchar(max)" Nullable="false" />
+          <Property Name="DescriptionVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="PathVc" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="CatViewIdTipoIn" Type="int" Nullable="false" />
+          <Property Name="OriginalHTMLVc" Type="varchar(max)" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JFMGigyaCtrlScript">
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="DescriptionVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OrdIn" Type="int" Nullable="false" />
+          <Property Name="TextVc" Type="varchar(max)" Nullable="false" />
+          <Property Name="AttrVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JFMGigyaKey">
+          <Key>
+            <PropertyRef Name="HexKeyVc" />
+          </Key>
+          <Property Name="HexKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="RandomKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="SessionVc" Type="varchar" MaxLength="512" />
+          <Property Name="IsResetPasswordBl" Type="bit" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="RegistrationDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JFMGigyaService">
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="UrlServiceVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="PathServiceVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="ServiceNameVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="ResetFormVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="AfterLoginFormVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="StartDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JFMGigyaSite">
+          <Key>
+            <PropertyRef Name="ApiKeyVc" />
+          </Key>
+          <Property Name="ApiKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="DomainVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="DescriptionVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserKeyVc" Type="varchar" MaxLength="512" />
+          <Property Name="UserSecretKeyVc" Type="varchar" MaxLength="512" />
+          <Property Name="ExpirationKeyInMinsIn" Type="int" Nullable="false" />
+          <Property Name="ExpirationSessionInMinsIn" Type="int" Nullable="false" />
+          <Property Name="FolderMediaVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="Partner_idGd" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="IsActivatedBl" Type="bit" Nullable="false" />
+          <Property Name="EnableReCAPTCHABl" Type="bit" Nullable="false" />
+          <Property Name="RegistrationDt" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JFMGigyaSitePartner">
+          <Key>
+            <PropertyRef Name="idGd" />
+          </Key>
+          <Property Name="idGd" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NameVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="SecretKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="RegistrationDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JFMGigyaSiteReCAPTCHA">
+          <Key>
+            <PropertyRef Name="GGApiKeyVc" />
+          </Key>
+          <Property Name="GGApiKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="GGSecretKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="DescriptionVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JFMGigyaSiteUrl">
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrlVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="DescriptionVc" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="varchar" MaxLength="512" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_JFMGigyaCatViewCtrlPlugIn">
+          <End Role="JFMGigyaCatView" Type="Self.JFMGigyaCatView" Multiplicity="1" />
+          <End Role="JFMGigyaCtrlPlugIn" Type="Self.JFMGigyaCtrlPlugIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaCatView">
+              <PropertyRef Name="IdTipoIn" />
+            </Principal>
+            <Dependent Role="JFMGigyaCtrlPlugIn">
+              <PropertyRef Name="CatViewIdTipoIn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaCtrlPlugInCtrlImage">
+          <End Role="JFMGigyaCtrlPlugIn" Type="Self.JFMGigyaCtrlPlugIn" Multiplicity="1" />
+          <End Role="JFMGigyaCtrlImage" Type="Self.JFMGigyaCtrlImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaCtrlPlugIn">
+              <PropertyRef Name="IdViewIn" />
+            </Principal>
+            <Dependent Role="JFMGigyaCtrlImage">
+              <PropertyRef Name="CtrlPlugInIdViewIn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaPartnerSite">
+          <End Role="JFMGigyaSitePartner" Type="Self.JFMGigyaSitePartner" Multiplicity="1" />
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSitePartner">
+              <PropertyRef Name="idGd" />
+            </Principal>
+            <Dependent Role="JFMGigyaSite">
+              <PropertyRef Name="Partner_idGd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaServiceSite">
+          <End Role="JFMGigyaService" Type="Self.JFMGigyaService" Multiplicity="1" />
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaService">
+              <PropertyRef Name="IdIn" />
+            </Principal>
+            <Dependent Role="JFMGigyaSite">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSiteCtrlCss">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaCtrlCss" Type="Self.JFMGigyaCtrlCss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaCtrlCss">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSiteCtrlPlugIn">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaCtrlPlugIn" Type="Self.JFMGigyaCtrlPlugIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaCtrlPlugIn">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSiteCtrlScript">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaCtrlScript" Type="Self.JFMGigyaCtrlScript" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaCtrlScript">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSiteKey">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaKey" Type="Self.JFMGigyaKey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaKey">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSitereCAPTCHA">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaSiteReCAPTCHA" Type="Self.JFMGigyaSiteReCAPTCHA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaSiteReCAPTCHA">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSiteSiteUrl">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaSiteUrl" Type="Self.JFMGigyaSiteUrl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaSiteUrl">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="wwwkcmssocom_1StoreContainer">
+          <EntitySet Name="JFMGigyaCatView" EntityType="Self.JFMGigyaCatView" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JFMGigyaCtrlCss" EntityType="Self.JFMGigyaCtrlCss" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JFMGigyaCtrlImage" EntityType="Self.JFMGigyaCtrlImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JFMGigyaCtrlPlugIn" EntityType="Self.JFMGigyaCtrlPlugIn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JFMGigyaCtrlScript" EntityType="Self.JFMGigyaCtrlScript" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JFMGigyaKey" EntityType="Self.JFMGigyaKey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JFMGigyaService" EntityType="Self.JFMGigyaService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JFMGigyaSite" EntityType="Self.JFMGigyaSite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JFMGigyaSitePartner" EntityType="Self.JFMGigyaSitePartner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JFMGigyaSiteReCAPTCHA" EntityType="Self.JFMGigyaSiteReCAPTCHA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JFMGigyaSiteUrl" EntityType="Self.JFMGigyaSiteUrl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_JFMGigyaCatViewCtrlPlugIn" Association="Self.FK_JFMGigyaCatViewCtrlPlugIn">
+            <End Role="JFMGigyaCatView" EntitySet="JFMGigyaCatView" />
+            <End Role="JFMGigyaCtrlPlugIn" EntitySet="JFMGigyaCtrlPlugIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaCtrlPlugInCtrlImage" Association="Self.FK_JFMGigyaCtrlPlugInCtrlImage">
+            <End Role="JFMGigyaCtrlPlugIn" EntitySet="JFMGigyaCtrlPlugIn" />
+            <End Role="JFMGigyaCtrlImage" EntitySet="JFMGigyaCtrlImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaPartnerSite" Association="Self.FK_JFMGigyaPartnerSite">
+            <End Role="JFMGigyaSitePartner" EntitySet="JFMGigyaSitePartner" />
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaServiceSite" Association="Self.FK_JFMGigyaServiceSite">
+            <End Role="JFMGigyaService" EntitySet="JFMGigyaService" />
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSiteCtrlCss" Association="Self.FK_JFMGigyaSiteCtrlCss">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSite" />
+            <End Role="JFMGigyaCtrlCss" EntitySet="JFMGigyaCtrlCss" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSiteCtrlPlugIn" Association="Self.FK_JFMGigyaSiteCtrlPlugIn">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSite" />
+            <End Role="JFMGigyaCtrlPlugIn" EntitySet="JFMGigyaCtrlPlugIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSiteCtrlScript" Association="Self.FK_JFMGigyaSiteCtrlScript">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSite" />
+            <End Role="JFMGigyaCtrlScript" EntitySet="JFMGigyaCtrlScript" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSiteKey" Association="Self.FK_JFMGigyaSiteKey">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSite" />
+            <End Role="JFMGigyaKey" EntitySet="JFMGigyaKey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSitereCAPTCHA" Association="Self.FK_JFMGigyaSitereCAPTCHA">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSite" />
+            <End Role="JFMGigyaSiteReCAPTCHA" EntitySet="JFMGigyaSiteReCAPTCHA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSiteSiteUrl" Association="Self.FK_JFMGigyaSiteSiteUrl">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSite" />
+            <End Role="JFMGigyaSiteUrl" EntitySet="JFMGigyaSiteUrl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="www.kcmsso.com_1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="JFMGigyaCatView">
+          <Key>
+            <PropertyRef Name="IdTipoIn" />
+          </Key>
+          <Property Name="IdTipoIn" Type="Int32" Nullable="false" />
+          <Property Name="DescriptionVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="JFMGigyaCtrlPlugIns" Relationship="Self.FK_JFMGigyaCatViewCtrlPlugIn" FromRole="JFMGigyaCatView" ToRole="JFMGigyaCtrlPlugIn" />
+        </EntityType>
+        <EntityType Name="JFMGigyaCtrlCss">
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescriptionVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrdIn" Type="Int32" Nullable="false" />
+          <Property Name="TextVc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="JFMGigyaSite" Relationship="Self.FK_JFMGigyaSiteCtrlCss" FromRole="JFMGigyaCtrlCss" ToRole="JFMGigyaSite" />
+        </EntityType>
+        <EntityType Name="JFMGigyaCtrlImage">
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescriptionVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PathVc" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EncodeVc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImageTypeVc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CtrlPlugInIdViewIn" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="JFMGigyaCtrlPlugIn" Relationship="Self.FK_JFMGigyaCtrlPlugInCtrlImage" FromRole="JFMGigyaCtrlImage" ToRole="JFMGigyaCtrlPlugIn" />
+        </EntityType>
+        <EntityType Name="JFMGigyaCtrlPlugIn">
+          <Key>
+            <PropertyRef Name="IdViewIn" />
+          </Key>
+          <Property Name="IdViewIn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HTMLVc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescriptionVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PathVc" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CatViewIdTipoIn" Type="Int32" Nullable="false" />
+          <Property Name="OriginalHTMLVc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="JFMGigyaCatView" Relationship="Self.FK_JFMGigyaCatViewCtrlPlugIn" FromRole="JFMGigyaCtrlPlugIn" ToRole="JFMGigyaCatView" />
+          <NavigationProperty Name="JFMGigyaCtrlImages" Relationship="Self.FK_JFMGigyaCtrlPlugInCtrlImage" FromRole="JFMGigyaCtrlPlugIn" ToRole="JFMGigyaCtrlImage" />
+          <NavigationProperty Name="JFMGigyaSite" Relationship="Self.FK_JFMGigyaSiteCtrlPlugIn" FromRole="JFMGigyaCtrlPlugIn" ToRole="JFMGigyaSite" />
+        </EntityType>
+        <EntityType Name="JFMGigyaCtrlScript">
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescriptionVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrdIn" Type="Int32" Nullable="false" />
+          <Property Name="TextVc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AttrVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="JFMGigyaSite" Relationship="Self.FK_JFMGigyaSiteCtrlScript" FromRole="JFMGigyaCtrlScript" ToRole="JFMGigyaSite" />
+        </EntityType>
+        <EntityType Name="JFMGigyaKey">
+          <Key>
+            <PropertyRef Name="HexKeyVc" />
+          </Key>
+          <Property Name="HexKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RandomKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SessionVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="IsResetPasswordBl" Type="Boolean" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RegistrationDt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="JFMGigyaSite" Relationship="Self.FK_JFMGigyaSiteKey" FromRole="JFMGigyaKey" ToRole="JFMGigyaSite" />
+        </EntityType>
+        <EntityType Name="JFMGigyaService">
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UrlServiceVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PathServiceVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ServiceNameVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ResetFormVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AfterLoginFormVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="JFMGigyaSites" Relationship="Self.FK_JFMGigyaServiceSite" FromRole="JFMGigyaService" ToRole="JFMGigyaSite" />
+        </EntityType>
+        <EntityType Name="JFMGigyaSite">
+          <Key>
+            <PropertyRef Name="ApiKeyVc" />
+          </Key>
+          <Property Name="ApiKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DomainVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescriptionVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="UserSecretKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="ExpirationKeyInMinsIn" Type="Int32" Nullable="false" />
+          <Property Name="ExpirationSessionInMinsIn" Type="Int32" Nullable="false" />
+          <Property Name="FolderMediaVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Partner_idGd" Type="Guid" Nullable="false" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="IsActivatedBl" Type="Boolean" Nullable="false" />
+          <Property Name="EnableReCAPTCHABl" Type="Boolean" Nullable="false" />
+          <Property Name="RegistrationDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdateDt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="JFMGigyaCtrlCsses" Relationship="Self.FK_JFMGigyaSiteCtrlCss" FromRole="JFMGigyaSite" ToRole="JFMGigyaCtrlCss" />
+          <NavigationProperty Name="JFMGigyaCtrlPlugIns" Relationship="Self.FK_JFMGigyaSiteCtrlPlugIn" FromRole="JFMGigyaSite" ToRole="JFMGigyaCtrlPlugIn" />
+          <NavigationProperty Name="JFMGigyaCtrlScripts" Relationship="Self.FK_JFMGigyaSiteCtrlScript" FromRole="JFMGigyaSite" ToRole="JFMGigyaCtrlScript" />
+          <NavigationProperty Name="JFMGigyaKeys" Relationship="Self.FK_JFMGigyaSiteKey" FromRole="JFMGigyaSite" ToRole="JFMGigyaKey" />
+          <NavigationProperty Name="JFMGigyaService" Relationship="Self.FK_JFMGigyaServiceSite" FromRole="JFMGigyaSite" ToRole="JFMGigyaService" />
+          <NavigationProperty Name="JFMGigyaSitePartner" Relationship="Self.FK_JFMGigyaPartnerSite" FromRole="JFMGigyaSite" ToRole="JFMGigyaSitePartner" />
+          <NavigationProperty Name="JFMGigyaSiteReCAPTCHAs" Relationship="Self.FK_JFMGigyaSitereCAPTCHA" FromRole="JFMGigyaSite" ToRole="JFMGigyaSiteReCAPTCHA" />
+          <NavigationProperty Name="JFMGigyaSiteUrls" Relationship="Self.FK_JFMGigyaSiteSiteUrl" FromRole="JFMGigyaSite" ToRole="JFMGigyaSiteUrl" />
+        </EntityType>
+        <EntityType Name="JFMGigyaSitePartner">
+          <Key>
+            <PropertyRef Name="idGd" />
+          </Key>
+          <Property Name="idGd" Type="Guid" Nullable="false" />
+          <Property Name="NameVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SecretKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RegistrationDt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="JFMGigyaSites" Relationship="Self.FK_JFMGigyaPartnerSite" FromRole="JFMGigyaSitePartner" ToRole="JFMGigyaSite" />
+        </EntityType>
+        <EntityType Name="JFMGigyaSiteReCAPTCHA">
+          <Key>
+            <PropertyRef Name="GGApiKeyVc" />
+          </Key>
+          <Property Name="GGApiKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GGSecretKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescriptionVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastUpdateDt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="JFMGigyaSite" Relationship="Self.FK_JFMGigyaSitereCAPTCHA" FromRole="JFMGigyaSiteReCAPTCHA" ToRole="JFMGigyaSite" />
+        </EntityType>
+        <EntityType Name="JFMGigyaSiteUrl">
+          <Key>
+            <PropertyRef Name="IdIn" />
+          </Key>
+          <Property Name="IdIn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrlVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescriptionVc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SiteApiKeyVc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="JFMGigyaSite" Relationship="Self.FK_JFMGigyaSiteSiteUrl" FromRole="JFMGigyaSiteUrl" ToRole="JFMGigyaSite" />
+        </EntityType>
+        <Association Name="FK_JFMGigyaCatViewCtrlPlugIn">
+          <End Role="JFMGigyaCatView" Type="Self.JFMGigyaCatView" Multiplicity="1" />
+          <End Role="JFMGigyaCtrlPlugIn" Type="Self.JFMGigyaCtrlPlugIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaCatView">
+              <PropertyRef Name="IdTipoIn" />
+            </Principal>
+            <Dependent Role="JFMGigyaCtrlPlugIn">
+              <PropertyRef Name="CatViewIdTipoIn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSiteCtrlCss">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaCtrlCss" Type="Self.JFMGigyaCtrlCss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaCtrlCss">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaCtrlPlugInCtrlImage">
+          <End Role="JFMGigyaCtrlPlugIn" Type="Self.JFMGigyaCtrlPlugIn" Multiplicity="1" />
+          <End Role="JFMGigyaCtrlImage" Type="Self.JFMGigyaCtrlImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaCtrlPlugIn">
+              <PropertyRef Name="IdViewIn" />
+            </Principal>
+            <Dependent Role="JFMGigyaCtrlImage">
+              <PropertyRef Name="CtrlPlugInIdViewIn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSiteCtrlPlugIn">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaCtrlPlugIn" Type="Self.JFMGigyaCtrlPlugIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaCtrlPlugIn">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSiteCtrlScript">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaCtrlScript" Type="Self.JFMGigyaCtrlScript" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaCtrlScript">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSiteKey">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaKey" Type="Self.JFMGigyaKey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaKey">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaServiceSite">
+          <End Role="JFMGigyaService" Type="Self.JFMGigyaService" Multiplicity="1" />
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaService">
+              <PropertyRef Name="IdIn" />
+            </Principal>
+            <Dependent Role="JFMGigyaSite">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaPartnerSite">
+          <End Role="JFMGigyaSitePartner" Type="Self.JFMGigyaSitePartner" Multiplicity="1" />
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSitePartner">
+              <PropertyRef Name="idGd" />
+            </Principal>
+            <Dependent Role="JFMGigyaSite">
+              <PropertyRef Name="Partner_idGd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSitereCAPTCHA">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaSiteReCAPTCHA" Type="Self.JFMGigyaSiteReCAPTCHA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaSiteReCAPTCHA">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFMGigyaSiteSiteUrl">
+          <End Role="JFMGigyaSite" Type="Self.JFMGigyaSite" Multiplicity="1" />
+          <End Role="JFMGigyaSiteUrl" Type="Self.JFMGigyaSiteUrl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JFMGigyaSite">
+              <PropertyRef Name="ApiKeyVc" />
+            </Principal>
+            <Dependent Role="JFMGigyaSiteUrl">
+              <PropertyRef Name="SiteApiKeyVc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JFMGigyaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="JFMGigyaCatViews" EntityType="Self.JFMGigyaCatView" />
+          <EntitySet Name="JFMGigyaCtrlCsses" EntityType="Self.JFMGigyaCtrlCss" />
+          <EntitySet Name="JFMGigyaCtrlImages" EntityType="Self.JFMGigyaCtrlImage" />
+          <EntitySet Name="JFMGigyaCtrlPlugIns" EntityType="Self.JFMGigyaCtrlPlugIn" />
+          <EntitySet Name="JFMGigyaCtrlScripts" EntityType="Self.JFMGigyaCtrlScript" />
+          <EntitySet Name="JFMGigyaKeys" EntityType="Self.JFMGigyaKey" />
+          <EntitySet Name="JFMGigyaServices" EntityType="Self.JFMGigyaService" />
+          <EntitySet Name="JFMGigyaSites" EntityType="Self.JFMGigyaSite" />
+          <EntitySet Name="JFMGigyaSitePartners" EntityType="Self.JFMGigyaSitePartner" />
+          <EntitySet Name="JFMGigyaSiteReCAPTCHAs" EntityType="Self.JFMGigyaSiteReCAPTCHA" />
+          <EntitySet Name="JFMGigyaSiteUrls" EntityType="Self.JFMGigyaSiteUrl" />
+          <AssociationSet Name="FK_JFMGigyaCatViewCtrlPlugIn" Association="Self.FK_JFMGigyaCatViewCtrlPlugIn">
+            <End Role="JFMGigyaCatView" EntitySet="JFMGigyaCatViews" />
+            <End Role="JFMGigyaCtrlPlugIn" EntitySet="JFMGigyaCtrlPlugIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSiteCtrlCss" Association="Self.FK_JFMGigyaSiteCtrlCss">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSites" />
+            <End Role="JFMGigyaCtrlCss" EntitySet="JFMGigyaCtrlCsses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaCtrlPlugInCtrlImage" Association="Self.FK_JFMGigyaCtrlPlugInCtrlImage">
+            <End Role="JFMGigyaCtrlPlugIn" EntitySet="JFMGigyaCtrlPlugIns" />
+            <End Role="JFMGigyaCtrlImage" EntitySet="JFMGigyaCtrlImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSiteCtrlPlugIn" Association="Self.FK_JFMGigyaSiteCtrlPlugIn">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSites" />
+            <End Role="JFMGigyaCtrlPlugIn" EntitySet="JFMGigyaCtrlPlugIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSiteCtrlScript" Association="Self.FK_JFMGigyaSiteCtrlScript">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSites" />
+            <End Role="JFMGigyaCtrlScript" EntitySet="JFMGigyaCtrlScripts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSiteKey" Association="Self.FK_JFMGigyaSiteKey">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSites" />
+            <End Role="JFMGigyaKey" EntitySet="JFMGigyaKeys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaServiceSite" Association="Self.FK_JFMGigyaServiceSite">
+            <End Role="JFMGigyaService" EntitySet="JFMGigyaServices" />
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaPartnerSite" Association="Self.FK_JFMGigyaPartnerSite">
+            <End Role="JFMGigyaSitePartner" EntitySet="JFMGigyaSitePartners" />
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSitereCAPTCHA" Association="Self.FK_JFMGigyaSitereCAPTCHA">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSites" />
+            <End Role="JFMGigyaSiteReCAPTCHA" EntitySet="JFMGigyaSiteReCAPTCHAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFMGigyaSiteSiteUrl" Association="Self.FK_JFMGigyaSiteSiteUrl">
+            <End Role="JFMGigyaSite" EntitySet="JFMGigyaSites" />
+            <End Role="JFMGigyaSiteUrl" EntitySet="JFMGigyaSiteUrls" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="wwwkcmssocom_1StoreContainer" CdmEntityContainer="JFMGigyaEntities">
+          <EntitySetMapping Name="JFMGigyaCatViews">
+            <EntityTypeMapping TypeName="www.kcmsso.com_1.JFMGigyaCatView">
+              <MappingFragment StoreEntitySet="JFMGigyaCatView">
+                <ScalarProperty Name="IdTipoIn" ColumnName="IdTipoIn" />
+                <ScalarProperty Name="DescriptionVc" ColumnName="DescriptionVc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JFMGigyaCtrlCsses">
+            <EntityTypeMapping TypeName="www.kcmsso.com_1.JFMGigyaCtrlCss">
+              <MappingFragment StoreEntitySet="JFMGigyaCtrlCss">
+                <ScalarProperty Name="IdIn" ColumnName="IdIn" />
+                <ScalarProperty Name="NameVc" ColumnName="NameVc" />
+                <ScalarProperty Name="DescriptionVc" ColumnName="DescriptionVc" />
+                <ScalarProperty Name="OrdIn" ColumnName="OrdIn" />
+                <ScalarProperty Name="TextVc" ColumnName="TextVc" />
+                <ScalarProperty Name="SiteApiKeyVc" ColumnName="SiteApiKeyVc" />
+                <ScalarProperty Name="LastUpdateDt" ColumnName="LastUpdateDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JFMGigyaCtrlImages">
+            <EntityTypeMapping TypeName="www.kcmsso.com_1.JFMGigyaCtrlImage">
+              <MappingFragment StoreEntitySet="JFMGigyaCtrlImage">
+                <ScalarProperty Name="IdIn" ColumnName="IdIn" />
+                <ScalarProperty Name="NameVc" ColumnName="NameVc" />
+                <ScalarProperty Name="DescriptionVc" ColumnName="DescriptionVc" />
+                <ScalarProperty Name="PathVc" ColumnName="PathVc" />
+                <ScalarProperty Name="EncodeVc" ColumnName="EncodeVc" />
+                <ScalarProperty Name="ImageTypeVc" ColumnName="ImageTypeVc" />
+                <ScalarProperty Name="CtrlPlugInIdViewIn" ColumnName="CtrlPlugInIdViewIn" />
+                <ScalarProperty Name="LastUpdateDt" ColumnName="LastUpdateDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JFMGigyaCtrlPlugIns">
+            <EntityTypeMapping TypeName="www.kcmsso.com_1.JFMGigyaCtrlPlugIn">
+              <MappingFragment StoreEntitySet="JFMGigyaCtrlPlugIn">
+                <ScalarProperty Name="IdViewIn" ColumnName="IdViewIn" />
+                <ScalarProperty Name="HTMLVc" ColumnName="HTMLVc" />
+                <ScalarProperty Name="DescriptionVc" ColumnName="DescriptionVc" />
+                <ScalarProperty Name="PathVc" ColumnName="PathVc" />
+                <ScalarProperty Name="CatViewIdTipoIn" ColumnName="CatViewIdTipoIn" />
+                <ScalarProperty Name="OriginalHTMLVc" ColumnName="OriginalHTMLVc" />
+                <ScalarProperty Name="SiteApiKeyVc" ColumnName="SiteApiKeyVc" />
+                <ScalarProperty Name="LastUpdateDt" ColumnName="LastUpdateDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JFMGigyaCtrlScripts">
+            <EntityTypeMapping TypeName="www.kcmsso.com_1.JFMGigyaCtrlScript">
+              <MappingFragment StoreEntitySet="JFMGigyaCtrlScript">
+                <ScalarProperty Name="IdIn" ColumnName="IdIn" />
+                <ScalarProperty Name="NameVc" ColumnName="NameVc" />
+                <ScalarProperty Name="DescriptionVc" ColumnName="DescriptionVc" />
+                <ScalarProperty Name="OrdIn" ColumnName="OrdIn" />
+                <ScalarProperty Name="TextVc" ColumnName="TextVc" />
+                <ScalarProperty Name="AttrVc" ColumnName="AttrVc" />
+                <ScalarProperty Name="SiteApiKeyVc" ColumnName="SiteApiKeyVc" />
+                <ScalarProperty Name="LastUpdateDt" ColumnName="LastUpdateDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JFMGigyaKeys">
+            <EntityTypeMapping TypeName="www.kcmsso.com_1.JFMGigyaKey">
+              <MappingFragment StoreEntitySet="JFMGigyaKey">
+                <ScalarProperty Name="HexKeyVc" ColumnName="HexKeyVc" />
+                <ScalarProperty Name="RandomKeyVc" ColumnName="RandomKeyVc" />
+                <ScalarProperty Name="SessionVc" ColumnName="SessionVc" />
+                <ScalarProperty Name="IsResetPasswordBl" ColumnName="IsResetPasswordBl" />
+                <ScalarProperty Name="SiteApiKeyVc" ColumnName="SiteApiKeyVc" />
+                <ScalarProperty Name="RegistrationDt" ColumnName="RegistrationDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JFMGigyaServices">
+            <EntityTypeMapping TypeName="www.kcmsso.com_1.JFMGigyaService">
+              <MappingFragment StoreEntitySet="JFMGigyaService">
+                <ScalarProperty Name="IdIn" ColumnName="IdIn" />
+                <ScalarProperty Name="NameVc" ColumnName="NameVc" />
+                <ScalarProperty Name="UrlServiceVc" ColumnName="UrlServiceVc" />
+                <ScalarProperty Name="PathServiceVc" ColumnName="PathServiceVc" />
+                <ScalarProperty Name="ServiceNameVc" ColumnName="ServiceNameVc" />
+                <ScalarProperty Name="ResetFormVc" ColumnName="ResetFormVc" />
+                <ScalarProperty Name="AfterLoginFormVc" ColumnName="AfterLoginFormVc" />
+                <ScalarProperty Name="StartDt" ColumnName="StartDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JFMGigyaSites">
+            <EntityTypeMapping TypeName="www.kcmsso.com_1.JFMGigyaSite">
+              <MappingFragment StoreEntitySet="JFMGigyaSite">
+                <ScalarProperty Name="ApiKeyVc" ColumnName="ApiKeyVc" />
+                <ScalarProperty Name="DomainVc" ColumnName="DomainVc" />
+                <ScalarProperty Name="DescriptionVc" ColumnName="DescriptionVc" />
+                <ScalarProperty Name="UserKeyVc" ColumnName="UserKeyVc" />
+                <ScalarProperty Name="UserSecretKeyVc" ColumnName="UserSecretKeyVc" />
+                <ScalarProperty Name="ExpirationKeyInMinsIn" ColumnName="ExpirationKeyInMinsIn" />
+                <ScalarProperty Name="ExpirationSessionInMinsIn" ColumnName="ExpirationSessionInMinsIn" />
+                <ScalarProperty Name="FolderMediaVc" ColumnName="FolderMediaVc" />
+                <ScalarProperty Name="Partner_idGd" ColumnName="Partner_idGd" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="IsActivatedBl" ColumnName="IsActivatedBl" />
+                <ScalarProperty Name="EnableReCAPTCHABl" ColumnName="EnableReCAPTCHABl" />
+                <ScalarProperty Name="RegistrationDt" ColumnName="RegistrationDt" />
+                <ScalarProperty Name="LastUpdateDt" ColumnName="LastUpdateDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JFMGigyaSitePartners">
+            <EntityTypeMapping TypeName="www.kcmsso.com_1.JFMGigyaSitePartner">
+              <MappingFragment StoreEntitySet="JFMGigyaSitePartner">
+                <ScalarProperty Name="idGd" ColumnName="idGd" />
+                <ScalarProperty Name="NameVc" ColumnName="NameVc" />
+                <ScalarProperty Name="SecretKeyVc" ColumnName="SecretKeyVc" />
+                <ScalarProperty Name="RegistrationDt" ColumnName="RegistrationDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JFMGigyaSiteReCAPTCHAs">
+            <EntityTypeMapping TypeName="www.kcmsso.com_1.JFMGigyaSiteReCAPTCHA">
+              <MappingFragment StoreEntitySet="JFMGigyaSiteReCAPTCHA">
+                <ScalarProperty Name="GGApiKeyVc" ColumnName="GGApiKeyVc" />
+                <ScalarProperty Name="GGSecretKeyVc" ColumnName="GGSecretKeyVc" />
+                <ScalarProperty Name="DescriptionVc" ColumnName="DescriptionVc" />
+                <ScalarProperty Name="SiteApiKeyVc" ColumnName="SiteApiKeyVc" />
+                <ScalarProperty Name="LastUpdateDt" ColumnName="LastUpdateDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JFMGigyaSiteUrls">
+            <EntityTypeMapping TypeName="www.kcmsso.com_1.JFMGigyaSiteUrl">
+              <MappingFragment StoreEntitySet="JFMGigyaSiteUrl">
+                <ScalarProperty Name="IdIn" ColumnName="IdIn" />
+                <ScalarProperty Name="UrlVc" ColumnName="UrlVc" />
+                <ScalarProperty Name="DescriptionVc" ColumnName="DescriptionVc" />
+                <ScalarProperty Name="SiteApiKeyVc" ColumnName="SiteApiKeyVc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

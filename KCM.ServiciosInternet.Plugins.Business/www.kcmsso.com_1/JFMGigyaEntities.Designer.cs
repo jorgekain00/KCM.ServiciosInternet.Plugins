@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\KCM\Servicios de Internet\KCM.ServiciosInternet.Plugins\KCM.ServiciosInternet.Plugins.Data\Entity\gigyaJFMEntities.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'C:\KCM\Servicios de Internet\KCM.ServiciosInternet.Plugins\KCM.ServiciosInternet.Plugins.Business\www.kcmsso.com_1\JFMGigyaEntities.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

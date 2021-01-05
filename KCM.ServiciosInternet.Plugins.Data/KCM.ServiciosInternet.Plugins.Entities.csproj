@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -48,11 +55,6 @@
     <Compile Include="clsCompleteRegistration.cs" />
     <Compile Include="clsConfigPlugIn.cs" />
     <Compile Include="clsDataTransfer.cs" />
-    <Compile Include="Entity\gigyaJFMEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>gigyaJFMEntities.edmx</DependentUpon>
-    </Compile>
     <Compile Include="IPlugInLogInObjects.cs" />
     <Compile Include="clsLogin.cs" />
     <Compile Include="clsLogOut.cs" />
@@ -62,16 +64,13 @@
     <Compile Include="clsSignIn.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Entity\gigyaJFMEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>gigyaJFMEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="Entity\gigyaJFMEntities.edmx.diagram">
-      <DependentUpon>gigyaJFMEntities.edmx</DependentUpon>
-    </None>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entity\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

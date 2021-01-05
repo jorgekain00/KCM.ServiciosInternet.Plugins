@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Plugi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfLogInGiGya", "WcfLogInGiGya\WcfLogInGiGya.csproj", "{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "KCM.ServiciosInternet.Plugins.BD", "KCM.ServiciosInternet.Plugins.BD\KCM.ServiciosInternet.Plugins.BD.sqlproj", "{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,12 @@ Global
 		{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
