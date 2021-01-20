@@ -51,17 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BD\clsBDConfigSession.cs" />
-    <Compile Include="clsCompleteRegistration.cs" />
-    <Compile Include="clsConfigPlugIn.cs" />
-    <Compile Include="clsDataTransfer.cs" />
-    <Compile Include="IPlugInLogInObjects.cs" />
-    <Compile Include="clsLogin.cs" />
-    <Compile Include="clsLogOut.cs" />
+    <Compile Include="Config\GigyaConfig.cs" />
+    <Compile Include="Config\PlugInConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="clsResetPassword.cs" />
-    <Compile Include="clsSessionState.cs" />
-    <Compile Include="clsSignIn.cs" />
+    <Compile Include="Gigya\ResetPassWordData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -69,8 +62,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entity\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

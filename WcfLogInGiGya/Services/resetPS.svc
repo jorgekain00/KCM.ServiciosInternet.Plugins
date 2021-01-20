@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WcfLogInGiGya.Services.ResetPS" CodeBehind="ResetPS.svc.cs" %>

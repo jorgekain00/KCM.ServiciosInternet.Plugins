@@ -57,61 +57,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BD\SessionBD.cs" />
-    <Compile Include="clsFachada.cs" />
+    <Compile Include="BussinessResetPs.cs" />
     <Compile Include="Logica\clsGigyaAccounts.cs" />
     <Compile Include="Logica\clsPlugInLogInServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="www.kcmsso.com_1\JFMGigyaCatView.cs">
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaCtrlCss.cs">
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaCtrlImage.cs">
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaCtrlPlugIn.cs">
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaCtrlScript.cs">
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JFMGigyaEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JFMGigyaEntities.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaKey.cs">
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaService.cs">
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaSite.cs">
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaSitePartner.cs">
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaSiteReCAPTCHA.cs">
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="www.kcmsso.com_1\JFMGigyaSiteUrl.cs">
-      <DependentUpon>JFMGigyaEntities.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KCM.ServiciosInternet.Gigya.Services\KCM.ServiciosInternet.Gigya.Services.csproj">
+      <Project>{b8b1df09-3a1e-493b-838f-b3e7cbb08bca}</Project>
+      <Name>KCM.ServiciosInternet.Gigya.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KCM.ServiciosInternet.Google.Services\KCM.ServiciosInternet.Google.Services.csproj">
+      <Project>{e92ef58e-0137-42bc-b307-5344346e3e71}</Project>
+      <Name>KCM.ServiciosInternet.Google.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Entities.csproj">
       <Project>{66630bb2-c0cd-4669-af32-deb78f62e9a4}</Project>
       <Name>KCM.ServiciosInternet.Plugins.Entities</Name>
@@ -122,25 +81,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <EntityDeploy Include="www.kcmsso.com_1\JFMGigyaEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JFMGigyaEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="www.kcmsso.com_1\JFMGigyaEntities.edmx.diagram">
-      <DependentUpon>JFMGigyaEntities.edmx</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="www.kcmsso.com_1\JFMGigyaEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>JFMGigyaEntities.Context.cs</LastGenOutput>
-      <DependentUpon>JFMGigyaEntities.edmx</DependentUpon>
-    </Content>
-    <Content Include="www.kcmsso.com_1\JFMGigyaEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JFMGigyaEntities.edmx</DependentUpon>
-      <LastGenOutput>JFMGigyaEntities.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

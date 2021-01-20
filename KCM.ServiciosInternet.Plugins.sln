@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1169
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Plugins", "KCM.ServiciosInternet.Plugins\KCM.ServiciosInternet.Plugins.csproj", "{AF99CDD9-9FE1-4D73-847E-74F6B2FB3C3D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Plugins.Entities", "KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Entities.csproj", "{66630BB2-C0CD-4669-AF32-DEB78F62E9A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Plugins.Business", "KCM.ServiciosInternet.Plugins.Business\KCM.ServiciosInternet.Plugins.Business.csproj", "{C19E4AFD-6723-4C8E-9E79-0FC4CC1A0177}"
@@ -13,7 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Plugi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfLogInGiGya", "WcfLogInGiGya\WcfLogInGiGya.csproj", "{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "KCM.ServiciosInternet.Plugins.BD", "KCM.ServiciosInternet.Plugins.BD\KCM.ServiciosInternet.Plugins.BD.sqlproj", "{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Google.Services", "KCM.ServiciosInternet.Google.Services\KCM.ServiciosInternet.Google.Services.csproj", "{E92EF58E-0137-42BC-B307-5344346E3E71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Gigya.Services", "KCM.ServiciosInternet.Gigya.Services\KCM.ServiciosInternet.Gigya.Services.csproj", "{B8B1DF09-3A1E-493B-838F-B3E7CBB08BCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Gigya.Api", "KCM.ServiciosInternet.Gigya.Api\KCM.ServiciosInternet.Gigya.Api.csproj", "{0E881237-9E74-4285-AD6C-647DA2E90B25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AF99CDD9-9FE1-4D73-847E-74F6B2FB3C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF99CDD9-9FE1-4D73-847E-74F6B2FB3C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF99CDD9-9FE1-4D73-847E-74F6B2FB3C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF99CDD9-9FE1-4D73-847E-74F6B2FB3C3D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{66630BB2-C0CD-4669-AF32-DEB78F62E9A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{66630BB2-C0CD-4669-AF32-DEB78F62E9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66630BB2-C0CD-4669-AF32-DEB78F62E9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,12 +39,18 @@ Global
 		{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB7F6F29-8CA4-42B8-AF81-B5B82C7B4D95}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E92EF58E-0137-42BC-B307-5344346E3E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E92EF58E-0137-42BC-B307-5344346E3E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E92EF58E-0137-42BC-B307-5344346E3E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E92EF58E-0137-42BC-B307-5344346E3E71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B1DF09-3A1E-493B-838F-B3E7CBB08BCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B1DF09-3A1E-493B-838F-B3E7CBB08BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B1DF09-3A1E-493B-838F-B3E7CBB08BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B1DF09-3A1E-493B-838F-B3E7CBB08BCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E881237-9E74-4285-AD6C-647DA2E90B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E881237-9E74-4285-AD6C-647DA2E90B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E881237-9E74-4285-AD6C-647DA2E90B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E881237-9E74-4285-AD6C-647DA2E90B25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entity = KCM.ServiciosInternet.Plugins.Entities;
 using Gigya.Socialize.SDK;
+using KCM.ServiciosInternet.Plugins.Entities.Gigya;
 
 namespace KCM.ServiciosInternet.Plugins.Business.Logica
 {
@@ -17,52 +18,40 @@ namespace KCM.ServiciosInternet.Plugins.Business.Logica
         private readonly string strUserSecretKey;
 
 
-        public clsGigyaAccounts()
+        public clsGigyaAccounts(string strAPIKey, string strAPISecretKey, string strUserKey, string strUserSecretKey)
         {
-            strAPIKey = Entity.clsConfigPlugIn.strAPIKey;
-            strAPISecretKey = Entity.clsConfigPlugIn.strAPISecretKey;
-            strUserKey = Entity.clsConfigPlugIn.strUserKey;
-            strUserSecretKey = Entity.clsConfigPlugIn.strUserSecretKey;
+            this.strAPIKey = strAPIKey;
+            this.strAPISecretKey = strAPISecretKey;
+            this.strUserKey = strUserKey;
+            this.strUserSecretKey = strUserSecretKey;
         }
-        private void evalCodeAccounts(Entity.IPlugInLogInObjects objLogIn, GSResponse objGSResponse)
+
+        private string evalCodeGigyaAccountService(GSResponse objGSResponse)
         {
+            string strErrorMessage = string.Empty;
             switch (objGSResponse.GetErrorCode())
             {
                 case 206002:
-                    objLogIn.strErrormessage = "Cuenta pendiente de verificación";
-                    objLogIn.boolIsInvalidRequest = false;
-                    objLogIn.boolIsCompletedOperation = false;
+                    strErrorMessage = "Cuenta pendiente de verificación";
                     break;
                 case 401020:
                 case 401021:
-                    objLogIn.strErrormessage = "Debes verificar reCAPTCHA...";
-                    objLogIn.boolIsInvalidRequest = false;
-                    objLogIn.boolIsCompletedOperation = false;
+                    strErrorMessage = "Debes verificar reCAPTCHA...";
                     break;
                 case 403042:
-                    objLogIn.strErrormessage = "Correo o contraseña invalidos";
-                    objLogIn.boolIsInvalidRequest = false;
-                    objLogIn.boolIsCompletedOperation = false;
+                    strErrorMessage = "Correo o contraseña invalidos";
                     break;
                 case 403043:
-                    objLogIn.strErrormessage = "El usuario ya existe";
-                    objLogIn.boolIsInvalidRequest = false;
-                    objLogIn.boolIsCompletedOperation = false;
+                    strErrorMessage = "El usuario ya existe";
                     break;
                 case 400003:
-                    objLogIn.strErrormessage = "Ya existe el identificador/email";
-                    objLogIn.boolIsInvalidRequest = false;
-                    objLogIn.boolIsCompletedOperation = false;
+                    strErrorMessage = "Ya existe el identificador/email";
                     break;
                 case 400006:
-                    objLogIn.strErrormessage = objGSResponse.GetData().GetString("errorMessage");
-                    objLogIn.boolIsInvalidRequest = false;
-                    objLogIn.boolIsCompletedOperation = false;
+                    strErrorMessage = objGSResponse.GetData().GetString("errorMessage");
                     break;
                 case 403047:
-                    objLogIn.strErrormessage = "Email en formato incorrecto";
-                    objLogIn.boolIsInvalidRequest = false;
-                    objLogIn.boolIsCompletedOperation = false;
+                    strErrorMessage = "Email en formato incorrecto";
                     break;
                 case 400009:
                     foreach (var objItem in objGSResponse.GetData().GetArray("validationErrors"))
@@ -73,283 +62,77 @@ namespace KCM.ServiciosInternet.Plugins.Business.Logica
                         {
                             if (objErrors.errorCode == 400003)
                             {
-                                objLogIn.strErrormessage = "Ya existe el identificador/email";
-                                objLogIn.boolIsInvalidRequest = false;
-                                objLogIn.boolIsCompletedOperation = false;
+                                strErrorMessage = "Ya existe el identificador/email";
                             }
                             else
                             {
-                                objLogIn.strErrormessage = objErrors.message;
-                                objLogIn.boolIsInvalidRequest = false;
-                                objLogIn.boolIsCompletedOperation = false;
+                                strErrorMessage = objErrors.message;
                             }
                             break;
                         }
                     }
                     break;
                 default:
-                    objLogIn.strErrormessage = objGSResponse.GetErrorCode() + " : " + objGSResponse.GetData().GetString("errorMessage");
-                    objLogIn.boolIsInvalidRequest = true;
-                    objLogIn.boolIsCompletedOperation = false;
+                    strErrorMessage = objGSResponse.GetErrorCode() + " : " + objGSResponse.GetData().GetString("errorMessage");
                     break;
             }
+
+            return strErrorMessage;
         }
 
-        public bool logIn(Entity.clsLogin objLogIn)
-        {
-            bool boolResult = false;
-
-            GSRequest objGSRequest = new GSRequest(this.strAPIKey, this.strAPISecretKey, "accounts.login", true);
-
-            objGSRequest.SetParam("loginID", objLogIn.strEmail);
-            objGSRequest.SetParam("password", objLogIn.strPassword);
-            //objGSRequest.SetParam("captchaToken", string.IsNullOrWhiteSpace(objLogIn.strCaptchaToken) ? "NA" : objLogIn.strCaptchaToken);
-
-            GSResponse objGSResponse = objGSRequest.Send();
-
-            if (objGSResponse.GetErrorCode() == 0 || objGSResponse.GetErrorCode() == 206001)
-            {
-                // Everything's okay
-                GSObject objGSRes = objGSResponse.GetData();
-
-                objLogIn.strRegToken = (objGSResponse.GetErrorCode() == 206001) ? objGSRes.GetString("regToken") : null;
-                objLogIn.boolIsAccountPendingRegistration = (objGSResponse.GetErrorCode() == 206001) ? true : false;
-                objLogIn.strUID = objGSRes.GetString("UID");
-                objLogIn.strProfile = objGSRes.GetString("profile");
-                objLogIn.boolIsInvalidRequest = false;
-                objLogIn.strSessionCookie = objGSRes.GetString("sessionInfo");
-                objLogIn.strErrormessage = "OK";
-                objLogIn.boolIsCompletedOperation = true;
-
-                boolResult = true;  // Sucessful login
-            }
-            else
-            {
-                evalCodeAccounts(objLogIn, objGSResponse);
-            }
-
-            return boolResult;
-        }
-
-        public bool getAccountInfo(Entity.clsCompleteRegistration objLogIn, bool boolIsUID = true)
-        {
-            bool boolResult = false;
-
-            GSRequest objGSRequest = new GSRequest(this.strAPIKey, this.strUserSecretKey, "accounts.getAccountInfo", null, true, strUserKey);
-
-            if (boolIsUID)
-            {
-                objGSRequest.SetParam("UID", objLogIn.strUID);
-            }
-            else
-            {
-                objGSRequest.SetParam("regToken", objLogIn.strRegToken);
-            }
-
-
-            objGSRequest.SetParam("include", "loginIDs, profile, data, lastLoginLocation");
-
-            if (objLogIn.strExtraProfileFieldsDescriptor != "")
-            {
-                objGSRequest.SetParam("extraProfileFields", objLogIn.strExtraProfileFieldsDescriptor);
-            }
-
-
-            GSResponse objGSResponse = objGSRequest.Send();
-
-            if (objGSResponse.GetErrorCode() == 0 || objGSResponse.GetErrorCode() == 206001)
-            {
-                // Everything's okay
-                GSObject objGSRes = objGSResponse.GetData();
-
-                objLogIn.strEmail = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType(
-                    objGSRes.GetString("profile"), new { email = string.Empty }).email;
-                objLogIn.strUID = objGSRes.GetString("UID");
-                objLogIn.strProfile = objGSRes.GetString("profile");
-
-                if (objLogIn.strExtraProfileFieldsDescriptor != "")
-                {
-                    objLogIn.strExtraProfileFields = objGSRes.GetString("extraProfileFields");
-                }
-
-                objLogIn.boolIsAccountPendingRegistration = !objGSRes.GetBool("isRegistered");
-
-                objLogIn.boolIsInvalidRequest = false;
-                objLogIn.strErrormessage = "OK";
-                objLogIn.boolIsCompletedOperation = true;
-
-                boolResult = true;  // Sucessful login
-            }
-            else
-            {
-                evalCodeAccounts(objLogIn, objGSResponse);
-            }
-
-            return boolResult;
-        }
-
-        public bool setAccountInfo(Entity.clsCompleteRegistration objLogIn, bool boolIsUID = true)
-        {
-            bool boolResult = false;
-
-            GSRequest objGSRequest = new GSRequest(this.strAPIKey, this.strAPISecretKey, "accounts.setAccountInfo", true);
-
-            if (boolIsUID)
-            {
-                objGSRequest.SetParam("UID", objLogIn.strUID);
-            }
-            else
-            {
-                objGSRequest.SetParam("regToken", objLogIn.strRegToken);
-            }
-
-            objGSRequest.SetParam("profile", objLogIn.strProfile);
-            //objGSRequest.SetParam("extraProfileFields", objLogIn.strExtraProfileFields);
-
-            GSResponse objGSResponse = objGSRequest.Send();
-
-            if (objGSResponse.GetErrorCode() == 0 || objGSResponse.GetErrorCode() == 206001)
-            {
-                objLogIn.boolIsAccountPendingRegistration = (objGSResponse.GetErrorCode() == 206001) ? true : false;
-
-                objLogIn.boolIsInvalidRequest = false;
-                objLogIn.strErrormessage = "OK";
-                objLogIn.boolIsCompletedOperation = true;
-
-                boolResult = true;  // Sucessful login
-            }
-            else
-            {
-                evalCodeAccounts(objLogIn, objGSResponse);
-            }
-
-            return boolResult;
-        }
-
-        public bool finalizeRegistration(Entity.clsCompleteRegistration objLogIn)
-        {
-            bool boolResult = false;
-
-            GSRequest objGSRequest = new GSRequest(this.strAPIKey, this.strAPISecretKey, "accounts.finalizeRegistration", true);
-
-            objGSRequest.SetParam("regToken", objLogIn.strRegToken);
-
-            GSResponse objGSResponse = objGSRequest.Send();
-
-            if (objGSResponse.GetErrorCode() == 0 || objGSResponse.GetErrorCode() == 206001)
-            {
-                GSObject objGSRes = objGSResponse.GetData();
-                objLogIn.boolIsAccountPendingRegistration = false;
-                objLogIn.boolIsInvalidRequest = false;
-                objLogIn.strErrormessage = "OK";
-                objLogIn.boolIsCompletedOperation = true;
-                objLogIn.strSessionCookie = objGSRes.GetString("sessionInfo");
-                boolResult = true;  // Sucessful login
-            }
-            else
-            {
-                objLogIn.boolIsAccountPendingRegistration = true;
-                evalCodeAccounts(objLogIn, objGSResponse);
-            }
-
-            return boolResult;
-        }
-
-        public bool logOut(Entity.clsLogOut objLogIn)
-        {
-            bool boolResult = false;
-
-            GSRequest objGSRequest = new GSRequest(this.strAPIKey, this.strAPISecretKey, "accounts.logout", true);
-
-            objGSRequest.SetParam("UID", objLogIn.strUID);
-
-            GSResponse objGSResponse = objGSRequest.Send();
-
-            if (objGSResponse.GetErrorCode() == 0 || objGSResponse.GetErrorCode() == 206001)
-            {
-                objLogIn.boolIsAccountPendingRegistration = (objGSResponse.GetErrorCode() == 206001) ? true : false;
-
-                objLogIn.boolIsInvalidRequest = false;
-                objLogIn.strErrormessage = "OK";
-                objLogIn.boolIsCompletedOperation = true;
-
-                boolResult = true;  // Sucessful login
-            }
-            else
-            {
-                evalCodeAccounts(objLogIn, objGSResponse);
-            }
-
-            return boolResult;
-        }
-
-        public bool resetPassword(Entity.clsResetPassword objLogIn)
+        internal bool resetPassword(ResetPassWordData objData)
         {
             bool boolResult = false;
             GSRequest objGSRequest = new GSRequest(this.strAPIKey, this.strAPISecretKey, "accounts.resetPassword", true);
 
-            objGSRequest.SetParam("loginID", objLogIn.strEmail);
-            //objGSRequest.SetParam("sendEmail", false);
-            //objGSRequest.SetParam("passwordResetToken", "tk1..AcbHheXlCA.B2CMGyu5BTySgJPsORxCIVw0GQznuVeqH12byrisow5p9gqkhas3K9lDquKwdzQf.CtONeEb04a1mSJq1k51FQ3nmBu-FwRIFw92UcoE4BYbQyRSGxY-4z_pP7q0fcWixIXBvKrj24S5AEmBAk81RrQ.sc3");
-            //objGSRequest.SetParam("newPassword", "Atend2017");
+            objGSRequest.SetParam("loginID", objData.strEmail);
+            objGSRequest.SetParam("sendEmail", false);
 
             GSResponse objGSResponse = objGSRequest.Send();
 
             if (objGSResponse.GetErrorCode() == 0 || objGSResponse.GetErrorCode() == 206001)
             {
-                objLogIn.boolIsAccountPendingRegistration = (objGSResponse.GetErrorCode() == 206001) ? true : false;
-
-                objLogIn.boolIsInvalidRequest = false;
-                objLogIn.strErrormessage = "OK";
-                objLogIn.boolIsCompletedOperation = true;
-
+                objData.strGigyaTokenForResetPS = objGSResponse.GetData().GetString("passwordResetToken");
                 boolResult = true;  // Sucessful login
             }
             else
             {
-                evalCodeAccounts(objLogIn, objGSResponse);
+                objData.strErrormessage =  evalCodeGigyaAccountService(objGSResponse);
             }
 
             return boolResult;
         }
 
-        public bool register(Entity.clsSignIn objLogIn)
-        {
-            bool boolResult = false;
+        //public bool resetPasswordViaToken(Entity.clsResetPassword objLogIn)
+        //{
+        //    bool boolResult = false;
+        //    GSRequest objGSRequest = new GSRequest(this.strAPIKey, this.strAPISecretKey, "accounts.resetPassword", true);
 
-            //GSRequest objGSRequest = new GSRequest(this.strAPIKey, this.strAPISecretKey, "accounts.login", true);
-            GSRequest objGSRequest = new GSRequest(this.strAPIKey, this.strUserSecretKey, "accounts.register", null, true, strUserKey);
-            //objGSRequest.SetParam("username", objLogIn.strEmail);
-            objGSRequest.SetParam("email", objLogIn.strEmail);
-            objGSRequest.SetParam("password", objLogIn.strPassword);
-            objGSRequest.SetParam("finalizeRegistration", true);
-            //objGSRequest.SetParam("captchaToken", string.IsNullOrWhiteSpace(objLogIn.strCaptchaToken) ? "NA" : objLogIn.strCaptchaToken);
-            objGSRequest.SetParam("data", objLogIn.strData);
+        //    objGSRequest.SetParam("loginID", objLogIn.strEmail);
+        //    //objGSRequest.SetParam("sendEmail", false);
+        //    //objGSRequest.SetParam("passwordResetToken", "tk1..AcbHheXlCA.B2CMGyu5BTySgJPsORxCIVw0GQznuVeqH12byrisow5p9gqkhas3K9lDquKwdzQf.CtONeEb04a1mSJq1k51FQ3nmBu-FwRIFw92UcoE4BYbQyRSGxY-4z_pP7q0fcWixIXBvKrj24S5AEmBAk81RrQ.sc3");
+        //    //objGSRequest.SetParam("newPassword", "Atend2017");
 
-            GSResponse objGSResponse = objGSRequest.Send();
+        //    GSResponse objGSResponse = objGSRequest.Send();
 
-            if (objGSResponse.GetErrorCode() == 0 || objGSResponse.GetErrorCode() == 206001)
-            {
-                // Everything's okay
-                GSObject objGSRes = objGSResponse.GetData();
+        //    if (objGSResponse.GetErrorCode() == 0 || objGSResponse.GetErrorCode() == 206001)
+        //    {
+        //        objLogIn.boolIsAccountPendingRegistration = (objGSResponse.GetErrorCode() == 206001) ? true : false;
 
-                objLogIn.strRegToken = (objGSResponse.GetErrorCode() == 206001) ? objGSRes.GetString("regToken") : null;
-                objLogIn.boolIsAccountPendingRegistration = (objGSResponse.GetErrorCode() == 206001) ? true : false;
-                objLogIn.strUID = objGSRes.GetString("UID");
-                objLogIn.strProfile = objGSRes.GetString("profile");
-                objLogIn.boolIsInvalidRequest = false;
-                objLogIn.strErrormessage = "OK";
-                objLogIn.boolIsCompletedOperation = true;
+        //        objLogIn.boolIsInvalidRequest = false;
+        //        objLogIn.strErrormessage = "OK";
+        //        objLogIn.boolIsCompletedOperation = true;
 
-                boolResult = true;  // Sucessful login
-            }
-            else
-            {
-                evalCodeAccounts(objLogIn, objGSResponse);
-            }
+        //        boolResult = true;  // Sucessful login
+        //    }
+        //    else
+        //    {
+        //        evalCodeAccounts(objLogIn, objGSResponse);
+        //    }
 
-            return boolResult;
-        }
+        //    return boolResult;
+        //}
+
 
         #region IDisposable Support
         private bool disposedValue = false; // Para detectar llamadas redundantes

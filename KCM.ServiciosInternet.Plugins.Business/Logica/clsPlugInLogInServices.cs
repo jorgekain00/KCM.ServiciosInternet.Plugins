@@ -1,340 +1,110 @@
-﻿using KCM.ServiciosInternet.Plugins.Business.BD;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using Entity = KCM.ServiciosInternet.Plugins.Entities;
+using Entities = KCM.ServiciosInternet.Plugins.Entities;
 using System.Web.Script.Serialization;
+using System.Net.Mail;
+using KCM.ServiciosInternet.Plugins.Entities.Gigya;
+using Gigya = KCM.ServiciosInternet.Gigya.Services;
 
 namespace KCM.ServiciosInternet.Plugins.Business.Logica
 {
     static class clsPlugInLogInServices
     {
-        private static void updateIPlugInEventsLogIn(ref Entity.clsSessionState clsSessionState, Entity.clsDataTransfer objData, Entity.clsSessionState.EventType eventType)
+        internal static bool requestResetPassword(ResetPassWordData objData, string strHtmlPath)
         {
-
-            if (clsSessionState == null)
+            objData.boolIsInvalidRequest = false;
+            if (KCM.ServiciosInternet.Google.Services.Bussiness.isExpiredReCaptcha(Entities.Config.PlugInConfig.strReCAPTCHALogInFlowSecret, objData.recatchapToken))
             {
-                clsSessionState = new Entity.clsSessionState(objData, eventType, Entity.clsConfigPlugIn.intExpirationSessionDays);
+                objData.strErrormessage = "Debe verificar recaptcha";
+                objData.boolIsInvalidRequest = true;
             }
             else
             {
-                if (clsSessionState.enumEvent == eventType)
+                if (Gigya.Services.Bussiness.resetPassword(objData))
                 {
-                    clsSessionState.objLogInObjects.receiveData(objData);
-                }
-                else
-                {
-                    clsSessionState.Dispose();
-                    clsSessionState = null;
-                    clsSessionState = new Entity.clsSessionState(objData, eventType, Entity.clsConfigPlugIn.intExpirationSessionDays);
-                }
-            }
-        }
-
-
-        private static void receiveDataFromIPlugInEventsLogIn(Entity.clsSessionState objSessionState, ref Entity.clsDataTransfer objData)
-        {
-            objData = objSessionState.objLogInObjects.sendData();
-        }
-
-        internal static bool deleteRandomKey(ref Entity.clsDataTransfer objData)
-        {
-            bool boolIsDeleted = false;
-            Entity.clsSessionState objSessionState = null;
-            Entities.clsSessionState.EventType eventType = Entity.clsSessionState.EventType.LogIn;
-            updateIPlugInEventsLogIn(ref objSessionState, objData, eventType);
-            objSessionState.objLogInObjects.strComputedKey = objData.strComputedKey;
-            //registramos las llave en la BD
-            using (SessionBD objBD = new SessionBD())
-            {
-                if (objBD.isExistselectKey(objSessionState))
-                {
-                    boolIsDeleted = objBD.deleteKey(objSessionState);
-                }
-            }
-
-            receiveDataFromIPlugInEventsLogIn(objSessionState, ref objData);
-            return boolIsDeleted;
-        }
-
-        private static bool AreEqualComputedKeys(Entity.clsSessionState objSessionState)
-        {
-            using (SessionBD objBD = new SessionBD())
-            {
-                if (objBD.isExistselectKey(objSessionState))
-                {
-                    return true;
-                }
-                else
-                {
-
-                    objSessionState.objLogInObjects.boolIsCompletedOperation = false;
-                    objSessionState.objLogInObjects.boolIsInvalidRequest = true;
-                    objSessionState.objLogInObjects.strErrormessage = "Computed keys are not equal";
-                    return false;
-                }
-            }
-        }
-        private static bool deleteKey(Entity.clsSessionState objSessionState)
-        {
-            using (SessionBD objBD = new SessionBD())
-            {
-                if (objBD.isExistselectKey(objSessionState))
-                {
-                    return objBD.deleteKey(objSessionState);
+                    return sendEmailToUser(objData, strHtmlPath);
                 }
             }
             return false;
         }
 
-
-        private static bool isExpiredKey(Entity.clsSessionState objSessionState)
+        internal static bool changePassword(ResetPassWordData objData)
         {
-            if (objSessionState.isExpiredKey(Entity.clsConfigPlugIn.intExpirationKeyMins))
+
+            if (KCM.ServiciosInternet.Google.Services.Bussiness.isExpiredReCaptcha(Entities.Config.PlugInConfig.strReCAPTCHALogInFlowSecret, objData.recatchapToken))
             {
-                objSessionState.objLogInObjects.boolIsCompletedOperation = false;
-                objSessionState.objLogInObjects.boolIsInvalidRequest = true;
-                objSessionState.objLogInObjects.strErrormessage = "Computed key is expired";
-                return true;
+                objData.strErrormessage = "Debe verificar recaptcha";
+                objData.boolIsInvalidRequest = true;
             }
             else
             {
-                return false;
-            }
-        }
-
-        private static bool isExpiredReCaptcha(Entity.clsSessionState objSessionState, bool boolIsLogIn)
-        {
-            string strCatchapSecret = string.Empty;  // almacena la llave secreta de recaptcha
-
-            if (boolIsLogIn)
-            {
-                strCatchapSecret = Entity.clsConfigPlugIn.strReCAPTCHALogInFlowSecret;
-            }
-            else
-            {
-                strCatchapSecret = Entity.clsConfigPlugIn.strReCAPTCHARegisterFlowSecret;
-            }
-            string strWebAddr = "https://www.google.com/recaptcha/api/siteverify?secret=" + strCatchapSecret + "&response=" + objSessionState.objLogInObjects.strCaptchaToken;
-
-            WebRequest objHttpWebRequest = WebRequest.Create(strWebAddr);
-            HttpWebResponse objHttpResponse = (HttpWebResponse)objHttpWebRequest.GetResponse();
-            using (StreamReader objSdr = new StreamReader(objHttpResponse.GetResponseStream()))
-            {
-                JavaScriptSerializer objJSONSerializer = new JavaScriptSerializer();
-                Dictionary<string, object> objResp = (Dictionary<string, object>)objJSONSerializer.DeserializeObject(objSdr.ReadToEnd());
-                // todo: debes de poner registro de errores log
-                if (!objResp["success"].ToString().Equals("True"))
-                {
-                    objSessionState.objLogInObjects.boolIsCompletedOperation = false;
-                    objSessionState.objLogInObjects.boolIsInvalidRequest = true;
-                    objSessionState.objLogInObjects.strErrormessage = "Debes verificar reCAPTCHA...";
-                    return true;
-                }
+                return Gigya.Services.Bussiness.changePassword(objData);
             }
 
             return false;
         }
 
-        internal static Entity.clsSessionState generateRandomKey(ref Entity.clsDataTransfer objData, string strCookieSessionId, Entity.clsSessionState.EventType eventType)
-        {
-            Entity.clsSessionState objSessionState = null;
-            updateIPlugInEventsLogIn(ref objSessionState, objData, eventType);
-
-            //registramos las llave en la BD
-            using (SessionBD objBD = new SessionBD())
-            {
-                objBD.deleteExpiredKeys(Entity.clsConfigPlugIn.intExpirationKeyMins * 3);
-                if (objBD.isReachMaxRequest(strCookieSessionId))
-                {
-                    objSessionState.objLogInObjects.boolIsCompletedOperation = false;
-                    objSessionState.objLogInObjects.boolIsInvalidRequest = true;
-                    objSessionState.objLogInObjects.strErrormessage = "it has reached max request: wait for " + (Entity.clsConfigPlugIn.intExpirationKeyMins * 3) + " minutes";
-                    objSessionState.objLogInObjects.strRandomKey = "";
-                    objSessionState.objLogInObjects.strComputedKey = "";
-                }
-                else
-                {
-                    if (objBD.isExistselectKey(objSessionState))
-                    {
-                        objBD.deleteKey(objSessionState);
-                    }
-                    objBD.insertKey(objSessionState, strCookieSessionId);
-                    objSessionState.objLogInObjects.strErrormessage = "OK";
-                }
-            }
-
-            receiveDataFromIPlugInEventsLogIn(objSessionState, ref objData);
-            return objSessionState;
-        }
-
-        internal static bool sendCredentialesToLogIn(ref Entity.clsDataTransfer objData)
-        {
-            Entity.clsSessionState.EventType eventType = Entity.clsSessionState.EventType.LogIn;
-            Entity.clsSessionState objSessionState = null;
-            bool boolIsLogIn = false;
-
-            updateIPlugInEventsLogIn(ref objSessionState, objData, eventType);
-
-            objSessionState.objLogInObjects.strComputedKey = objData.strComputedKey;
-
-            if (!isExpiredReCaptcha(objSessionState,true))  
-            {
-                if (AreEqualComputedKeys(objSessionState))
-                {
-                    if (!isExpiredKey(objSessionState))
-                    {
-                        using (clsGigyaAccounts objGigyaAccounts = new clsGigyaAccounts())
-                        {
-                            boolIsLogIn = objGigyaAccounts.logIn(objSessionState.objLogInObjects as Entity.clsLogin);
-                            if (objSessionState.objLogInObjects.strErrormessage == "OK" || objSessionState.objLogInObjects.boolIsInvalidRequest == true)
-                            {
-                                deleteKey(objSessionState);
-                            }
-                        }
-                    }
-                } 
-            }
-            receiveDataFromIPlugInEventsLogIn(objSessionState, ref objData);
-
-            return boolIsLogIn;
-        }
-
-        internal static Entity.clsSessionState getAccountInfo(ref Entity.clsDataTransfer objData, Entity.clsSessionState.EventType eventType)
-        {
-            Entity.clsSessionState objSessionState = null;
-            updateIPlugInEventsLogIn(ref objSessionState, objData, eventType);
-
-            using (clsGigyaAccounts objGigyaAccounts = new clsGigyaAccounts())
-            {
-                objGigyaAccounts.getAccountInfo(objSessionState.objLogInObjects as Entity.clsCompleteRegistration, !string.IsNullOrEmpty((objSessionState.objLogInObjects as Entity.clsCompleteRegistration).strUID));
-            }
-
-            receiveDataFromIPlugInEventsLogIn(objSessionState, ref objData);
-            return objSessionState;
-        }
-
-        internal static bool sendMissingFields(ref Entity.clsDataTransfer objData)
-        {
-            Entity.clsSessionState.EventType eventType = Entity.clsSessionState.EventType.CompleteRegistration;
-            Entity.clsSessionState objSessionState = null;
-
-            bool boolIsUpdated = false;
-
-            updateIPlugInEventsLogIn(ref objSessionState, objData, eventType);
-            objSessionState.objLogInObjects.strComputedKey = objData.strComputedKey;
-
-            if (!isExpiredReCaptcha(objSessionState,true))
-            {
-                if (AreEqualComputedKeys(objSessionState))
-                {
-                    if (!isExpiredKey(objSessionState))
-                    {
-                        using (clsGigyaAccounts objGigyaAccounts = new clsGigyaAccounts())
-                        {
-                            if (objGigyaAccounts.setAccountInfo(objSessionState.objLogInObjects as Entity.clsCompleteRegistration, string.IsNullOrEmpty((objSessionState.objLogInObjects as Entity.clsCompleteRegistration).strRegToken)))
-                            {
-                                boolIsUpdated = objGigyaAccounts.finalizeRegistration(objSessionState.objLogInObjects as Entity.clsCompleteRegistration);
-                                if (objSessionState.objLogInObjects.strErrormessage == "OK" || objSessionState.objLogInObjects.boolIsInvalidRequest == true)
-                                {
-                                    deleteKey(objSessionState);
-                                }
-                            }
-                        }
-                    }
-                } 
-            }
-            receiveDataFromIPlugInEventsLogIn(objSessionState, ref objData);
-
-            return boolIsUpdated;
-        }
-
-        internal static bool LogoutSession(ref Entity.clsDataTransfer objData)
-        {
-            Entity.clsSessionState.EventType eventType = Entity.clsSessionState.EventType.LogOut;
-            Entity.clsSessionState objSessionState = null;
-
-            bool boolIsLogout = false;
-
-            updateIPlugInEventsLogIn(ref objSessionState, objData, eventType);
-
-            using (clsGigyaAccounts objGigyaAccounts = new clsGigyaAccounts())
-            {
-                boolIsLogout = objGigyaAccounts.logOut(objSessionState.objLogInObjects as Entity.clsLogOut);
-            }
-            receiveDataFromIPlugInEventsLogIn(objSessionState, ref objData);
-
-            return boolIsLogout;
-        }
-
-
-        internal static bool requestResetPassword(ref Entity.clsDataTransfer objData)
-        {
-            Entity.clsSessionState.EventType eventType = Entity.clsSessionState.EventType.ResetPassword;
-            Entity.clsSessionState objSessionState = null;
-
-            bool boolIsEmailSended = false;
-
-            updateIPlugInEventsLogIn(ref objSessionState, objData, eventType);
-            objSessionState.objLogInObjects.strComputedKey = objData.strComputedKey;
-
-            if (!isExpiredReCaptcha(objSessionState,true))
-            {
-                if (AreEqualComputedKeys(objSessionState))
-                {
-                    if (!isExpiredKey(objSessionState))
-                    {
-                        using (clsGigyaAccounts objGigyaAccounts = new clsGigyaAccounts())
-                        {
-                            boolIsEmailSended = objGigyaAccounts.resetPassword(objSessionState.objLogInObjects as Entity.clsResetPassword);
-                            //if (objSessionState.objLogInObjects.strErrormessage == "OK" || objSessionState.objLogInObjects.boolIsInvalidRequest == true)
-                            //{
-                                deleteKey(objSessionState);
-                            //}
-                        }
-                    }
-                } 
-            }
-            receiveDataFromIPlugInEventsLogIn(objSessionState, ref objData);
-
-            return boolIsEmailSended;
-        }
-
-        internal static bool sendCredentialesToSignIn(ref Entity.clsDataTransfer objData)
+        private static bool sendEmailToUser(ResetPassWordData objData, string strHtmlPath)
         {
 
-            Entity.clsSessionState.EventType eventType = Entity.clsSessionState.EventType.SignIn;
-            Entity.clsSessionState objSessionState = null;
-            bool boolIsLogIn = false;
+            string strUrlResetPS = string.Format("{0}?regToken={1}&email={2}", Entities.Config.PlugInConfig.strResetPSUrl, objData.strGigyaTokenForResetPS, objData.strEmail);
+            string strBody = string.Join("", File.ReadAllLines(Path.Combine(strHtmlPath, Entities.Config.PlugInConfig.StrMailHTML))).Replace("${|urlResertPS|}", strUrlResetPS); // Load mail template
 
-            updateIPlugInEventsLogIn(ref objSessionState, objData, eventType);
 
-            objSessionState.objLogInObjects.strComputedKey = objData.strComputedKey;
+            MailMessage message = new MailMessage();
 
-            if (!isExpiredReCaptcha(objSessionState,false))
-            {
-                if (AreEqualComputedKeys(objSessionState))
-                {
-                    if (!isExpiredKey(objSessionState))
-                    {
-                        using (clsGigyaAccounts objGigyaAccounts = new clsGigyaAccounts())
-                        {
-                            boolIsLogIn = objGigyaAccounts.register(objSessionState.objLogInObjects as Entity.clsSignIn);
-                            if (objSessionState.objLogInObjects.strErrormessage == "OK" || objSessionState.objLogInObjects.boolIsInvalidRequest == true)
-                            {
-                                deleteKey(objSessionState);
-                            }
-                        }
-                    }
-                } 
-            }
-            receiveDataFromIPlugInEventsLogIn(objSessionState, ref objData);
+            message.To.Add(objData.strEmail); // Email-ID of Receiver  
 
-            return boolIsLogIn;
+
+            message.Subject = Entities.Config.PlugInConfig.strResetEmailSubject;
+            message.From = new System.Net.Mail.MailAddress(Entities.Config.PlugInConfig.strFromAddressEmail);// Email-ID of Sender  
+            message.IsBodyHtml = true;
+            message.Body = strBody;
+            message.BodyEncoding = Encoding.Default;
+            message.Priority = MailPriority.High;
+
+            SmtpClient SmtpMail = new SmtpClient(Entities.Config.PlugInConfig.strSMTPServer);
+            SmtpMail.UseDefaultCredentials = true;
+            SmtpMail.Send(message); //Smtpclient to send the mail message 
+
+            return true;
         }
+
+        internal static string requestScriptJS(string strPathScripts, string strScriptName, string strApiKey)
+        {
+            string strResponse = string.Empty;   // script function
+            try
+            {
+
+                // Get JS Script
+                // strApiKey for future DB implementations
+
+                strResponse = File.ReadAllText(Path.Combine(strPathScripts, strScriptName));
+
+
+                // Replace placeholder with values
+
+                strResponse = strResponse
+                    .Replace("${|ServiceName|}", Entities.Config.PlugInConfig.strServiceUrl)
+                    .Replace("${|UrlImg|}", Entities.Config.PlugInConfig.strLoadingImage);
+
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                strResponse = "";
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return strResponse;
+        }
+
     }
 }
