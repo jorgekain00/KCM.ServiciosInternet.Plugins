@@ -1,0 +1,881 @@
+﻿<div class="gigya-screen-set" id="Login-web" data-on-pending-recent-login-screen="gigya-recent-login-screen" data-on-existing-login-identifier-screen="gigya-link-account-screen" data-on-pending-tfa-verification-screen="gigya-tfa-verification-screen" data-on-pending-tfa-registration-screen="gigya-tfa-registration-screen" data-on-pending-verification-screen="gigya-email-verification-screen" data-on-pending-registration-screen="gigya-complete-registiration-screen" data-width="760" data-responsive="true" data-on-pending-password-change-screen="gigya-password-change-required-screen">
+    <div class="gigya-screen" id="gigya-login-screen" style="max-width: 550px;" data-width="700" data-caption="Ingreso">
+        <form class="gigya-login-form" id="gigya-login-form" data-on-success-screen="_finish">
+            <div class="gigya-layout-row">
+                <h2 class="gigya-composite-control gigya-composite-control-header">Ingresa con tu red social:</h2>
+                <div class="gigya-composite-control gigya-composite-control-social-login">
+                    <div class="gigya-social-login">
+                        <param name="width" value="550">
+                        <param name="height" value="100">
+                        <param name="enabledProviders" value="facebook,Twitter,google">
+                        <param name="buttonsStyle" value="fullLogoColored">
+                        <param name="buttonSize" value="35">
+                        <param name="showWhatsThis" value="false">
+                        <param name="showTermsLink" value="false">
+                        <param name="hideGigyaLink" value="true">
+                        <param name="pagingButtonStyle" value="arrows">
+                        <param name="loginMode" value="standard">
+                        <param name="version" value="1">
+                    </div>
+                </div>
+            </div>
+            <div class="gigya-composite-control gigya-spacer" style="height: 20px;" data-units="2"></div>
+            <div class="gigya-layout-row">
+                <h2 class="gigya-composite-control gigya-composite-control-header">O ingresa aquí: </h2>
+                <div class="gigya-composite-control gigya-spacer" style="height: 20px;" data-units="2"></div>
+                <div class="gigya-composite-control gigya-composite-control-textbox">
+                    <input name="loginID" tabindex="1" class="gigya-input-text" id="gigya-textbox-69579547506540350" aria-label="Correo Electrónico:" type="text" data-gigya-placeholder="Correo Electrónico:">
+                    <span class="gigya-error-msg" data-bound-to="loginID"></span>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-password">
+                    <label class="gigya-label" for="gigya-password-40429570156748990">
+                        <span class="gigya-label-text">
+                            <a class="forgotPassword" draggable="false" data-switch-screen="gigya-forgot-password-screen">¿Olvidaste tu contraseña?</a>
+                        </span>
+                    </label>
+                    <input name="password" tabindex="1" class="gigya-input-password" id="gigya-password-40429570156748990" type="password" data-array-root="" data-gigya-placeholder="Contraseña:">
+                    <span class="gigya-error-msg" data-bound-to="password"></span>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-captcha-widget">
+                    <div class="gigya-captcha-wrapper gigya-error-display" data-bound-to="gigya-login-form" data-error-flags="captchaNeeded">
+                        <div class="gigya-captcha">
+                            <param name="theme" value="white">
+                        </div>
+                        <span class="gigya-error-msg" data-bound-to="captchaText"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell">
+                            <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" data-bound-to="gigya-login-form">
+                                <div class="gigya-error-msg gigya-form-error-msg" data-bound-to="gigya-login-form"></div>
+                            </div>
+                        </div>
+                        <div class="gigya-layout-cell">
+                            <div class="gigya-composite-control gigya-composite-control-submit"><input tabindex="3" class="gigya-input-submit" type="submit" value="Enviar"></div>
+                        </div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-layout-cell">
+                    <label class="gigya-composite-control gigya-composite-control-label" style="text-align: right;"><strong>¿Aún no tienes cuenta? <a data-switch-screen="gigya-register-screen">Da Clic aquí</a></label></strong>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-clear"></div>
+        </form>
+    </div>
+    <div class="gigya-screen" id="gigya-tfa-verification-screen" style="max-width: 350px;" data-width="350" data-caption="Autentica tu cuenta">
+        <div class="gigya-layout-row">
+            <div class="gigya-composite-control gigya-composite-control-tfa-widget gigya-composite-control-tfa-verify">
+                <div class="gigya-tfa">
+                    <param name="mode" value="verify">
+                </div>
+            </div>
+        </div>
+        <div class="gigya-layout-row">
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row"></div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row"></div>
+        <div class="gigya-clear"></div>
+    </div>
+    <div class="gigya-screen" id="gigya-password-change-required-screen" style="max-width: 350px;" data-width="350" data-caption="Cambio de contraseña">
+        <form class="gigya-profile-form" id="gigya-profile-form">
+            <div class="gigya-layout-row">
+                <label class="gigya-composite-control gigya-composite-control-label" style="display: block;">Por razones de seguridad tu contraseña necesita ser cambiada</label>
+                <div class="gigya-composite-control gigya-composite-control-password" style="display: block;"><label class="gigya-label"><span class="gigya-label-text">Coloca tu contraseña:</span><label class="gigya-required-display" data-bound-to="password">*</label></label><input name="password" tabindex="1" class="gigya-input-password" type="password" data-array-root=""><span class="gigya-error-msg" data-bound-to="password"></span></div>
+                <div class="gigya-composite-control gigya-composite-control-password" style="display: block;">
+                    <label class="gigya-label"><span class="gigya-label-text">Coloca una nueva contraseña:</span><label class="gigya-required-display" data-bound-to="newPassword">*</label></label><input name="newPassword" tabindex="2" class="gigya-input-password" type="password" data-array-root=""><span class="gigya-error-msg" data-bound-to="newPassword"></span>
+                    <div class="gigya-password-strength" data-bound-to="newPassword" data-on-focus-bubble="true"></div>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-password" style="display: block;"><label class="gigya-label"><span class="gigya-label-text">Reescribe la nueva contraseña:</span><label class="gigya-required-display" data-bound-to="passwordRetype">*</label></label><input name="passwordRetype" tabindex="3" class="gigya-input-password" type="password" data-array-root=""><span class="gigya-error-msg" data-bound-to="passwordRetype"></span></div>
+            </div>
+            <div class="gigya-layout-row">
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell">
+                    <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" style="display: block;" data-bound-to="gigya-profile-form">
+                        <div class="gigya-error-msg gigya-form-error-msg" data-bound-to="gigya-profile-form"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell">
+                    <div class="gigya-composite-control gigya-composite-control-submit" style="display: block;"><input tabindex="4" class="gigya-input-submit" type="submit" value="Enviar"></div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-clear"></div>
+        </form>
+    </div>
+    <div class="gigya-screen" id="gigya-recent-login-screen" style="max-width: 700px;" data-width="700" data-caption="Registro reciente">
+        <form class="gigya-login-form" id="gigya-login-form">
+            <div class="gigya-layout-row">
+                <h2 class="gigya-composite-control gigya-composite-control-header" style="font-weight: bold;" data-wizard-text-bold="bold">Por favor ingresa nuevamente para hacer cambios en tu cuenta</h2>
+                <div class="gigya-composite-control gigya-spacer" style="height: 10px;" data-units="1"></div>
+            </div>
+            <div class="gigya-layout-row">
+                <div class="gigya-layout-cell">
+                    <h2 class="gigya-composite-control gigya-composite-control-header">Ingresa con tu red social:</h2>
+                    <div class="gigya-composite-control gigya-spacer" style="height: 20px;" data-units="2"></div>
+                    <div class="gigya-composite-control gigya-composite-control-social-login">
+                        <div class="gigya-social-login">
+                            <param name="width" value="300">
+                            <param name="height" value="100">
+                            <param name="enabledProviders" value="facebook,Twitter,google">
+                            <param name="buttonsStyle" value="fullLogo">
+                            <param name="buttonSize" value="35">
+                            <param name="showWhatsThis" value="false">
+                            <param name="showTermsLink" value="false">
+                            <param name="hideGigyaLink" value="true">
+                            <param name="pagingButtonStyle" value="arrows">
+                            <param name="loginMode" value="standard">
+                            <param name="version" value="1">
+                        </div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell">
+                    <h2 class="gigya-composite-control gigya-composite-control-header">O, ingresa aquí: </h2>
+                    <div class="gigya-composite-control gigya-spacer" style="height: 20px;" data-units="2"></div>
+                    <div class="gigya-composite-control gigya-composite-control-textbox"><label class="gigya-label"><span class="gigya-label-text">Correo Electrónico: </span><label class="gigya-required-display" data-bound-to="loginID">*</label></label><input name="loginID" tabindex="1" class="gigya-input-text" type="text"><span class="gigya-error-msg" data-bound-to="loginID"></span></div>
+                    <div class="gigya-composite-control gigya-composite-control-password"><label class="gigya-label" for="gigya-password-131457877932258530"><span class="gigya-label-text"><a class="forgotPassword" draggable="false" data-switch-screen="gigya-forgot-password-screen">¿Olvidaste tu contraseña?</a></span><label class="gigya-required-display" for="gigya-password-131457877932258530" data-bound-to="password">*</label></label><input name="password" tabindex="1" class="gigya-input-password" id="gigya-password-131457877932258530" type="password" data-array-root="" data-gigya-placeholder="Contraseña:"><span class="gigya-error-msg" data-bound-to="password"></span></div>
+                    <div class="gigya-composite-control gigya-composite-control-captcha-widget">
+                        <div class="gigya-captcha-wrapper gigya-error-display" data-bound-to="gigya-login-form" data-error-flags="captchaNeeded">
+                            <div class="gigya-captcha">
+                                <param name="theme" value="white">
+                            </div><span class="gigya-error-msg" data-bound-to="captchaText"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell">
+                            <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" data-bound-to="gigya-login-form">
+                                <div class="gigya-error-msg gigya-form-error-msg" data-bound-to="gigya-login-form"></div>
+                            </div>
+                        </div>
+                        <div class="gigya-layout-cell">
+                            <div class="gigya-composite-control gigya-composite-control-submit"><input tabindex="3" class="gigya-input-submit" type="submit" value="Enviar"></div>
+                        </div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-clear"></div>
+        </form>
+    </div>
+    <div class="gigya-screen" id="gigya-register-screen" style="max-width: 550px;" data-on-pending-verification-screen="gigya-thank-you-screen" data-width="550" data-caption="Registro">
+        <form class="gigya-register-form" id="gigya-register-form" data-on-success-screen="_finish">
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-layout-row">
+                <div class="gigya-layout-row">
+                    <div class="gigya-layout-cell">
+                        <div class="gigya-layout-row">
+                            <div class="gigya-composite-control gigya-spacer" style="height: 20px;" data-units="2"></div>
+                        </div>
+                        <div class="gigya-layout-row">
+                            <div class="gigya-layout-cell"></div>
+                            <div class="gigya-layout-cell"></div>
+                            <div class="gigya-clear"></div>
+                        </div>
+                        <div class="gigya-layout-row"></div>
+                    </div>
+                    <div class="gigya-layout-cell">
+                        <div class="gigya-layout-row">
+                            <div class="gigya-composite-control gigya-spacer" style="height: 20px;" data-units="2"></div>
+                        </div>
+                        <div class="gigya-layout-row">
+                            <div class="gigya-layout-cell"></div>
+                            <div class="gigya-layout-cell"></div>
+                            <div class="gigya-clear"></div>
+                            <div class="gigya-clear"></div>
+                        </div>
+                        <div class="gigya-layout-row"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row">
+                <h2 class="gigya-composite-control gigya-composite-control-header" style="display: block;">Regístrate con tu red social: </h2>
+                <div class="gigya-composite-control gigya-composite-control-social-login" style="display: block;">
+                    <div class="gigya-social-login">
+                        <param name="width" value="550">
+                        <param name="height" value="100">
+                        <param name="enabledProviders" value="facebook,Twitter,google">
+                        <param name="buttonsStyle" value="fullLogoColored">
+                        <param name="buttonSize" value="35">
+                        <param name="showWhatsThis" value="false">
+                        <param name="showTermsLink" value="false">
+                        <param name="hideGigyaLink" value="true">
+                        <param name="pagingButtonStyle" value="arrows">
+                        <param name="loginMode" value="standard">
+                        <param name="version" value="1">
+                    </div>
+                </div>
+                <h2 class="gigya-composite-control gigya-composite-control-header">O crea una nueva cuenta: </h2>
+                <div class="gigya-composite-control gigya-composite-control-textbox" style="display: block;"><input name="email" tabindex="1" class="gigya-input-text" id="gigya-textbox-95566197529548930" aria-label="Correo Electrónico:" type="text" data-display-name="" data-gigya-placeholder="Correo Electrónico:"><span class="gigya-error-msg" data-bound-to="email"></span></div>
+                <div class="gigya-composite-control gigya-composite-control-textbox" style="display: block;"><input name="profile.firstName" tabindex="2" class="gigya-input-text" id="gigya-textbox-99725581547020110" aria-label="Nombre:" type="text" data-display-name="" data-gigya-placeholder="Nombre:"><span class="gigya-error-msg" data-bound-to="profile.firstName"></span></div>
+                <div class="gigya-composite-control gigya-composite-control-textbox" style="display: block;"><input name="profile.lastName" tabindex="3" class="gigya-input-text" id="gigya-textbox-99462367042212380" aria-label="Apellido:" type="text" data-display-name="" data-gigya-placeholder="Apellido:"><span class="gigya-error-msg" data-bound-to="profile.lastName"></span></div>
+                <div class="gigya-composite-control gigya-composite-control-password" style="display: block;">
+                    <input name="password" tabindex="4" class="gigya-input-password" id="gigya-password-35129470376075640" aria-label="Contraseña:" type="password" data-display-name="" data-array-root="" data-gigya-placeholder="Contraseña:"><span class="gigya-error-msg" data-bound-to="password"></span>
+                    <div class="gigya-password-strength" data-bound-to="password" data-on-focus-bubble="true"></div>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-password"><input name="passwordRetype" tabindex="5" class="gigya-input-password" id="gigya-password-71930427214902200" aria-label="Reescribe tu contraseña:" type="password" data-display-name="" data-array-root="" data-gigya-placeholder="Reescribe tu contraseña:"><span class="gigya-error-msg" data-bound-to="passwordRetype"></span></div>
+                <div class="gigya-composite-control gigya-composite-control-checkbox" style="display: block;">
+                    <input name="data.subscribe" tabindex="6" class="gigya-input-checkbox" type="checkbox" data-display-name=""><label class="gigya-label"><span class="gigya-label-text">Suscríbete a nuestro newsletter.</span><label class="gigya-required-display" style="display: none;" data-bound-to="data.subscribe">*</label></label>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-checkbox" style="display: block;">
+                    <input name="data.terms" tabindex="7" class="gigya-input-checkbox" type="checkbox" data-display-name=""><label class="gigya-label"><span class="gigya-label-text">He leído y acepto todos los términos del <a href="http://www.kimberly-clark.com.mx/politica.htm">Aviso de Privacidad</a> al llenar el formulario autorizo el uso de mis datos personales. </span><label class="gigya-required-display" data-bound-to="data.terms">*</label></label>
+                </div>
+                <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" style="display: block;" data-bound-to="gigya-register-form">
+                    <div class="gigya-error-msg gigya-form-error-msg" data-bound-to="gigya-register-form"></div>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-submit" style="display: block;"><input tabindex="8" class="gigya-input-submit" type="submit" value="Enviar"></div>
+                <label class="gigya-composite-control gigya-composite-control-label" style="text-align: right;"><strong>¿Ya tienes cuenta? Da <a data-switch-screen="gigya-login-screen">clic aquí</a></label></strong>
+            </div>
+            <div class="gigya-clear"></div>
+        </form>
+    </div>
+    <div class="gigya-screen" id="gigya-complete-registiration-screen" style="max-width: 550px;" data-width="550px" data-caption="Registro completo">
+        <form class="gigya-profile-form" id="gigya-profile-form">
+            <div class="gigya-layout-row">
+                <label class="gigya-composite-control gigya-composite-control-label" style="display: block;">Completa tu registro. </label>
+                <div class="gigya-composite-control gigya-spacer" style="height: 10px; display: block;" data-units="1">
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-textbox">
+                    <input name="profile.firstName" class="gigya-input-text" id="gigya-textbox-131366344415955370" aria-label="Nombre(s):" type="text" data-display-name="" show-valid-checkmark="true" data-gigya-placeholder="Nombre(s):">
+                    <span class="gigya-error-msg" data-bound-to="profile.firstName">
+                    </span>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-textbox">
+                    <input name="profile.lastName" class="gigya-input-text" id="gigya-textbox-28098520203587180" aria-label="Apellido(s):" type="text" data-display-name="" show-valid-checkmark="true" data-gigya-placeholder="Apellido(s):">
+                    <span class="gigya-error-msg" data-bound-to="profile.lastName"></span>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-dropdown" style="display: block;">
+                    <div class="gigyaAsteriscoIzquierdo">
+                        <label class="gigya-label" for="gigya-dropdown-25548164969494660">
+                            <span class="gigya-label-text"></span>
+                            <label class="gigya-required-display" for="gigya-dropdown-25548164969494660" data-bound-to="profile.birthYear">*</label>
+                        </label>
+                    </div>
+                    <div class="gigyaCamposDerechosAAsterisco">
+                        <select name="profile.birthYear" tabindex="2" id="gigya-dropdown-25548164969494660"> <option value="">Año de nacimiento:</option> <option value="1920">1920</option> <option value="1921">1921</option> <option value="1922">1922</option> <option value="1923">1923</option> <option value="1924">1924</option> <option value="1925">1925</option> <option value="1926">1926</option> <option value="1927">1927</option> <option value="1928">1928</option> <option value="1929">1929</option> <option value="1930">1930</option> <option value="1931">1931</option> <option value="1932">1932</option> <option value="1933">1933</option> <option value="1934">1934</option> <option value="1935">1935</option> <option value="1936">1936</option> <option value="1937">1937</option> <option value="1938">1938</option> <option value="1939">1939</option> <option value="1940">1940</option> <option value="1941">1941</option> <option value="1942">1942</option> <option value="1943">1943</option> <option value="1944">1944</option> <option value="1945">1945</option> <option value="1946">1946</option> <option value="1947">1947</option> <option value="1948">1948</option> <option value="1949">1949</option> <option value="1950">1950</option> <option value="1951">1951</option> <option value="1952">1952</option> <option value="1953">1953</option> <option value="1954">1954</option> <option value="1955">1955</option> <option value="1956">1956</option> <option value="1957">1957</option> <option value="1958">1958</option> <option value="1959">1959</option> <option value="1960">1960</option> <option value="1961">1961</option> <option value="1962">1962</option> <option value="1963">1963</option> <option value="1964">1964</option> <option value="1965">1965</option> <option value="1966">1966</option> <option value="1967">1967</option> <option value="1968">1968</option> <option value="1969">1969</option> <option value="1970">1970</option> <option value="1971">1971</option> <option value="1972">1972</option> <option value="1973">1973</option> <option value="1974">1974</option> <option value="1975">1975</option> <option value="1976">1976</option> <option value="1977">1977</option> <option value="1978">1978</option> <option value="1979">1979</option> <option value="1980">1980</option> <option value="1981">1981</option> <option value="1982">1982</option> <option value="1983">1983</option> <option value="1984">1984</option> <option value="1985">1985</option> <option value="1986">1986</option> <option value="1987">1987</option> <option value="1988">1988</option> <option value="1989">1989</option> <option value="1990">1990</option> <option value="1991">1991</option> <option value="1992">1992</option> <option value="1993">1993</option> <option value="1994">1994</option> <option value="1995">1995</option> <option value="1996">1996</option> <option value="1997">1997</option> <option value="1998">1998</option> <option value="1999">1999</option> <option value="2000">2000</option> <option value="2001">2001</option> <option value="2002">2002</option> <option value="2003">2003</option> <option value="2004">2004</option> </select> <span class="gigya-error-msg" data-bound-to="profile.birthYear"></span>
+                    </div>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-dropdown">
+                    <div class="gigyaAsteriscoIzquierdo">
+                        <label class="gigya-label" for="gigya-dropdown-118562520180055250"> <span class="gigya-label-text"></span> <label class="gigya-required-display" for="gigya-dropdown-118562520180055250" data-bound-to="profile.birthMonth">*</label> </label>
+                    </div>
+                    <div class="gigyaCamposDerechosAAsterisco"> <select name="profile.birthMonth" id="gigya-dropdown-118562520180055250" data-display-name=""> <option value="">Mes de nacimiento:</option> <option value="1">Enero</option> <option value="2">Febrero</option> <option value="3">Marzo</option> <option value="4">Abril</option> <option value="5">Mayo</option> <option value="6">Junio</option> <option value="7">Julio</option> <option value="8">Agosto</option> <option value="9">Septiembre</option> <option value="10">Octubre</option> <option value="11">Noviembre</option> <option value="12">Diciembre</option> </select> <span class="gigya-error-msg" data-bound-to="profile.birthMonth"></span> </div>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-dropdown">
+                    <div class="gigyaAsteriscoIzquierdo">
+                        <label class="gigya-label" for="gigya-dropdown-105239702371052290"> <span class="gigya-label-text"> </span> <label class="gigya-required-display" for="gigya-dropdown-105239702371052290" data-bound-to="profile.birthDay">*</label> </label>
+                    </div>
+                    <div class="gigyaCamposDerechosAAsterisco"> <select name="profile.birthDay" id="gigya-dropdown-105239702371052290" data-display-name=""> <option value="">Día de nacimiento:</option> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option> <option value="9">9</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option> <option value="24">24</option> <option value="25">25</option> <option value="26">26</option> <option value="27">27</option> <option value="28">28</option> <option value="29">29</option> <option value="30">30</option> <option value="31">31</option> </select> <span class="gigya-error-msg" data-bound-to="profile.birthDay"></span> </div>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-dropdown">
+                    <div class="gigyaAsteriscoIzquierdo">
+                        <label class="gigya-label" for="gigya-dropdown-10189524235864644"> <span class="gigya-label-text"> </span> <label class="gigya-required-display" for="gigya-dropdown-10189524235864644" data-bound-to="profile.country">*</label> </label>
+                    </div>
+                    <div class="gigyaCamposDerechosAAsterisco"> <select name="profile.country" id="gigya-dropdown-10189524235864644" data-display-name=""><option value="">País:</option><option value="México">México</option><option value="Afganistán">Afganistán</option><option value="Albania ">Albania</option><option value="Andorra ">Andorra</option><option value="Angola ">Angola</option><option value="Antigua y Barbuda ">Antigua y Barbuda</option><option value="Antillas Holandesas ">Antillas Holandesas</option><option value="Arabia Saudí ">Arabia Saudí</option><option value="Argelia ">Argelia</option><option value="Argentina ">Argentina</option><option value="Armenia">Armenia</option><option value=" Aruba ">Aruba</option><option value="Australia ">Australia</option><option value="Austria ">Austria</option><option value="Azerbaiyán ">Azerbaiyán</option><option value=" Bahamas ">Bahamas</option><option value="Bahrein ">Bahrein</option><option value="Bangladesh ">Bangladesh</option><option value="Barbados ">Barbados</option><option value="Bélgica ">Bélgica</option><option value="Belice ">Belice</option><option value="Benín ">Benín</option><option value="Bermudas ">Bermudas</option><option value="Bielorrusia ">Bielorrusia</option><option value="Bolivia ">Bolivia</option><option value="Botswana ">Botswana</option><option value="Bosnia ">Bosnia</option><option value="Brasil ">Brasil</option><option value="Brunei ">Brunei</option><option value="Bulgaria ">Bulgaria</option><option value="Burkina Faso ">Burkina Faso</option><option value="Burundi ">Burundi</option><option value="Bután ">Bután</option><option value=" Cabo Verde ">Cabo Verde</option><option value="Camboya ">Camboya</option><option value="Camerún ">Camerún</option><option value="Canadá ">Canadá</option><option value="Catar ">Catar</option><option value="Chad ">Chad</option><option value="Chile ">Chile</option><option value="China ">China</option><option value="Chipre ">Chipre</option><option value="Colombia ">Colombia</option><option value="Comoras ">Comoras</option><option value="Congo ">Congo</option><option value="Corea del Norte ">Corea del Norte</option><option value="Corea del Sur ">Corea del Sur</option><option value="Costa de Marfil ">Costa de Marfil</option><option value="Costa Rica ">Costa Rica</option><option value="Croacia ">Croacia</option><option value="Cuba ">Cuba</option><option value=" Dinamarca ">Dinamarca</option><option value="Dominica ">Dominica</option><option value="Dubai ">Dubai</option><option value=" Ecuador ">Ecuador</option><option value="Egipto ">Egipto</option><option value="El Salvador ">El Salvador</option><option value="Emiratos Árabes">Emiratos Árabes</option><option value="Eritrea ">Eritrea</option><option value="Eslovaquia ">Eslovaquia</option><option value="Eslovenia ">Eslovenia</option><option value="España ">España</option><option value="Estados Unidos ">Estados Unidos</option><option value="Estonia ">Estonia</option><option value="Etiopía ">Etiopía</option><option value=" Fiyi ">Fiyi</option><option value="Filipinas ">Filipinas</option><option value="Finlandia ">Finlandia</option><option value="Francia ">Francia</option><option value=" Gabón ">Gabón</option><option value="Gambia ">Gambia</option><option value="Georgia ">Georgia</option><option value="Ghana ">Ghana</option><option value="Grecia ">Grecia</option><option value="Guam ">Guam</option><option value="Guatemala ">Guatemala</option><option value="Guayana Francesa ">Guayana Francesa</option><option value="Guinea-Bissau ">Guinea-Bissau</option><option value="Guinea Ecuatorial ">Guinea Ecuatorial</option><option value="Guinea ">Guinea</option><option value="Guyana ">Guyana</option><option value="Granada ">Granada</option><option value=" Haití ">Haití</option><option value="Honduras ">Honduras</option><option value="Hong Kong ">Hong Kong</option><option value="Hungría ">Hungría</option><option value="Holanda ">Holanda</option><option value=" India ">India</option><option value="Indonesia ">Indonesia</option><option value="Irak ">Irak</option><option value="Irán ">Irán</option><option value="Irlanda ">Irlanda</option><option value="Islandia ">Islandia</option><option value="Islas Caimán ">Islas Caimán</option><option value="Islas Marshall ">Islas Marshall</option><option value="Islas Pitcairn ">Islas Pitcairn</option><option value="Islas Salomón">Islas Salomón</option><option value=" Israel ">Israel</option><option value="Italia ">Italia</option><option value=" Jamaica ">Jamaica</option><option value="Japón ">Japón</option><option value="Jordania ">Jordania</option><option value=" Kazajstán">Kazajstán</option><option value=" Kenia ">Kenia</option><option value="Kirguistán ">Kirguistán</option><option value="Kiribati ">Kiribati</option><option value="Kósovo ">Kósovo</option><option value="Kuwait ">Kuwait</option><option value=" Laos ">Laos</option><option value="Lesotho ">Lesotho</option><option value="Letonia ">Letonia</option><option value="Líbano ">Líbano</option><option value="Liberia ">Liberia</option><option value="Libia ">Libia</option><option value="Liechtenstein ">Liechtenstein</option><option value="Lituania ">Lituania</option><option value="Luxemburgo ">Luxemburgo</option><option value=" Macedonia ">Macedonia</option><option value="Madagascar ">Madagascar</option><option value="Malasia ">Malasia</option><option value="Malawi ">Malawi</option><option value="Maldivas ">Maldivas</option><option value="Malí ">Malí</option><option value="Malta ">Malta</option><option value="Marianas del Norte">Marianas del Norte</option><option value=" Marruecos ">Marruecos</option><option value="Mauricio ">Mauricio</option><option value="Mauritania ">Mauritania</option><option value="Micronesia ">Micronesia</option><option value="Mónaco ">Mónaco</option><option value="Moldavia ">Moldavia</option><option value="Mongolia ">Mongolia</option><option value="Montenegro ">Montenegro</option><option value="Mozambique ">Mozambique</option><option value="Myanmar">Myanmar</option><option value=" Namibia ">Namibia</option><option value="Nauru ">Nauru</option><option value="Nepal ">Nepal</option><option value="Nicaragua ">Nicaragua</option><option value="Níger ">Níger</option><option value="Nigeria ">Nigeria</option><option value="Noruega ">Noruega</option><option value="Nueva Zelanda ">Nueva Zelanda</option><option value=" Omán ">Omán</option><option value="Orden de Malta ">Orden de Malta</option><option value=" Países Bajos ">Países Bajos</option><option value="Pakistán ">Pakistán</option><option value="Palestina ">Palestina</option><option value="Palau ">Palau</option><option value="Panamá ">Panamá</option><option value="Papúa">Papúa</option><option value="Paraguay ">Paraguay</option><option value="Perú ">Perú</option><option value="Polonia ">Polonia</option><option value="Portugal ">Portugal</option><option value="Puerto Rico ">Puerto Rico</option><option value=" Reino Unido ">Reino Unido</option><option value="Rep. Centroafricana ">Rep. Centroafricana</option><option value="República Checa ">República Checa</option><option value="El Congo ">El Congo</option><option value="Rep. Dominicana ">Rep. Dominicana</option><option value="Ruanda ">Ruanda</option><option value="Rumania ">Rumania</option><option value="Rusia ">Rusia</option><option value=" Sáhara Occidental ">Sáhara Occidental</option><option value="Saint Kitts-Nevis ">Saint Kitts-Nevis</option><option value="Samoa Americana">Samoa Americana</option><option value=" Samoa ">Samoa</option><option value="San Marino ">San Marino</option><option value="Santa Lucía ">Santa Lucía</option><option value="St. Tomé y Príncipe ">St. Tomé y Príncipe</option><option value="San Vicente ">San Vicente</option><option value="Senegal ">Senegal</option><option value="Serbia ">Serbia</option><option value="Seychelles ">Seychelles</option><option value="Sierra Leona ">Sierra Leona</option><option value="Singapur ">Singapur</option><option value="Siria ">Siria</option><option value="Somalia ">Somalia</option><option value="Sri Lanka">Sri Lanka</option><option value="Sudáfrica ">Sudáfrica</option><option value="Sudán ">Sudán</option><option value="Suecia ">Suecia</option><option value="Suiza ">Suiza</option><option value="Suazilandia ">Suazilandia</option><option value=" Tailandia ">Tailandia</option><option value="Taiwán">Taiwán</option><option value="Tanzania ">Tanzania</option><option value="Tayikistán ">Tayikistán</option><option value="Tíbet ">Tíbet</option><option value="Timor Oriental ">Timor Oriental</option><option value="Togo ">Togo</option><option value="Tonga">Tonga</option><option value=" Trinidad y Tobago ">Trinidad y Tobago</option><option value="Túnez ">Túnez</option><option value="Turkmenistán ">Turkmenistán</option><option value="Turquía ">Turquía</option><option value="Tuvalu ">Tuvalu</option><option value=" Ucrania ">Ucrania</option><option value="Uganda ">Uganda</option><option value="Uruguay ">Uruguay</option><option value="Uzbequistán ">Uzbequistán</option><option value=" Vanuatu ">Vanuatu</option><option value="Vaticano ">Vaticano</option><option value="Venezuela ">Venezuela</option><option value="Vietnam ">Vietnam</option><option value=" Wallis y Futuna">Wallis y Futuna</option><option value=" Yemen ">Yemen</option><option value="Yibuti ">Yibuti</option><option value=" Zambia ">Zambia</option><option value="Zaire ">Zaire</option><option value="Zimbabue">Zimbabue</option> </select> <span class="gigya-error-msg" data-bound-to="profile.country"> </span> </div>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-dropdown">
+                    <div class="gigyaAsteriscoIzquierdo">
+                        <label class="gigya-label" for="gigya-dropdown-77889187230437700"> <span class="gigya-label-text"></span><label class="gigya-required-display" for="gigya-dropdown-77889187230437700" data-bound-to="profile.state">*</label> </label>
+                    </div>
+                    <div class="gigyaCamposDerechosAAsterisco"> <select name="profile.state" id="gigya-dropdown-77889187230437700" data-display-name=""> <option value="">Estado:</option><option value="Aguascalientes">Aguascalientes</option><option value="Baja California Norte">Baja California Norte</option><option value="Baja California Sur">Baja California Sur</option><option value="Campeche">Campeche</option><option value="Chiapas">Chiapas</option><option value="Chihuahua">Chihuahua</option><option value="Ciudad de México">Ciudad de México</option><option value="Coahuila">Coahuila</option><option value="Colima">Colima</option><option value="Durango">Durango</option><option value="Estado de México">Estado de México</option><option value="Guanajuato">Guanajuato</option><option value="Guerrero">Guerrero</option><option value="Hidalgo">Hidalgo</option><option value="Jalisco">Jalisco</option><option value="Michoacán">Michoacán</option><option value="Morelos">Morelos</option><option value="Nayarit">Nayarit</option><option value="Nuevo León">Nuevo León</option><option value="Oaxaca">Oaxaca</option><option value="Puebla">Puebla</option><option value="Querétaro">Querétaro</option><option value="Quintana Roo">Quintana Roo</option><option value="San Luis Potosí">San Luis Potosí</option><option value="Sinaloa">Sinaloa</option><option value="Sonora">Sonora</option><option value="Tabasco">Tabasco</option><option value="Tamaulipas">Tamaulipas</option><option value="Tlaxcala">Tlaxcala</option><option value="Veracruz">Veracruz</option><option value="Yucatán">Yucatán</option><option value="Zacatecas">Zacatecas</option> </select> <span class="gigya-error-msg" data-bound-to="profile.state"> </span> </div>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-textbox"> <input name="profile.city" class="gigya-input-text" id="gigya-textbox-92241069659188880" aria-label="Ciudad:" type="text" data-display-name="" show-valid-checkmark="true" data-gigya-placeholder="Ciudad:"><span class="gigya-error-msg" data-bound-to="profile.city"></span></div>
+                <div class="gigya-composite-control gigya-composite-control-textbox" style="display: block;"> <input name="profile.zip" tabindex="3" class="gigya-input-text" id="gigya-textbox-18561827424510610" aria-label="Código postal:" type="text" value="" data-gigya-placeholder="Código postal:"> <span class="gigya-error-msg" data-bound-to="profile.zip"> </span> </div>
+                <div class="gigya-composite-control gigya-composite-control-dropdown">
+                    <div class="gigyaAsteriscoIzquierdo">
+                        <label class="gigya-label" for="gigya-dropdown-77799961974850240"> <span class="gigya-label-text"></span> <label class="gigya-required-display" for="gigya-dropdown-77799961974850240" data-bound-to="profile.gender">*</label> </label>
+                    </div>
+                    <div class="gigyaCamposDerechosAAsterisco">
+                        <select name="profile.gender" id="gigya-dropdown-77799961974850240" data-display-name=""> <option value="">Género:</option> <option value="m">Masculino</option><option value="f">Femenino</option> </select>
+                        <span class="gigya-error-msg" data-bound-to="profile.gender">
+                        </span>
+                    </div>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-textbox" style="display: block;">
+                    <input name="profile.email" tabindex="1" class="gigya-input-text" id="gigya-textbox-23873704332181990" aria-label="Correo Electrónico:" value="" data-gigya-placeholder="Correo Electrónico:"><span class="gigya-error-msg" data-bound-to="profile.email"></span>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-checkbox" style="display: block;">
+                    <input name="data.subscribe" tabindex="4" class="gigya-input-checkbox" type="checkbox" checked="checked"><label class="gigya-label"><span class="gigya-label-text">Suscribete a nuestro newsletter</span><label class="gigya-required-display" style="display: none;" data-bound-to="data.subscribe">*</label></label>
+                </div>
+                <div class="gigya-composite-control gigya-composite-control-checkbox">
+                    <input name="data.terms" class="gigya-input-checkbox" type="checkbox" data-display-name=""><label class="gigya-label"><span class="gigya-label-text">He leído y acepto todos los términos del <a href="http://www.kimberly-clark.com.mx/politica.htm">Aviso de Privacidad</a> al llenar el formulario autorizo el uso de mis datos personales.</span><label class="gigya-required-display" data-bound-to="data.terms">*</label></label>
+                </div>
+            </div>
+            <div class="gigya-layout-row">
+                <div class="gigya-layout-cell">
+                    <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" style="display: block;" data-bound-to="gigya-profile-form">
+                        <div class="gigya-error-msg gigya-form-error-msg" data-bound-to="gigya-profile-form"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell">
+                    <div class="gigya-composite-control gigya-composite-control-submit" style="display: block;"><input tabindex="5" class="gigya-input-submit" type="submit" value="Enviar"></div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-clear"></div>
+        </form>
+    </div>
+    <div class="gigya-screen" id="gigya-tfa-registration-screen" style="max-width: 350px;" data-width="350" data-caption="Mantén tu cuenta segura">
+        <div class="gigya-layout-row">
+            <div class="gigya-composite-control gigya-composite-control-tfa-widget gigya-composite-control-tfa-register">
+                <div class="gigya-tfa">
+                    <param name="mode" value="register">
+                </div>
+            </div>
+        </div>
+        <div class="gigya-layout-row">
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row"></div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row"></div>
+        <div class="gigya-clear"></div>
+    </div>
+    <div class="gigya-screen" id="gigya-link-account-screen" style="max-width: 400px;" data-width="400" data-caption="¿Ya eres miembro?">
+        <form class="gigya-link-accounts-form" id="gigya-link-accounts-form">
+            <div class="gigya-layout-row">
+                <label class="gigya-composite-control gigya-composite-control-label" style="display: block;">Encontramos tu correo electrónico en nuestro sistema.<br> Por favor proveé tu contraseña del sitio to para vincular con tu cuenta existente.</label><label class="gigya-composite-control gigya-composite-control-label" style="display: block;">O da <a data-switch-screen="gigya-register-screen">clic aquí</a> para crear una nueva cuenta </label>
+                <div class="gigya-composite-control gigya-spacer" style="height: 10px;" data-units="1"></div>
+                <div class="gigya-composite-control gigya-composite-control-textbox" style="display: block;"><label class="gigya-label"><span class="gigya-label-text">Correo Electrónico:</span><label class="gigya-required-display" data-bound-to="loginID">*</label></label><input name="loginID" tabindex="1" class="gigya-input-text" type="text"><span class="gigya-error-msg" data-bound-to="loginID"></span></div>
+                <div class="gigya-composite-control gigya-composite-control-password" style="display: block;"><label class="gigya-label"><span class="gigya-label-text">Contraseña: <a style="font-weight: normal; margin-right: 5px; float: right;" data-switch-screen="gigya-forgot-password-screen">¿Olvidaste tu contraseña?</a></span><label class="gigya-required-display" style="display: none;" data-bound-to="password">*</label></label><input name="password" tabindex="2" class="gigya-input-password" type="password" data-array-root=""><span class="gigya-error-msg" data-bound-to="password"></span></div>
+            </div>
+            <div class="gigya-layout-row">
+                <div class="gigya-layout-cell">
+                    <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" style="display: block;" data-bound-to="gigya-link-accounts-form">
+                        <div class="gigya-error-msg gigya-form-error-msg" data-bound-to="gigya-link-accounts-form"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell">
+                    <div class="gigya-composite-control gigya-composite-control-submit" style="display: block;"><input tabindex="3" class="gigya-input-submit" type="submit" value="Enviar"></div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-clear"></div>
+        </form>
+    </div>
+    <div class="gigya-screen" id="gigya-forgot-password-screen" style="max-width: 350px;" data-width="350" data-caption="Olvidaste tu contraseña">
+        <form class="gigya-reset-password-form" id="gigya-reset-password-form" data-on-success-screen="gigya-forgot-password-success-screen">
+            <div class="gigya-layout-row">
+                <label class="gigya-composite-control gigya-composite-control-label" style="display: block;">Coloca tu correo electrónico para cambiar tu contraseña</label>
+                <div class="gigya-composite-control gigya-spacer" style="height: 10px;" data-units="1"></div>
+                <div class="gigya-composite-control gigya-composite-control-textbox" style="display: block;"><label class="gigya-label"><span class="gigya-label-text">Correo Electrónico: </span><label class="gigya-required-display" data-bound-to="loginID">*</label></label><input name="loginID" tabindex="1" class="gigya-input-text" type="text"><span class="gigya-error-msg" data-bound-to="loginID"></span></div>
+            </div>
+            <div class="gigya-layout-row">
+                <div class="gigya-layout-cell">
+                    <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" style="display: block;" data-bound-to="gigya-reset-password-form">
+                        <div class="gigya-error-msg gigya-form-error-msg" data-bound-to="gigya-reset-password-form"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell">
+                    <div class="gigya-composite-control gigya-composite-control-submit" style="display: block;"><input tabindex="2" class="gigya-input-submit" type="submit" value="Enviar"></div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row">
+                <div class="gigya-composite-control gigya-spacer" style="height: 80px; display: block;" data-units="8"></div><label class="gigya-composite-control gigya-composite-control-label" style="text-align: right; display: block;">Para ingresar con una cuenta diferente da <a data-switch-screen="gigya-login-screen">clic aquí </a></label>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-clear"></div>
+        </form>
+    </div>
+    <div class="gigya-screen" id="gigya-forgot-password-success-screen" style="max-width: 300px;" data-width="300" data-caption="Cambio de contraseña">
+        <div class="gigya-layout-row">
+            <div class="gigya-composite-control gigya-spacer" style="height: 40px;" data-units="4"></div><label class="gigya-composite-control gigya-composite-control-label gigya-message">Un correo electrónico con tu cambio de contraseña ha sido enviado a tu cuenta de correo. </label>
+            <div class="gigya-composite-control gigya-spacer" style="height: 50px;" data-units="5"></div>
+        </div>
+        <div class="gigya-layout-row">
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row"></div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row"></div>
+        <div class="gigya-clear"></div>
+    </div>
+    <div class="gigya-screen" id="gigya-email-verification-screen" style="max-width: 350px;" data-width="350" data-caption="Tu correo no se ha podido verificar">
+        <form class="gigya-resend-verification-code-form" id="gigya-resend-verification-code-form" data-on-success-screen="gigya-thank-you-screen">
+            <div class="gigya-layout-row">
+                <label class="gigya-composite-control gigya-composite-control-label" style="display: block;">No hemos podido verificar que la cuenta de correo te pertenece. Por favor verifica tu bandeja de entrada.<br><br> Para reenviar tu correo de verificación, por favor ingresa tu cuenta en el campo de correo electrónico y da clic en Enviar. </label>
+                <div class="gigya-composite-control gigya-spacer" style="height: 10px;" data-units="1"></div>
+                <div class="gigya-composite-control gigya-composite-control-textbox" style="display: block;"><label class="gigya-label"><span class="gigya-label-text">Correo Electrónico:</span><label class="gigya-required-display" data-bound-to="profile.email">*</label></label><input name="profile.email" tabindex="1" class="gigya-input-text" type="text"><span class="gigya-error-msg" data-bound-to="email"></span></div>
+            </div>
+            <div class="gigya-layout-row">
+                <div class="gigya-layout-cell">
+                    <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" style="display: block;" data-bound-to="gigya-resend-verification-code-form">
+                        <div class="gigya-error-msg gigya-form-error-msg" data-bound-to="gigya-resend-verification-code-form"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell">
+                    <div class="gigya-composite-control gigya-composite-control-submit" style="display: block;"><input tabindex="2" class="gigya-input-submit" type="submit" value="Enviar"></div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row">
+                <div class="gigya-composite-control gigya-spacer" style="height: 80px; display: block;" data-units="8"></div><label class="gigya-composite-control gigya-composite-control-label" style="text-align: right; display: block;">Para ingresar con una cuenta de correo diferente. Da <a data-switch-screen="gigya-login-screen">clic aquí </a></label>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-layout-cell"></div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row ">
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-layout-cell ">
+                    <div class="gigya-layout-row ">
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-layout-cell"></div>
+                        <div class="gigya-clear"></div>
+                    </div>
+                </div>
+                <div class="gigya-clear"></div>
+            </div>
+            <div class="gigya-layout-row"></div>
+            <div class="gigya-clear"></div>
+        </form>
+    </div>
+    <div class="gigya-screen" id="gigya-thank-you-screen" style="max-width: 300px;" data-width="300" data-caption="Gracias por registrate.">
+        <div class="gigya-layout-row">
+            <div class="gigya-composite-control gigya-spacer" style="height: 40px; display: block;" data-units="4"></div><label class="gigya-composite-control gigya-composite-control-label gigya-message">Un correo de confirmación se ha enviado a tu correo con un vínculo para activar tu cuenta.</label>
+            <div class="gigya-composite-control gigya-spacer" style="height: 50px; display: block;" data-units="5"></div>
+        </div>
+        <div class="gigya-layout-row">
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row"></div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-layout-cell"></div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row ">
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-layout-cell ">
+                <div class="gigya-layout-row ">
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-layout-cell"></div>
+                    <div class="gigya-clear"></div>
+                </div>
+            </div>
+            <div class="gigya-clear"></div>
+        </div>
+        <div class="gigya-layout-row"></div>
+        <div class="gigya-clear"></div>
+    </div>
+</div>
