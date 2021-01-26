@@ -36,14 +36,14 @@
                     <input name="password" tabindex="1" class="gigya-input-password" id="gigya-password-40429570156748990" type="password" data-array-root="" data-gigya-placeholder="Contraseña:">
                     <span class="gigya-error-msg" data-bound-to="password"></span>
                 </div>
-                <div class="gigya-composite-control gigya-composite-control-captcha-widget">
+                <!--<div class="gigya-composite-control gigya-composite-control-captcha-widget">
                     <div class="gigya-captcha-wrapper gigya-error-display" data-bound-to="gigya-login-form" data-error-flags="captchaNeeded">
                         <div class="gigya-captcha">
                             <param name="theme" value="white">
                         </div>
                         <span class="gigya-error-msg" data-bound-to="captchaText"></span>
                     </div>
-                </div>
+                </div>-->
             </div>
             <div class="gigya-layout-row ">
                 <div class="gigya-layout-cell ">
@@ -53,6 +53,16 @@
                         <div class="gigya-clear"></div>
                     </div>
                 </div>
+
+                <div class="gigya-composite-control gigya-composite-control-captcha-widget">
+                    <div class="gigya-captcha-wrapper">
+                        <div class="gigya-captcha">
+                            <param name="theme" value="white">
+                        </div>
+                        <span class="gigya-error-msg" data-bound-to="captchaText"></span>
+                    </div>
+                </div>
+
                 <div class="gigya-layout-cell ">
                     <div class="gigya-layout-row ">
                         <div class="gigya-layout-cell">
@@ -169,6 +179,16 @@
                 <div class="gigya-layout-cell"></div>
                 <div class="gigya-clear"></div>
             </div>
+
+            <div class="gigya-composite-control gigya-composite-control-captcha-widget">
+                <div class="gigya-captcha-wrapper">
+                    <div class="gigya-captcha">
+                        <param name="theme" value="white">
+                    </div>
+                    <span class="gigya-error-msg" data-bound-to="captchaText"></span>
+                </div>
+            </div>
+
             <div class="gigya-layout-row ">
                 <div class="gigya-layout-cell ">
                     <div class="gigya-layout-row ">
@@ -389,6 +409,16 @@
                 <div class="gigya-composite-control gigya-composite-control-checkbox" style="display: block;">
                     <input name="data.terms" tabindex="7" class="gigya-input-checkbox" type="checkbox" data-display-name=""><label class="gigya-label"><span class="gigya-label-text">He leído y acepto todos los términos del <a href="http://www.kimberly-clark.com.mx/politica.htm">Aviso de Privacidad</a> al llenar el formulario autorizo el uso de mis datos personales. </span><label class="gigya-required-display" data-bound-to="data.terms">*</label></label>
                 </div>
+
+                <div class="gigya-composite-control gigya-composite-control-captcha-widget">
+                    <div class="gigya-captcha-wrapper">
+                        <div class="gigya-captcha">
+                            <param name="theme" value="white">
+                        </div>
+                        <span class="gigya-error-msg" data-bound-to="captchaText"></span>
+                    </div>
+                </div>
+
                 <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" style="display: block;" data-bound-to="gigya-register-form">
                     <div class="gigya-error-msg gigya-form-error-msg" data-bound-to="gigya-register-form"></div>
                 </div>
@@ -470,6 +500,16 @@
                     <input name="data.terms" class="gigya-input-checkbox" type="checkbox" data-display-name=""><label class="gigya-label"><span class="gigya-label-text">He leído y acepto todos los términos del <a href="http://www.kimberly-clark.com.mx/politica.htm">Aviso de Privacidad</a> al llenar el formulario autorizo el uso de mis datos personales.</span><label class="gigya-required-display" data-bound-to="data.terms">*</label></label>
                 </div>
             </div>
+
+            <div class="gigya-composite-control gigya-composite-control-captcha-widget">
+                <div class="gigya-captcha-wrapper">
+                    <div class="gigya-captcha">
+                        <param name="theme" value="white">
+                    </div>
+                    <span class="gigya-error-msg" data-bound-to="captchaText"></span>
+                </div>
+            </div>
+
             <div class="gigya-layout-row">
                 <div class="gigya-layout-cell">
                     <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" style="display: block;" data-bound-to="gigya-profile-form">
@@ -589,6 +629,16 @@
                 <div class="gigya-composite-control gigya-composite-control-textbox" style="display: block;"><label class="gigya-label"><span class="gigya-label-text">Correo Electrónico:</span><label class="gigya-required-display" data-bound-to="loginID">*</label></label><input name="loginID" tabindex="1" class="gigya-input-text" type="text"><span class="gigya-error-msg" data-bound-to="loginID"></span></div>
                 <div class="gigya-composite-control gigya-composite-control-password" style="display: block;"><label class="gigya-label"><span class="gigya-label-text">Contraseña: <a style="font-weight: normal; margin-right: 5px; float: right;" data-switch-screen="gigya-forgot-password-screen">¿Olvidaste tu contraseña?</a></span><label class="gigya-required-display" style="display: none;" data-bound-to="password">*</label></label><input name="password" tabindex="2" class="gigya-input-password" type="password" data-array-root=""><span class="gigya-error-msg" data-bound-to="password"></span></div>
             </div>
+
+            <div class="gigya-composite-control gigya-composite-control-captcha-widget">
+                <div class="gigya-captcha-wrapper">
+                    <div class="gigya-captcha">
+                        <param name="theme" value="white">
+                    </div>
+                    <span class="gigya-error-msg" data-bound-to="captchaText"></span>
+                </div>
+            </div>
+
             <div class="gigya-layout-row">
                 <div class="gigya-layout-cell">
                     <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" style="display: block;" data-bound-to="gigya-link-accounts-form">
@@ -651,6 +701,16 @@
                 <div class="gigya-composite-control gigya-spacer" style="height: 10px;" data-units="1"></div>
                 <div class="gigya-composite-control gigya-composite-control-textbox" style="display: block;"><label class="gigya-label"><span class="gigya-label-text">Correo Electrónico: </span><label class="gigya-required-display" data-bound-to="loginID">*</label></label><input name="loginID" tabindex="1" class="gigya-input-text" type="text"><span class="gigya-error-msg" data-bound-to="loginID"></span></div>
             </div>
+
+            <div class="gigya-composite-control gigya-composite-control-captcha-widget">
+                <div class="gigya-captcha-wrapper">
+                    <div class="gigya-captcha">
+                        <param name="theme" value="white">
+                    </div>
+                    <span class="gigya-error-msg" data-bound-to="captchaText"></span>
+                </div>
+            </div>
+
             <div class="gigya-layout-row">
                 <div class="gigya-layout-cell">
                     <div class="gigya-error-display gigya-composite-control gigya-composite-control-form-error" style="display: block;" data-bound-to="gigya-reset-password-form">
