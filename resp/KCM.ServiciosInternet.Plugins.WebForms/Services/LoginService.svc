@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="KCM.ServiciosInternet.Plugins.WebForms.Services.LoginService" CodeBehind="LoginService.svc.cs" %>

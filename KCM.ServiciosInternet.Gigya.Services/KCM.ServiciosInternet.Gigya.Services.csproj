@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KCM.ServiciosInternet.Gigya.Services</RootNamespace>
     <AssemblyName>KCM.ServiciosInternet.Gigya.Services</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,14 +50,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bussiness.cs" />
+    <Compile Include="Data\GigyaData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\GigyaAccounts.cs" />
+    <Compile Include="Services\GigyaAccountsREST.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Entities.csproj">
+    <ProjectReference Include="..\KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Data.csproj">
       <Project>{66630bb2-c0cd-4669-af32-deb78f62e9a4}</Project>
       <Name>KCM.ServiciosInternet.Plugins.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dll\GSCSharpSDK.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

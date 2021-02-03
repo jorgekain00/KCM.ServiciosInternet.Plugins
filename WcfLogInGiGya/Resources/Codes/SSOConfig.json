@@ -1,0 +1,235 @@
+{
+  "Gigya": {
+    "keys": {
+      "APIKey": "3_nSD2myEBhdHzeIuRpz0M2fqLYeuM6mJiJsXIZ-aVVvkaDd23OOPtW5of3SqYL1u7",
+      "APISecretKey": "JHDvUwIrggNYQUhasE5edz8Z4WyH9zWWfhLrvDjbU00=",
+      "UserKey": "AFPYSOawKvED",
+      "UserSecretKey": "ZnnQVX7o0aJHoGwPosELOPkAkFZOGZYD"
+    },
+    "codes": {
+      "language": "es-MX",
+      "code": [
+        {
+          "number": "206001",
+          "lang": "es-MX",
+          "description": "Cuenta pendiente de registro"
+        },
+        {
+          "number": "206001",
+          "lang": "en-US",
+          "description": "Account pending registration"
+        },
+        {
+          "number": "206002",
+          "lang": "es-MX",
+          "description": "Cuenta pendiente de verificación vía Email"
+        },
+        {
+          "number": "206002",
+          "lang": "en-US",
+          "description": "Account pending verification"
+        },
+        {
+          "number": "206003",
+          "lang": "es-MX",
+          "description": "Falta LoginID asociada a la cuenta"
+        },
+        {
+          "number": "206003",
+          "lang": "en-US",
+          "description": "Account missing loginID"
+        },
+        {
+          "number": "400003",
+          "lang": "es-MX",
+          "description": "Ya existe el identificador/email"
+        },
+        {
+          "number": "400003",
+          "lang": "en-US",
+          "description": "Unique identifier exists"
+        },
+        {
+          "number": "400021",
+          "lang": "es-MX",
+          "description": "No se pudo verificar el CAPTCHA"
+        },
+        {
+          "number": "400021",
+          "lang": "en-US",
+          "description": "CAPTCHA verification failed"
+        },
+        {
+          "number": "403041",
+          "lang": "es-MX",
+          "description": "Cuenta deshabilitada"
+        },
+        {
+          "number": "403041",
+          "lang": "en-US",
+          "description": "Account disabled"
+        },
+        {
+          "number": "403042",
+          "lang": "es-MX",
+          "description": "Correo o contraseña invalidos"
+        },
+        {
+          "number": "403042",
+          "lang": "en-US",
+          "description": "Invalid LoginID"
+        },
+        {
+          "number": "403043",
+          "lang": "es-MX",
+          "description": "El usuario ya existe"
+        },
+        {
+          "number": "403043",
+          "lang": "en-US",
+          "description": "Login identifier exists"
+        },
+        {
+          "number": "403044",
+          "lang": "es-MX",
+          "description": "Menor de edad"
+        },
+        {
+          "number": "403044",
+          "lang": "en-US",
+          "description": "Underage user"
+        },
+        {
+          "number": "403100",
+          "lang": "es-MX",
+          "description": "Pendiente de cambio de password"
+        },
+        {
+          "number": "403100",
+          "lang": "en-US",
+          "description": "Pending password change"
+        },
+        {
+          "number": "403120",
+          "lang": "es-MX",
+          "description": "Cuenta temporalmente bloqueda"
+        },
+        {
+          "number": "403120",
+          "lang": "en-US",
+          "description": "Account temporarily locked out"
+        },
+        {
+          "number": "401020",
+          "lang": "es-MX",
+          "description": "Debes verificar reCAPTCHA"
+        },
+        {
+          "number": "401020",
+          "lang": "en-US",
+          "description": "Login failed captcha required"
+        },
+        {
+          "number": "401021",
+          "lang": "es-MX",
+          "description": "Login failed wrong captcha"
+        },
+        {
+          "number": "401021",
+          "lang": "en-US",
+          "description": "Login failed captcha required"
+        },
+        {
+          "number": "401030",
+          "lang": "es-MX",
+          "description": "Contraseña Vieja usada"
+        },
+        {
+          "number": "401030",
+          "lang": "en-US",
+          "description": "Old password used"
+        },
+        {
+          "number": "403047",
+          "lang": "es-MX",
+          "description": "Email en formato incorrecto o no existe"
+        },
+        {
+          "number": "403047",
+          "lang": "en-US",
+          "description": "Login ID does not exist"
+        },
+        {
+          "number": "400020",
+          "lang": "es-MX",
+          "description": "Validacion de schema invalido"
+        },
+        {
+          "number": "400020",
+          "lang": "en-US",
+          "description": "Schema validation failed"
+        },
+        {
+          "number": "400022",
+          "lang": "es-MX",
+          "description": "Error en la validación de índice único"
+        },
+        {
+          "number": "400022",
+          "lang": "en-US",
+          "description": "Unique index validation error"
+        },
+        {
+          "number": "400023",
+          "lang": "es-MX",
+          "description": "Error en la validación de tipo inválido"
+        },
+        {
+          "number": "400023",
+          "lang": "en-US",
+          "description": "Invalid type validation error"
+        },
+        {
+          "number": "400024",
+          "lang": "es-MX",
+          "description": "Error en la validación de campos dinámicos"
+        },
+        {
+          "number": "400024",
+          "lang": "en-US",
+          "description": "Dynamic fields validation error"
+        },
+        {
+          "number": "400025",
+          "lang": "es-MX",
+          "description": "Error en la validación de acceso a escritura"
+        },
+        {
+          "number": "400025",
+          "lang": "en-US",
+          "description": "Write access validation error"
+        },
+        {
+          "number": "400026",
+          "lang": "es-MX",
+          "description": "Error en la validaicón de formato inválido"
+        },
+        {
+          "number": "400026",
+          "lang": "en-US",
+          "description": "Invalid format validation error"
+        },
+        {
+          "number": "400027",
+          "lang": "es-MX",
+          "description": "Error en la validación de valor requerido"
+        },
+        {
+          "number": "400027",
+          "lang": "en-US",
+          "description": "Required value validation error"
+        }
+      ]
+    }
+  }
+}

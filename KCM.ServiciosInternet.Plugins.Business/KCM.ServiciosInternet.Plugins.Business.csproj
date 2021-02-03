@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KCM.ServiciosInternet.Plugins.Business</RootNamespace>
     <AssemblyName>KCM.ServiciosInternet.Plugins.Business</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,7 +72,7 @@
       <Project>{e92ef58e-0137-42bc-b307-5344346e3e71}</Project>
       <Name>KCM.ServiciosInternet.Google.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Entities.csproj">
+    <ProjectReference Include="..\KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Data.csproj">
       <Project>{66630bb2-c0cd-4669-af32-deb78f62e9a4}</Project>
       <Name>KCM.ServiciosInternet.Plugins.Entities</Name>
     </ProjectReference>

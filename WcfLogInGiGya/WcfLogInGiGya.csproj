@@ -12,7 +12,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WcfLogInGiGya</RootNamespace>
     <AssemblyName>WcfLogInGiGya</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,12 +51,12 @@
       <HintPath>..\..\..\Aplicaciones_SSIS\KCM.SEG.MIGRACION\KCM.SEG.MIGRACION.documentacion\common\KCM.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
@@ -148,6 +149,7 @@
     <Content Include="gigyaJFM\fonts\poppins\Poppins-SemiBold.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Resources\Codes\SSOConfig.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -160,7 +162,7 @@
       <Project>{c19e4afd-6723-4c8e-9e79-0fc4cc1a0177}</Project>
       <Name>KCM.ServiciosInternet.Plugins.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Entities.csproj">
+    <ProjectReference Include="..\KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Data.csproj">
       <Project>{66630bb2-c0cd-4669-af32-deb78f62e9a4}</Project>
       <Name>KCM.ServiciosInternet.Plugins.Entities</Name>
     </ProjectReference>

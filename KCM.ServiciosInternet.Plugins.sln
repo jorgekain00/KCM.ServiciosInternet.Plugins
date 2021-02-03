@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1169
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Plugins.Entities", "KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Entities.csproj", "{66630BB2-C0CD-4669-AF32-DEB78F62E9A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Plugins.Data", "KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Data.csproj", "{66630BB2-C0CD-4669-AF32-DEB78F62E9A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Plugins.Business", "KCM.ServiciosInternet.Plugins.Business\KCM.ServiciosInternet.Plugins.Business.csproj", "{C19E4AFD-6723-4C8E-9E79-0FC4CC1A0177}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Plugins.WebForms", "KCM.ServiciosInternet.Plugins.WebForms\KCM.ServiciosInternet.Plugins.WebForms.csproj", "{0FC39BFA-D8D5-489F-8E82-8EE68A374F1E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfLogInGiGya", "WcfLogInGiGya\WcfLogInGiGya.csproj", "{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}"
 EndProject
@@ -15,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Googl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Gigya.Services", "KCM.ServiciosInternet.Gigya.Services\KCM.ServiciosInternet.Gigya.Services.csproj", "{B8B1DF09-3A1E-493B-838F-B3E7CBB08BCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Gigya.Api", "KCM.ServiciosInternet.Gigya.Api\KCM.ServiciosInternet.Gigya.Api.csproj", "{0E881237-9E74-4285-AD6C-647DA2E90B25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Common.Library", "KCM.ServiciosInternet.Common.Library\KCM.ServiciosInternet.Common.Library.csproj", "{65417FA7-B600-463F-8C04-6AD77FC51554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCM.ServiciosInternet.Plugins.Test", "KCM.ServiciosInternet.Plugins.Test\KCM.ServiciosInternet.Plugins.Test.csproj", "{7E248749-8267-4486-BB8E-7ED3D3403C28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +31,6 @@ Global
 		{C19E4AFD-6723-4C8E-9E79-0FC4CC1A0177}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C19E4AFD-6723-4C8E-9E79-0FC4CC1A0177}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C19E4AFD-6723-4C8E-9E79-0FC4CC1A0177}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0FC39BFA-D8D5-489F-8E82-8EE68A374F1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0FC39BFA-D8D5-489F-8E82-8EE68A374F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0FC39BFA-D8D5-489F-8E82-8EE68A374F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0FC39BFA-D8D5-489F-8E82-8EE68A374F1E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D1E215B-83C9-478E-BE11-1A59DC1DA0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,10 +43,14 @@ Global
 		{B8B1DF09-3A1E-493B-838F-B3E7CBB08BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8B1DF09-3A1E-493B-838F-B3E7CBB08BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8B1DF09-3A1E-493B-838F-B3E7CBB08BCA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E881237-9E74-4285-AD6C-647DA2E90B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E881237-9E74-4285-AD6C-647DA2E90B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E881237-9E74-4285-AD6C-647DA2E90B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E881237-9E74-4285-AD6C-647DA2E90B25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65417FA7-B600-463F-8C04-6AD77FC51554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65417FA7-B600-463F-8C04-6AD77FC51554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65417FA7-B600-463F-8C04-6AD77FC51554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65417FA7-B600-463F-8C04-6AD77FC51554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E248749-8267-4486-BB8E-7ED3D3403C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E248749-8267-4486-BB8E-7ED3D3403C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E248749-8267-4486-BB8E-7ED3D3403C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E248749-8267-4486-BB8E-7ED3D3403C28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
