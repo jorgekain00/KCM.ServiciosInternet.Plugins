@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bussiness.cs" />
+    <Compile Include="Data\GigyaCookie.cs" />
     <Compile Include="Data\GigyaData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GigyaAccountsREST.cs" />

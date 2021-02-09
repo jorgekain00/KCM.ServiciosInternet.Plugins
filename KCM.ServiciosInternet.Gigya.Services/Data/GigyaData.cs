@@ -6,13 +6,14 @@
  ***********************************************************************************************/
 namespace KCM.ServiciosInternet.Gigya.Services.Data
 {
+    using KCM.ServiciosInternet.Plugins.Data.sso.Interfaces;
     /// <summary>
     /// Constains all fields for Gigya REST communication
     /// </summary>
     /// <remarks>
     /// <para>Not all fields are necesary for every operation</para>
     /// </remarks>
-    public class GigyaData : KCM.ServiciosInternet.Plugins.Data.sso.Interfaces.ISingleSignOnData
+    public struct GigyaData : ISingleSignOnData
     {
         /// <summary>
         /// Unique Id or Email
@@ -41,7 +42,7 @@ namespace KCM.ServiciosInternet.Gigya.Services.Data
         /// <summary>
         /// Session cookie from giGya Accounts
         /// </summary>
-        public string strSessionCookie { get; set; }
+        public ISingleSignOnCookie objSessionCookie { get; set; }
         /// <summary>
         /// Is Account Pending Registration due to missing values
         /// </summary>

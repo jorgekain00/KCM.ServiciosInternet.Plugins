@@ -1,12 +1,18 @@
 {
-  "Gigya": {
+  "Settings": {
+    "Session": {
+      "ExpirationSessionInMins": 20
+    }
+  },
+  "Provider": {
+    "dll": "KCM.ServiciosInternet.Gigya.Services",
     "keys": {
       "APIKey": "3_nSD2myEBhdHzeIuRpz0M2fqLYeuM6mJiJsXIZ-aVVvkaDd23OOPtW5of3SqYL1u7",
       "APISecretKey": "JHDvUwIrggNYQUhasE5edz8Z4WyH9zWWfhLrvDjbU00=",
       "UserKey": "AFPYSOawKvED",
       "UserSecretKey": "ZnnQVX7o0aJHoGwPosELOPkAkFZOGZYD"
     },
-    "codes": {
+    "Codes": {
       "language": "es-MX",
       "code": [
         {

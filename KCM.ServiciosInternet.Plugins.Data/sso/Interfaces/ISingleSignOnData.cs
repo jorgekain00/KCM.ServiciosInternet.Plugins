@@ -41,7 +41,7 @@ namespace KCM.ServiciosInternet.Plugins.Data.sso.Interfaces
         /// <summary>
         /// Session cookie 
         /// </summary>
-        string strSessionCookie { get; set; }
+        ISingleSignOnCookie objSessionCookie { get; set; }
         /// <summary>
         /// Is Account Pending Registration due to missing values
         /// </summary>

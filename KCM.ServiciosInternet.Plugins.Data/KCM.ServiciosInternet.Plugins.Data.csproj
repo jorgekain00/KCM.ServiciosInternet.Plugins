@@ -54,7 +54,8 @@
   <ItemGroup>
     <Compile Include="Config\GigyaConfig.cs" />
     <Compile Include="Config\PlugInConfig.cs" />
-    <Compile Include="sso\Accounts\AccountsREST.cs" />
+    <Compile Include="sso\Interfaces\IAccountsREST.cs" />
+    <Compile Include="sso\Interfaces\ISingleSignOnCookie.cs" />
     <Compile Include="sso\Interfaces\ISingleSignOnData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Gigya\ResetPassWordData.cs" />

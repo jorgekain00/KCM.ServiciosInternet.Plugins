@@ -7,12 +7,11 @@ using System.IO;
 using Gigya.Socialize.SDK;
 using Newtonsoft.Json;
 using KCM.ServiciosInternet.Gigya.Services.Data;
-using KCM.ServiciosInternet.Plugins.Data.sso.Accounts;
 using KCM.ServiciosInternet.Plugins.Data.sso.Interfaces;
 
 namespace KCM.ServiciosInternet.Gigya.Services.Services
 {
-    internal class GigyaAccountsREST : AccountsREST
+    internal class GigyaAccountsREST : IAccountsREST
     {
 
         private readonly string strAPIKey;
@@ -20,16 +19,40 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
         private readonly string strUserKey;
         private readonly string strUserSecretKey;
         private readonly string strLanguage;
+        private readonly int intExpirationSessionInMins;
+        private readonly string strProvider;
         private readonly Dictionary<string, string> objGigyaCodes;
 
-        public GigyaAccountsREST(string strAPIKey, string strAPISecretKey, string strUserKey, string strUserSecretKey, Dictionary<string, string> objDiCodes, string strLanguage = "en-US")
+        public GigyaAccountsREST(string strAPIKey, string strAPISecretKey, string strUserKey, string strUserSecretKey, Dictionary<string, string> objDiCodes, int intExpirationSessionInMins,string strProvider, string strLanguage = "en-US")
         {
             this.strAPIKey = strAPIKey;
             this.strAPISecretKey = strAPISecretKey;
             this.strUserKey = strUserKey;
             this.strUserSecretKey = strUserSecretKey;
             this.objGigyaCodes = objDiCodes;
+            this.intExpirationSessionInMins = intExpirationSessionInMins;
             this.strLanguage = strLanguage;
+        }
+
+        public GigyaAccountsREST(dynamic objConfig)
+        {
+            this.strAPIKey = objConfig.Provider.keys.APIKey;
+            this.strAPISecretKey = objConfig.Provider.keys.APISecretKey;
+            this.strUserKey = objConfig.Provider.keys.UserKey;
+            this.strUserSecretKey = objConfig.Provider.keys.UserSecretKey;
+            this.strProvider = objConfig.Provider.dll;
+            this.intExpirationSessionInMins =  Convert.ToInt32(objConfig.Settings.Session.ExpirationSessionInMins);
+            this.strLanguage = objConfig.Provider.Codes.language;
+
+            this.objGigyaCodes = new Dictionary<string, string>();
+
+            foreach (var itemCode in objConfig.Provider.Codes.code)
+            {
+                if (itemCode.lang == this.strLanguage)
+                {
+                    this.objGigyaCodes.Add((string)itemCode.number, (string)itemCode.description);
+                }
+            }
         }
 
         public GigyaAccountsREST(string strJsonFile)
@@ -47,15 +70,17 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
 
 
             dynamic objConfig = JsonConvert.DeserializeObject(strJson);
-            this.strAPIKey = objConfig.Gigya.keys.APIKey;
-            this.strAPISecretKey = objConfig.Gigya.keys.APISecretKey;
-            this.strUserKey = objConfig.Gigya.keys.UserKey;
-            this.strUserSecretKey = objConfig.Gigya.keys.UserSecretKey;
+            this.strAPIKey = objConfig.Provider.keys.APIKey;
+            this.strAPISecretKey = objConfig.Provider.keys.APISecretKey;
+            this.strUserKey = objConfig.Provider.keys.UserKey;
+            this.strUserSecretKey = objConfig.Provider.keys.UserSecretKey;
+            this.strProvider = objConfig.Provider.dll;
+            this.intExpirationSessionInMins = Convert.ToInt32(objConfig.Settings.Session.ExpirationSessionInMins);
+            this.strLanguage = objConfig.Provider.Codes.language;
+
             this.objGigyaCodes = new Dictionary<string, string>();
 
-            this.strLanguage = objConfig.Gigya.codes.language;
-
-            foreach (var itemCode in objConfig.Gigya.codes.code)
+            foreach (var itemCode in objConfig.Provider.Codes.code)
             {
                 if (itemCode.lang == this.strLanguage)
                 {
@@ -95,8 +120,7 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
 
             return strErrorMessage;
         }
-
-        public override bool requestResetPasswordEmail(ISingleSignOnData objData)
+        public bool requestResetPasswordEmail(ISingleSignOnData objData)
         {
             GSRequest objGSRequest;
             int intResponseCode = 0;
@@ -120,17 +144,15 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
             {
                 objData.strRegToken = objGSResponse.GetData().GetString("passwordResetToken");
                 objData.strErrormessage = string.Empty;
-                return AccountsREST.SUCCESSFUL;
+                return true;        //SUCCESSFUL;
             }
             else
             {
                 objData.strErrormessage = evalCodeGigyaAccountService(objGSResponse);
-                return AccountsREST.UNSUCESSFUL;
+                return false;       //UNSUCESSFUL;
             }
         }
-
-
-        public override bool updatePasswordWithToken(ISingleSignOnData objData)
+        public bool updatePasswordWithToken(ISingleSignOnData objData)
         {
             GSRequest objGSRequest;
             int intResponseCode = 0;
@@ -155,16 +177,16 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
             if (intResponseCode == 0)
             {
                 objData.strErrormessage = string.Empty;
-                return AccountsREST.SUCCESSFUL;
+                return true;        //SUCCESSFUL;
             }
             else
             {
                 objData.strErrormessage = evalCodeGigyaAccountService(objGSResponse);
-                return AccountsREST.UNSUCESSFUL;
+                return false;       //UNSUCESSFUL;
             }
         }
 
-        public override bool logIn(ISingleSignOnData objData)
+        public bool logIn(ISingleSignOnData objData)
         {
             GSRequest objGSRequest;
             int intResponseCode = 0;
@@ -177,7 +199,6 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
             {
                 objGSRequest = new GSRequest(this.strAPIKey, this.strUserSecretKey, "accounts.login", null, true, this.strUserKey);
             }
-
 
             objGSRequest.SetParam("loginID", objData.strEmail);
             objGSRequest.SetParam("password", objData.strPassword);
@@ -193,79 +214,73 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
 
                 objData.strRegToken = (intResponseCode == 206001) ? objGSRes.GetString("regToken") : null;
                 objData.boolIsAccountPendingRegistrarion = (intResponseCode == 206001) ? true : false;
-                objData.boolIsAccountPendingRegistrarion = (intResponseCode == 206002) ? true : false;
+                objData.boolIsAccountPendingVerification = (intResponseCode == 206002) ? true : false;
                 objData.strUID = objGSRes.GetString("UID");
                 objData.strProfile = objGSRes.GetString("profile");
-                objData.strSessionCookie = objGSRes.GetString("sessionInfo");
-                objData.strErrormessage = "OK";
+
+                GigyaCookie objSessionCookie = new GigyaCookie
+                        {
+                            strUID = objData.strUID,
+                            strRegToken = objData.strRegToken,
+                            dtLastAccess = DateTime.Now,
+                            intExpirationSessionInMins = this.intExpirationSessionInMins
+                        };
+                objData.objSessionCookie = objSessionCookie;
                 objData.strErrormessage = string.Empty;
-                return AccountsREST.SUCCESSFUL;
+                return true;        //SUCCESSFUL;
             }
             else
             {
                 objData.strErrormessage = evalCodeGigyaAccountService(objGSResponse);
-                return AccountsREST.UNSUCESSFUL;
+                return false;        //UNSUCCESSFUL;
             }
+        }
 
-            if (objGSResponse.GetErrorCode() == 0 || objGSResponse.GetErrorCode() == 206001 || objGSResponse.GetErrorCode() == 206002)
+        public bool getAccountInfo(ISingleSignOnData objData, bool IsWithUID = true)
+        {
+            GSRequest objGSRequest;
+
+            int intResponseCode = 0;
+
+            if (string.IsNullOrEmpty(this.strUserKey) || string.IsNullOrEmpty(this.strUserSecretKey))
             {
-                // Everything's okay
-                GSObject objGSRes = objGSResponse.GetData();
-
-                objLogIn.strRegToken = (objGSResponse.GetErrorCode() == 206001) ? objGSRes.GetString("regToken") : null;
-                objLogIn.boolIsAccountPendingRegistration = (objGSResponse.GetErrorCode() == 206001) ? true : false;
-                objLogIn.strUID = objGSRes.GetString("UID");
-                objLogIn.strProfile = objGSRes.GetString("profile");
-                objLogIn.boolIsInvalidRequest = false;
-                objLogIn.strSessionCookie = objGSRes.GetString("sessionInfo");
-                objLogIn.strErrormessage = "OK";
-                objLogIn.boolIsCompletedOperation = true;
-
-                boolResult = true;  // Sucessful login
+                objGSRequest = new GSRequest(this.strAPIKey, this.strAPISecretKey, "accounts.getAccountInfo", true);
             }
             else
             {
-                evalCodeAccounts(objLogIn, objGSResponse);
+                objGSRequest = new GSRequest(this.strAPIKey, this.strUserSecretKey, "accounts.getAccountInfo", null, true, this.strUserKey);
             }
-
-            return boolResult;
-        }
-
-        public override bool getAccountInfo(ISingleSignOnData objData, bool IsWithUID = true)
-        {
-            bool boolResult = false;
-
-            GSRequest objGSRequest = new GSRequest(this.strAPIKey, this.strUserSecretKey, "accounts.getAccountInfo", null, true, strUserKey);
 
             if (IsWithUID)
             {
-                objGSRequest.SetParam("UID", objLogIn.strUID);
+                objGSRequest.SetParam("UID", objData.strUID);
             }
             else
             {
-                objGSRequest.SetParam("regToken", objLogIn.strRegToken);
+                objGSRequest.SetParam("regToken", objData.strRegToken);
             }
-
 
             objGSRequest.SetParam("include", "loginIDs, profile, data, lastLoginLocation");
 
-            if (objLogIn.strExtraProfileFieldsDescriptor != "")
+            if (!string.IsNullOrEmpty(objData.strExtraProfileFieldsDescriptor))
             {
-                objGSRequest.SetParam("extraProfileFields", objLogIn.strExtraProfileFieldsDescriptor);
+                objGSRequest.SetParam("extraProfileFields", objData.strExtraProfileFieldsDescriptor);
             }
-
 
             GSResponse objGSResponse = objGSRequest.Send();
 
-            if (objGSResponse.GetErrorCode() == 0 || objGSResponse.GetErrorCode() == 206001)
+            intResponseCode = objGSResponse.GetErrorCode();
+
+            if (intResponseCode == 0) 
             {
-                // Everything's okay
+                // TODO : JFM adecuar al proceso 
+                // TODO : devolver cookie actualizada GigyaCookie
                 GSObject objGSRes = objGSResponse.GetData();
 
-                objLogIn.strEmail = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType(
+                objData.strEmail = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType(
                     objGSRes.GetString("profile"), new { email = string.Empty }).email;
-                objLogIn.strUID = objGSRes.GetString("UID");
-                objLogIn.strProfile = objGSRes.GetString("profile");
+                objData.strUID = objGSRes.GetString("UID");
+                objData.strProfile = objGSRes.GetString("profile");
 
                 if (objLogIn.strExtraProfileFieldsDescriptor != "")
                 {
@@ -288,7 +303,7 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
             return boolResult;
         }
 
-        public override bool setAccountInfo(ISingleSignOnData objData, bool IsWithUID = true)
+        public bool setAccountInfo(ISingleSignOnData objData, bool IsWithUID = true)
         {
             bool boolResult = false;
 
@@ -326,7 +341,7 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
             return boolResult;
         }
 
-        public override bool finalizeRegistration(ISingleSignOnData objData)
+        public bool finalizeRegistration(ISingleSignOnData objData)
         {
             bool boolResult = false;
 
@@ -355,7 +370,7 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
             return boolResult;
         }
 
-        public override bool logOut(ISingleSignOnData objData)
+        public bool logOut(ISingleSignOnData objData)
         {
             bool boolResult = false;
 
@@ -383,7 +398,7 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
             return boolResult;
         }
 
-        public override bool signUp(ISingleSignOnData objData)
+        public bool signUp(ISingleSignOnData objData)
         {
             bool boolResult = false;
 
@@ -420,6 +435,5 @@ namespace KCM.ServiciosInternet.Gigya.Services.Services
 
             return boolResult;
         }
-
     }
 }
