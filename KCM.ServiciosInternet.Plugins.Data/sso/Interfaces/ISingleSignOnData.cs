@@ -30,14 +30,14 @@ namespace KCM.ServiciosInternet.Plugins.Data.sso.Interfaces
         /// Profile value-pair fields
         /// </summary>
         string strProfile { get; set; }
+        /// <summay>
+        /// Data value-pair fields
+        /// </summary>
+        string strData { get; set; }
         /// <summary>
         /// List of Extra profile fields Descriptor
         /// </summary>
         string strExtraProfileFieldsDescriptor { get; set; }
-        /// <summary>
-        /// List of value-pair Extra fields
-        /// </summary>
-        string strExtraProfileFields { get; set; }
         /// <summary>
         /// Session cookie 
         /// </summary>
@@ -45,7 +45,7 @@ namespace KCM.ServiciosInternet.Plugins.Data.sso.Interfaces
         /// <summary>
         /// Is Account Pending Registration due to missing values
         /// </summary>
-        bool boolIsAccountPendingRegistrarion { get; set; }
+        bool boolIsAccountPendingRegistration { get; set; }
         /// <summary>
         /// Is Account Pending Email verification
         /// </summary>
@@ -59,8 +59,8 @@ namespace KCM.ServiciosInternet.Plugins.Data.sso.Interfaces
         /// </summary>
         string strRegToken { get; set; }
         /// <summary>
-        /// provider
+        /// Login provider
         /// </summary>
-        string strProvider { get; set; }
+        string strLoginProvider { get; set; }
     }
 }

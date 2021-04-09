@@ -4,12 +4,14 @@
  *  Email   : jorgekain00@gmail.com
  *  Remarks : 
  ***********************************************************************************************/
+using System;
+
 namespace KCM.ServiciosInternet.Plugins.Data.sso.Interfaces
 {
     /// <summary>
     /// Constains all Single Sign On Operations
     /// </summary>
-    public interface IAccountsREST
+    public interface IAccountsREST : IDisposable
     {
         /// <summary>
         /// Request Reset Password via email

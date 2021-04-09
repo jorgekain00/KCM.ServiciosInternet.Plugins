@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\GigyaConfig.cs" />
+    <Compile Include="Config\GlobalConfig.cs" />
     <Compile Include="Config\PlugInConfig.cs" />
     <Compile Include="sso\Interfaces\IAccountsREST.cs" />
     <Compile Include="sso\Interfaces\ISingleSignOnCookie.cs" />

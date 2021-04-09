@@ -47,5 +47,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ReCaptcha.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KCM.ServiciosInternet.Common.Library\KCM.ServiciosInternet.Common.Library.csproj">
+      <Project>{65417FA7-B600-463F-8C04-6AD77FC51554}</Project>
+      <Name>KCM.ServiciosInternet.Common.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

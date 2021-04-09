@@ -8,6 +8,7 @@ namespace KCM.ServiciosInternet.Gigya.Services.Data
 {
     using KCM.ServiciosInternet.Plugins.Data.sso.Interfaces;
     using System;
+    using Newtonsoft.Json;
     /// <summary>
     /// Constaint fields for the cookie
     /// </summary>
@@ -16,21 +17,38 @@ namespace KCM.ServiciosInternet.Gigya.Services.Data
         /// <summary>
         /// User id
         /// </summary>
+        [JsonProperty]
         public string strUID { get; set; }
         /// <summary>
         /// Token For registration or other accounts commands
         /// </summary>
+        [JsonProperty]
         public string strRegToken { get; set; }
         /// <summary>
         /// Last access
         /// </summary>
+        [JsonProperty]
         public DateTime dtLastAccess { get; set; }
         /// <summary>
         /// Expiration Session in terms of minutes
         /// </summary>
+        [JsonProperty]
         public int intExpirationSessionInMins { get; set; }
-
-
-        // TODO: JFM implementar métodos para serializar y deserializar este objeto en JSON
+        /// <summary>
+        /// Serialize fields into a output string
+        /// </summary>
+        /// <returns>A string gigyaCookie value</returns>
+        public string Serialize()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+        /// <summary>
+        /// Update gigyaCookie from a json string
+        /// </summary>
+        /// <param name="strJson">json string for update gigyaCookie</param>
+        public void Deserialize(string strJson)
+        {
+            this =  JsonConvert.DeserializeObject<GigyaCookie>(strJson);
+        }
     }
 }

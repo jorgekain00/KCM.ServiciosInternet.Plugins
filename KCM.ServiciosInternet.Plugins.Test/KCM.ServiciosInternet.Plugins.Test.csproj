@@ -54,6 +54,10 @@
       <Project>{b8b1df09-3a1e-493b-838f-b3e7cbb08bca}</Project>
       <Name>KCM.ServiciosInternet.Gigya.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KCM.ServiciosInternet.Google.Services\KCM.ServiciosInternet.Google.Services.csproj">
+      <Project>{e92ef58e-0137-42bc-b307-5344346e3e71}</Project>
+      <Name>KCM.ServiciosInternet.Google.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KCM.ServiciosInternet.Plugins.Data\KCM.ServiciosInternet.Plugins.Data.csproj">
       <Project>{66630bb2-c0cd-4669-af32-deb78f62e9a4}</Project>
       <Name>KCM.ServiciosInternet.Plugins.Data</Name>

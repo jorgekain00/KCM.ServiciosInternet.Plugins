@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BussinessResetPs.cs" />
+    <Compile Include="BussinessSSO.cs" />
     <Compile Include="Logica\clsGigyaAccounts.cs" />
     <Compile Include="Logica\clsPlugInLogInServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KCM.ServiciosInternet.Gigya.Services;
+using GoogleServ =  KCM.ServiciosInternet.Google.Services;
 
 namespace KCM.ServiciosInternet.Plugins.Test
 {
@@ -11,7 +12,9 @@ namespace KCM.ServiciosInternet.Plugins.Test
     {
         static void Main(string[] args)
         {
-            Bussiness.resetPassword(new Entities.Gigya.ResetPassWordData());
+            //Bussiness.resetPassword(new Entities.Gigya.ResetPassWordData());
+
+            GoogleServ.Bussiness.isExpiredReCaptcha("dd", "dd", "https://www.google.com/recaptcha/api/siteverify?secret=%%SecretKey%%&response=%%Token%%", true);
         }
     }
 }

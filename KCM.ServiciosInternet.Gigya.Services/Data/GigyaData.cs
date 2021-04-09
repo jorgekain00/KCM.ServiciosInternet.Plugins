@@ -30,7 +30,11 @@ namespace KCM.ServiciosInternet.Gigya.Services.Data
         /// <summay>
         /// Profile value-pair fields
         /// </summary>
-        public string strProfile { get; set; } 
+        public string strProfile { get; set; }
+        /// <summay>
+        /// Data value-pair fields
+        /// </summary>
+        public string strData { get; set; }
         /// <summary>
         /// List of Extra profile fields Descriptor
         /// </summary>
@@ -46,7 +50,7 @@ namespace KCM.ServiciosInternet.Gigya.Services.Data
         /// <summary>
         /// Is Account Pending Registration due to missing values
         /// </summary>
-        public bool boolIsAccountPendingRegistrarion { get; set; }
+        public bool boolIsAccountPendingRegistration { get; set; }
         /// <summary>
         /// Is Account Pending Email verification
         /// </summary>
@@ -62,6 +66,6 @@ namespace KCM.ServiciosInternet.Gigya.Services.Data
         /// <summary>
         /// Provider
         /// </summary>
-        public string strProvider { get; set; }
+        public string strLoginProvider { get; set; }
     }
 }

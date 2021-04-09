@@ -29,5 +29,15 @@ namespace KCM.ServiciosInternet.Plugins.Data.sso.Interfaces
         /// Expiration Session in terms of minutes
         /// </summary>
         int intExpirationSessionInMins { get; set; }
+        /// <summary>
+        /// Serialize fields into a output string
+        /// </summary>
+        /// <returns>A string gigyaCookie value</returns>
+        string Serialize();
+        /// <summary>
+        /// Update gigyaCookie from a json string
+        /// </summary>
+        /// <param name="strJson">json string for update gigyaCookie</param>
+        void Deserialize(string strJson);
     }
 }
