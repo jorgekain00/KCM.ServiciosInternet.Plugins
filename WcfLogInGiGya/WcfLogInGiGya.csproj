@@ -70,6 +70,13 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\3_nSD2myEBhdHzeIuRpz0M2fqLYeuM6mJiJsXIZ-aVVvkaDd23OOPtW5of3SqYL1u7\Templates\completion.html" />
+    <Content Include="Data\3_nSD2myEBhdHzeIuRpz0M2fqLYeuM6mJiJsXIZ-aVVvkaDd23OOPtW5of3SqYL1u7\Templates\continue.html" />
+    <Content Include="Data\3_nSD2myEBhdHzeIuRpz0M2fqLYeuM6mJiJsXIZ-aVVvkaDd23OOPtW5of3SqYL1u7\Templates\signIn.html" />
+    <Content Include="Data\3_nSD2myEBhdHzeIuRpz0M2fqLYeuM6mJiJsXIZ-aVVvkaDd23OOPtW5of3SqYL1u7\Templates\load.html" />
+    <Content Include="Data\3_nSD2myEBhdHzeIuRpz0M2fqLYeuM6mJiJsXIZ-aVVvkaDd23OOPtW5of3SqYL1u7\Templates\resetPS.html" />
+    <Content Include="Data\3_nSD2myEBhdHzeIuRpz0M2fqLYeuM6mJiJsXIZ-aVVvkaDd23OOPtW5of3SqYL1u7\Templates\login.html" />
+    <Content Include="Functions\AfterLogin.aspx" />
     <Content Include="Functions\ResetPassword.aspx" />
     <Content Include="gigyaJFM\css\bkp\gigyaJFMstyle.css" />
     <Content Include="gigyaJFM\css\gigyaJFMstyle.css" />
@@ -96,17 +103,26 @@
     <Content Include="gigyaJFM\images\soap_baja.jpg" />
     <Content Include="gigyaJFM\images\tw.png" />
     <Content Include="Global.asax" />
-    <Content Include="Html\mail.html" />
-    <Content Include="Html\reset.html" />
+    <Content Include="Data\3_nSD2myEBhdHzeIuRpz0M2fqLYeuM6mJiJsXIZ-aVVvkaDd23OOPtW5of3SqYL1u7\Templates\resetMail.html" />
+    <Content Include="Data\3_nSD2myEBhdHzeIuRpz0M2fqLYeuM6mJiJsXIZ-aVVvkaDd23OOPtW5of3SqYL1u7\Templates\resetFormPS.html" />
+    <Content Include="images\error-no-es-fracaso.jpg" />
+    <Content Include="images\Kimberly_Clark_RGB_Blue_Logo.jpg" />
     <Content Include="images\loading.gif" />
     <Content Include="Scripts\ChangePs.js" />
     <Content Include="Scripts\SendResetPSEmail.js" />
-    <Content Include="Services\resetPS.svc" />
+    <Content Include="Services\SSO.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions\AfterLogin.aspx.cs">
+      <DependentUpon>AfterLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Functions\AfterLogin.aspx.designer.cs">
+      <DependentUpon>AfterLogin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Functions\ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -117,9 +133,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IJFMGigyaResetPassword.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\resetPS.svc.cs" />
+    <Compile Include="Services\SSO.svc.cs">
+      <DependentUpon>SSO.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -150,7 +167,16 @@
     <Content Include="gigyaJFM\fonts\poppins\Poppins-SemiBold.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <Content Include="Resources\Codes\SSOConfig.json" />
+    <Content Include="Data\3_nSD2myEBhdHzeIuRpz0M2fqLYeuM6mJiJsXIZ-aVVvkaDd23OOPtW5of3SqYL1u7\config\Site.Config.json" />
+    <Content Include="Web - Copia.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web - Copia.Debug.config">
+      <DependentUpon>Web - Copia.config</DependentUpon>
+    </Content>
+    <Content Include="Web - Copia.Release.config">
+      <DependentUpon>Web - Copia.config</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,6 +185,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KCM.ServiciosInternet.Common.Library\KCM.ServiciosInternet.Common.Library.csproj">
+      <Project>{65417fa7-b600-463f-8c04-6ad77fc51554}</Project>
+      <Name>KCM.ServiciosInternet.Common.Library</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KCM.ServiciosInternet.Plugins.Business\KCM.ServiciosInternet.Plugins.Business.csproj">
       <Project>{c19e4afd-6723-4c8e-9e79-0fc4cc1a0177}</Project>
       <Name>KCM.ServiciosInternet.Plugins.Business</Name>

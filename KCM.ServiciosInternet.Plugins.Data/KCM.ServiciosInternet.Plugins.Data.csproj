@@ -44,6 +44,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,21 +55,90 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\GigyaConfig.cs" />
-    <Compile Include="Config\GlobalConfig.cs" />
-    <Compile Include="Config\PlugInConfig.cs" />
-    <Compile Include="sso\Interfaces\IAccountsREST.cs" />
-    <Compile Include="sso\Interfaces\ISingleSignOnCookie.cs" />
-    <Compile Include="sso\Interfaces\ISingleSignOnData.cs" />
+    <Compile Include="BDSSO\JFMGigyaCatView.cs">
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\JFMGigyaCtrlCss.cs">
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\JFMGigyaCtrlImage.cs">
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\JFMGigyaCtrlPlugIn.cs">
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\JFMGigyaCtrlScript.cs">
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\JFMGigyaKey.cs">
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\JFMGigyaService.cs">
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\JFMGigyaSite.cs">
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\JFMGigyaSitePartner.cs">
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\JFMGigyaSiteReCAPTCHA.cs">
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\JFMGigyaSiteUrl.cs">
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\SSO.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SSO.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\SSO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDSSO\SSO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SSO.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SSO\Config\GlobalConfig.cs" />
+    <Compile Include="SSO\Config\SSOConfig.cs" />
+    <Compile Include="SSO\HTML\htmlPlugIn.cs" />
+    <Compile Include="SSO\Interfaces\IAccountsREST.cs" />
+    <Compile Include="SSO\Interfaces\ISingleSignOnCookie.cs" />
+    <Compile Include="SSO\Interfaces\ISingleSignOnData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Gigya\ResetPassWordData.cs" />
+    <Compile Include="SSO\Interfaces\ISSORestful.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="BDSSO\SSO.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SSO.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="BDSSO\SSO.edmx.diagram">
+      <DependentUpon>SSO.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="BDSSO\SSO.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SSO.edmx</DependentUpon>
+      <LastGenOutput>SSO.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BDSSO\SSO.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SSO.edmx</DependentUpon>
+      <LastGenOutput>SSO.cs</LastGenOutput>
+    </Content>
+    <Content Include="Componentes\EntityFramework.dll" />
+    <Content Include="Componentes\EntityFramework.SqlServer.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

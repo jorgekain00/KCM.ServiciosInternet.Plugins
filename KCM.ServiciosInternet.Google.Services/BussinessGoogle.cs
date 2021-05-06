@@ -13,27 +13,23 @@ namespace KCM.ServiciosInternet.Google.Services
     using KCM.ServiciosInternet.Google.Services.Services;
     using System;
 
-    public static class Bussiness
+    public static class BussinessGoogle
     {
         /// <summary>
         /// Verify Google reCAPTCHA v2 
         /// </summary>
         /// <param name="strCatchapSecretKey">Google Secret Key</param>
         /// <param name="strCaptchaToken">Google reCAPTCHA from our form</param>
-        /// <param name="strUrlGoogle">Google Url for the verify Service</param>
-        /// <param name="isDebug">Print Response in the output Log</param>
+        /// <param name="strProviderUrlValidator">Google Url for the verify Service</param>
         /// <returns>Return true for isExpiredReCaptcha otherwise false</returns>
-        public static bool isExpiredReCaptcha(string strCatchapSecretKey, string strCaptchaToken, string strUrlGoogle, bool isDebug = false)
+        public static bool isExpiredReCaptcha(string strCatchapSecretKey, string strCaptchaToken, string strProviderUrlValidator)
         {
             string strFecha = DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");
-            ResponseCaptcha objResponse = ReCaptcha.verifySite(strCatchapSecretKey, strCaptchaToken, strUrlGoogle);
+            ResponseCaptcha objResponse = ReCaptcha.verifySite(strCatchapSecretKey, strCaptchaToken, strProviderUrlValidator);
 
-            if (isDebug)
-            {
-                clsEscribirLog.EscribeLog(strFecha, clsEscribirLog.enumTipoMensaje.Informativo, "KCM.ServiciosInternet.Google.Services.Bussiness.isExpiredReCaptcha", "Response from Google ReCaptcha " + objResponse.ToString());
-            }
+            clsEscribirLog.EscribeDebug(strFecha, clsEscribirLog.enumTipoMensaje.Informativo, "KCM.ServiciosInternet.Google.Services.BussinessGoogle.isExpiredReCaptcha", "Response from Google ReCaptcha " + objResponse.ToString());
 
-            return objResponse.isSuccess;
+            return !objResponse.isSuccess;
         }
         /// <summary>
         /// Verify Google reCAPTCHA v2 

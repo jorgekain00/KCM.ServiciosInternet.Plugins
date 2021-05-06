@@ -18,14 +18,14 @@ namespace KCM.ServiciosInternet.Plugins.Business.Logica
         internal static bool requestResetPassword(ResetPassWordData objData, string strHtmlPath)
         {
             objData.boolIsInvalidRequest = false;
-            if (KCM.ServiciosInternet.Google.Services.Bussiness.isExpiredReCaptcha(Entities.Config.PlugInConfig.strReCAPTCHALogInFlowSecret, objData.recatchapToken))
+            if (KCM.ServiciosInternet.Google.Services.BussinessGoogle.isExpiredReCaptcha(Entities.Config.PlugInConfig.strReCAPTCHALogInFlowSecret, objData.recatchapToken))
             {
                 objData.strErrormessage = "Debe verificar recaptcha";
                 objData.boolIsInvalidRequest = true;
             }
             else
             {
-                if (Gigya.Services.Bussiness.resetPassword(objData))
+                if (Gigya.Services.BussinessGigya.resetPassword(objData))
                 {
                     return sendEmailToUser(objData, strHtmlPath);
                 }
@@ -36,14 +36,14 @@ namespace KCM.ServiciosInternet.Plugins.Business.Logica
         internal static bool changePassword(ResetPassWordData objData)
         {
 
-            if (KCM.ServiciosInternet.Google.Services.Bussiness.isExpiredReCaptcha(Entities.Config.PlugInConfig.strReCAPTCHALogInFlowSecret, objData.recatchapToken))
+            if (KCM.ServiciosInternet.Google.Services.BussinessGoogle.isExpiredReCaptcha(Entities.Config.PlugInConfig.strReCAPTCHALogInFlowSecret, objData.recatchapToken))
             {
                 objData.strErrormessage = "Debe verificar recaptcha";
                 objData.boolIsInvalidRequest = true;
             }
             else
             {
-                return Gigya.Services.Bussiness.changePassword(objData);
+                return Gigya.Services.BussinessGigya.changePassword(objData);
             }
 
             return false;

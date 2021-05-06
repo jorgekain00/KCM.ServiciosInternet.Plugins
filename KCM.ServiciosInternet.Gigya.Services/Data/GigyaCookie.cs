@@ -6,9 +6,12 @@
  ***********************************************************************************************/
 namespace KCM.ServiciosInternet.Gigya.Services.Data
 {
-    using KCM.ServiciosInternet.Plugins.Data.sso.Interfaces;
+    using KCM.ServiciosInternet.Plugins.Data.SSO.Interfaces;
     using System;
     using Newtonsoft.Json;
+    using System.Text;
+    using System.Text.RegularExpressions;
+
     /// <summary>
     /// Constaint fields for the cookie
     /// </summary>
@@ -35,20 +38,56 @@ namespace KCM.ServiciosInternet.Gigya.Services.Data
         [JsonProperty]
         public int intExpirationSessionInMins { get; set; }
         /// <summary>
-        /// Serialize fields into a output string
+        /// Deserialize to a GigyaCookie struct
         /// </summary>
-        /// <returns>A string gigyaCookie value</returns>
-        public string Serialize()
+        /// <param name="strCookieName">Cookie name</param>
+        /// <param name="strCookieContent">Cookie content</param>
+        /// <returns>True if Deserialize process was succesful</returns>
+        public bool Deserialize(string strCookieName, string strCookieContent)
         {
-            return JsonConvert.SerializeObject(this);
+            string strKey = string.Empty;
+            string strValue = string.Empty;
+
+            var objRegex = Regex.Match(strCookieContent, @"([^;=]+)=([^;]+)(;|$)", RegexOptions.IgnoreCase);
+
+
+            while (objRegex.Success)
+            {
+                var objGroups = objRegex.Groups;
+                strKey = objGroups[1].Value;
+                strValue = objGroups[2].Value;
+
+                if (strKey == strCookieName)
+                {
+                    this = JsonConvert.DeserializeObject<GigyaCookie>(strValue);
+                    return true;
+                }
+                else
+                {
+                    objRegex.NextMatch();
+                }
+            }
+
+            return false;
         }
         /// <summary>
-        /// Update gigyaCookie from a json string
+        /// Create a string for a cookie
         /// </summary>
-        /// <param name="strJson">json string for update gigyaCookie</param>
-        public void Deserialize(string strJson)
+        /// <param name="strCookieName">CookieName</param>
+        /// <param name="IsDebug"></param>
+        /// <returns>string for a cookie</returns>
+        public string Serialize(string strCookieName, bool IsDebug)
         {
-            this =  JsonConvert.DeserializeObject<GigyaCookie>(strJson);
+            StringBuilder objSB = new StringBuilder();
+            string strValue = JsonConvert.SerializeObject(this);
+
+            objSB.Append(string.Format("{0}={1}; Max-Age={2};", strCookieName, strValue, this.intExpirationSessionInMins * 60));
+
+            if (!IsDebug)
+            {
+                objSB.Append("; HttpOnly; Secure; SameSite=None");
+            }
+            return objSB.ToString();
         }
     }
 }

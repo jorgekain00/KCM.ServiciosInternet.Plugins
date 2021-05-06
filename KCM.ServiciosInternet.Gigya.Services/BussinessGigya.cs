@@ -10,7 +10,7 @@ using KCM.ServiciosInternet.Gigya.Services.Data;
 
 namespace KCM.ServiciosInternet.Gigya.Services
 {
-    public class Bussiness
+    public class BussinessGigya
     {
         //public static bool resetPassword(Entities.Gigya.ResetPassWordData objDataRs)
         //{

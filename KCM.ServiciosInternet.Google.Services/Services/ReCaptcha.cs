@@ -52,16 +52,14 @@ namespace KCM.ServiciosInternet.Google.Services.Services
         /// </summary>
         /// <param name="strCatchapSecretKey">Google Secret Key</param>
         /// <param name="strCaptchaToken">Google reCAPTCHA from our form</param>
-        /// <param name="strUrlGoogle">Google Url for the verify Service</param>
+        /// <param name="strProviderUrlValidator">Google Url for the verify Service</param>
         /// <returns>Return KCM.ServiciosInternet.Google.Services.Services.ResponseCaptcha object from Google</returns>
-        public static ResponseCaptcha verifySite(string strCatchapSecretKey, string strCaptchaToken, string strUrlGoogle)
+        public static ResponseCaptcha verifySite(string strCatchapSecretKey, string strCaptchaToken, string strProviderUrlValidator)
         {
             /*--------------------------------------------
              * Replace values for Google params
              *--------------------------------------------*/
-            string strWebAddress = strUrlGoogle
-                .Replace("%%SecretKey%%", strCatchapSecretKey)
-                .Replace("%%Token%%", strCaptchaToken);
+            string strWebAddress = string.Format("{0}?secret={1}&response={2}", strProviderUrlValidator, strCatchapSecretKey, strCaptchaToken);
 
             WebRequest objHttpWebRequest = WebRequest.Create(strWebAddress);
             HttpWebResponse objHttpResponse = (HttpWebResponse)objHttpWebRequest.GetResponse();

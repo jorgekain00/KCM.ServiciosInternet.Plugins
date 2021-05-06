@@ -6,13 +6,17 @@
  ***********************************************************************************************/
 namespace KCM.ServiciosInternet.Gigya.Services.Data
 {
-    using KCM.ServiciosInternet.Plugins.Data.sso.Interfaces;
+    using KCM.ServiciosInternet.Plugins.Data.SSO.Interfaces;
+    using System;
+    using System.Runtime.Serialization;
+
     /// <summary>
     /// Constains all fields for Gigya REST communication
     /// </summary>
     /// <remarks>
     /// <para>Not all fields are necesary for every operation</para>
     /// </remarks>
+    [DataContract]
     public struct GigyaData : ISingleSignOnData
     {
         /// <summary>
@@ -67,5 +71,41 @@ namespace KCM.ServiciosInternet.Gigya.Services.Data
         /// Provider
         /// </summary>
         public string strLoginProvider { get; set; }
+        /// <summary>
+        /// Operation Result
+        /// </summary>
+        public bool isSuccessful { get; set; }
+        /// <summary>
+        /// Session is Expired
+        /// </summary>
+        public bool isExpiredSession { get; set; }
+        /// <summary>
+        /// ReCaptcha token
+        /// </summary>
+        public string strReCaptchaToken { get; set; }
+        /// <summary>
+        /// API key ID
+        /// </summary>
+        public string strApiID { get; set; }
+        /// <summary>
+        /// Generate a copy
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            var objclone = new GigyaData();
+
+            objclone.strEmail = this.strEmail;
+            objclone.strPassword = this.strPassword;
+            objclone.strData = this.strData;
+            objclone.strExtraProfileFieldsDescriptor = this.strExtraProfileFieldsDescriptor;
+            objclone.strExtraProfileFields = this.strExtraProfileFields;
+            objclone.objSessionCookie = null;
+            objclone.strApiID = this.strApiID;
+
+
+
+            return objclone;
+        }
     }
 }

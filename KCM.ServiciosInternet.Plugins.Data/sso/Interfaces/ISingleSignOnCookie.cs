@@ -5,7 +5,7 @@
  *  Remarks : 
  ***********************************************************************************************/
 
-namespace KCM.ServiciosInternet.Plugins.Data.sso.Interfaces
+namespace KCM.ServiciosInternet.Plugins.Data.SSO.Interfaces
 {
     using System;
     /// <summary>
@@ -30,14 +30,17 @@ namespace KCM.ServiciosInternet.Plugins.Data.sso.Interfaces
         /// </summary>
         int intExpirationSessionInMins { get; set; }
         /// <summary>
-        /// Serialize fields into a output string
+        /// Create a string for a cookie
         /// </summary>
-        /// <returns>A string gigyaCookie value</returns>
-        string Serialize();
+        /// <param name="nameCookie">CookieName</param>
+        /// <param name="IsDebug"></param>
+        /// <returns>string for a cookie</returns>
+        string Serialize(string strCookieName, bool IsDebug=false);
         /// <summary>
-        /// Update gigyaCookie from a json string
+        /// Deserialize to a ISingleSignOnCookie object
         /// </summary>
-        /// <param name="strJson">json string for update gigyaCookie</param>
-        void Deserialize(string strJson);
+        /// <param name="strCookieName">Cookie name</param>
+        /// <param name="strCookieContent">Cookie content</param>
+        bool Deserialize(string strCookieName, string strCookieContent);
     }
 }

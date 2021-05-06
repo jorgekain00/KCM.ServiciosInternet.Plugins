@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Entities = KCM.ServiciosInternet.Plugins.Entities;
-
+using KCM.ServiciosInternet.Plugins.Business;
+using KCM.ServiciosInternet.Plugins.Data.SSO.Config;
+using KCM.ServiciosInternet.Plugins.Data.SSO.HTML;
 
 namespace WcfLogInGiGya.Functions
 {
@@ -13,28 +14,34 @@ namespace WcfLogInGiGya.Functions
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string strHTMLOutput = null; // html template 
+
             if (!this.Page.IsPostBack)
             {
                 string strRegToken = Request.QueryString["regToken"];
                 string strEmail = Request.QueryString["email"];
+                string strApiKey = Request.QueryString["apiKey"];
 
-                if (string.IsNullOrEmpty(strRegToken) || string.IsNullOrEmpty(strEmail))
+                if (string.IsNullOrEmpty(strRegToken) || string.IsNullOrEmpty(strEmail) || string.IsNullOrEmpty(strApiKey))
                 {
-                    Response.Redirect(Entities.Config.PlugInConfig.strSiteUrl);
+                    // TODO: Improvemente - like redirect
+                    // Show Not found page if any missing token
                 }
+                else {
+                    htmlPlugIn ObjHtml = new htmlPlugIn();
+                    ObjHtml.enumState = htmlPlugIn.templateCtrl.RESETFORM;
+                    ObjHtml.strApiID = strApiKey;
+                    ObjHtml.strHtml = string.Empty;
 
-                string strHTMLPath = Server.MapPath("~/Html");
-                string strHTMLReset = Entities.Config.PlugInConfig.strResetHTML;
-                string strHTMLOutput = System.IO.File.ReadAllText(System.IO.Path.Combine(strHTMLPath, strHTMLReset))
-                    .Replace("${|Email|}", strEmail)
-                    .Replace("${|RegToken|}", strRegToken)
-                    .Replace("${|SiteUrl|}", Entities.Config.PlugInConfig.strSiteUrl);
+                    ObjHtml = BussinessSSO.getHtml(ObjHtml, GlobalConfig.strDataPath);   // get template
+                    strHTMLOutput = ObjHtml.strHtml.Replace("${|Email|}", strEmail).Replace("${|RegToken|}", strRegToken);
 
-                Response.Clear();
-                Response.ContentType = "text/html";
-                Response.Write(strHTMLOutput);
-                Response.Flush();
-                Response.End();
+                    Response.Clear();
+                    Response.ContentType = "text/html";
+                    Response.Write(strHTMLOutput);
+                    Response.Flush();
+                    Response.End();
+                }
             }
         }
     }
