@@ -46,21 +46,23 @@ namespace KCM.ServiciosInternet.Common.Library.Email
 
             objMsg.Subject = strSubject;// Subject of Email  
             objMsg.From = new System.Net.Mail.MailAddress(strSender);// Email-ID of Sender  
-            objMsg.Body = strBody;
             objMsg.IsBodyHtml = true;
+            objMsg.Body = strBody;
 
             if (!string.IsNullOrEmpty(strAttachment))
             {
                 foreach (string strMedia in strAttachment.Split(';', ','))
                 {
                     if (!string.IsNullOrEmpty(strMedia))
+                    {
                         objMsg.Attachments.Add(new Attachment(strMedia));
+                    }
                 }
             }
 
             SmtpClient objSMTP = new SmtpClient();
             objMsg.BodyEncoding = Encoding.Default;
-            objMsg.Priority = MailPriority.Normal;
+            objMsg.Priority = MailPriority.Low;
             objSMTP.Send(objMsg); //Smtpclient to send the mail message  
 
             clsEscribirLog.EscribeDebug("Envio Correo contacto", clsEscribirLog.enumTipoMensaje.Informativo, "KCM.ServiciosInternet.Common.Library.Email.Email.sendNormalEmailWithHTMLBody", "Fin envío correo");
