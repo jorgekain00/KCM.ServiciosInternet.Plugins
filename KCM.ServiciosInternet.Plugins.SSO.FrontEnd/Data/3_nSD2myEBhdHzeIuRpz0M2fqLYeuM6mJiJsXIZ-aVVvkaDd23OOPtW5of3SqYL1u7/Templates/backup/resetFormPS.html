@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+
+    <script type="text/javascript"
+            src="../Services/resetPs.svc/JS/JFMGigyaChangePs.js?apiKey=<%=apiKey%>"
+            defer>
+    </script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
+
+    <style type="text/css">
+        @media only screen and (max-device-width: 480px), screen and (max-width: 480px) {
+            /* CLIENT-SPECIFIC STYLES */
+            /* Template Shell */
+            body {
+                width: 100% !important;
+                min-width: 100% !important;
+                margin: 0 auto !important;
+            }
+
+            .container {
+                width: 95% !important;
+                max-width: 480px !important;
+            }
+
+            .mobileShow {
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow: visible !important;
+                width: auto !important;
+                max-height: inherit !important;
+            }
+
+            .mobileHide {
+                display: none !important;
+            }
+
+            .photo img {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+            }
+
+            .columnStack {
+                width: 100% !important;
+                display: block !important;
+            }
+
+            .contentCenter, body[yahoo] .contentCenter img, body[yahoo] .contentCenter table {
+                margin: 0 auto !important;
+            }
+
+            .textCenter {
+                text-align: center !important;
+            }
+
+            .textLeft {
+                text-align: left !important;
+            }
+
+            .nullBorder {
+                border: none !important;
+            }
+
+            .alignTop {
+                vertical-align: top !important;
+            }
+
+            .autoHeight {
+                height: auto !important;
+            }
+
+            .nullPad {
+                padding: 0px !important;
+            }
+
+            .mobilePad {
+                padding-right: 30px !important;
+                padding-left: 30px !important;
+            }
+
+            .bottomPad5 {
+                padding-bottom: 5px !important;
+            }
+
+            .topPad5 {
+                padding-bottom: 5px !important;
+            }
+
+            .topPad10 {
+                padding-top: 10px !important;
+            }
+
+            .bottomPad10 {
+                padding-bottom: 10px !important;
+            }
+
+            .topPad15 {
+                padding-top: 15px !important;
+            }
+
+            .bottomPad15 {
+                padding-bottom: 15px !important;
+            }
+
+            .topPad20 {
+                padding-top: 20px !important;
+            }
+
+            .bottomPad20 {
+                padding-bottom: 20px !important;
+            }
+
+            .topPad25 {
+                padding-top: 25px !important;
+            }
+
+            .bottomPad25 {
+                padding-bottom: 25px !important;
+            }
+
+            .bottomPad30 {
+                padding-bottom: 30px !important;
+            }
+
+            .rightPad30 {
+                padding-right: 30px !important;
+            }
+
+            .fontResize17 {
+                font-size: 17px !important;
+            }
+        }
+
+        .JFMGigyaCajaTexto {
+            border-radius: 5px;
+            font-size: 20px;
+            height: 30px;
+            margin-left: 29%
+        }
+
+        .JFMGigyaLabel {
+            color: #d04893;
+            font-size: 22px;
+            margin-left: 30%
+        }
+
+        .JFMError {
+            border-color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <table cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" bgcolor="#dddddd" style="padding: 0px 20px" class="nullPad">
+                <table border="0" cellspacing="0" cellpadding="0" width="600" class="container">
+                    <tr>
+                        <td>
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" style="background-color: #ffc6e6;">
+                                <tr>
+                                    <td style="display: flex; padding: 13px 40px;" valign="middle" class="mobilePad">
+                                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                            <tr>
+                                                <td align="left" valign="middle">
+                                                    <a href="https://www.kotex.mx/" target="_blank">
+                                                        <img alt="kotex" src="https://www.kotex.mx/data/global/img/lib/2020/July/logo.png" width="200px" height="100px" />
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!-- End of: Header -->
+    <!-- Start of: Content -->
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+            <td align="center" bgcolor="#dddddd" style="padding: 0px 20px;" class="nullPad">
+                <table border="0" bgcolor="#ffffff" cellspacing="0" cellpadding="0" width="600" class="container">
+                    <tr>
+                        <td>
+                            <span class="JFMGigyaLabel">Ingrese nueva Contraseña</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="password" id="JFMGigyaContraseña" class="JFMGigyaCajaTexto" data-ctrl="JFMGigyaPassCtrl" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br>
+                            <br>
+                            <span class="JFMGigyaLabel">Confirme nueva Contraseña</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="password" id="JFMGigyaContraseñaConfir" class="JFMGigyaCajaTexto" data-ctrl="JFMGigyaConfirmCtrl" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br /><span style="color:red;font-weight:bold;margin-left:25%" data-ctrl="JFMGigyaErrorMessage" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="g-recaptcha" style="margin-left:25%" data-sitekey="6LerXdcZAAAAADvxGvthofD33f5_2RQKXuranEEH"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top" width="100%" style="font-family: 'Arial', sans-serif; font-size: 14px; mso-line-height-rule: exactly; line-height: 22px; color: #939598; padding: 30px 30px 30px;" class="mobilePad">
+                            Para elegir una contraseña nueva y completar tu solicitud, da clic en el siguiente botón:<br>
+                            <br>
+                            <div style="word-break: break-all; text-align: center;">
+                                <a id="JFMGigyaSubmit" href="javascript:void(0)" style="background-color: #d04893; color: #ffffff; font-family: arial; font-family: sans-serif; padding: 10px; border-radius: 15px; font-size: 20px; font-weight: bold; line-height: 150%; text-align: center; text-decoration: none;"
+                                   onclick="document.getElementById('SubmitRs').click()">Cambiar Contraseña</a>
+                                <button id="SubmitRs" Style="display: none" onclick="JFMGigya_ChangePassword(event)">Cambia contraseña</button>
+                            </div>
+                            <br>
+                            <br>
+                            ¡Disfruta de nuestro contenido!<br>
+                            El equipo de Kotex
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table align="center" cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+            <td align="center" bgcolor="#dddddd" style="padding: 0px 20px;" class="nullPad">
+                <table cellpadding="0" cellspacing="0" border="0" width="600" class="container">
+                    <tr>
+                        <td align="center" bgcolor="#ffffff" height="1" style="font-size: 0px; mso-line-height-rule: exactly; line-height: 1px; height: 1px; padding: 0px 30px;" class="mobilePad">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td align="center" bgcolor="#dddddd" height="1" style="font-size: 0px; mso-line-height-rule: exactly; line-height: 1px; height: 1px;">
+                                        &nbsp;
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!-- Start of: Footer -->
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+            <td align="center" bgcolor="#dddddd" style="padding: 0px 20px;" class="nullPad">
+                <table border="0" cellspacing="0" cellpadding="0" width="600" class="container">
+                    <tr>
+                        <td align="center" bgcolor="#ffffff">
+                            <!-- Start of: EA Footer-->
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                <tr>
+                                    <td align="left" valign="top" width="100%" style="padding: 30px;" class="mobilePad">
+                                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                            <tr>
+                                                <td align="left" valign="top" style="font-family: 'Arial', sans-serif; font-size: 11px; mso-line-height-rule: exactly; line-height: 12px; color: #939598;">
+                                                    Kotex® es la marca de toallas higiénicas / toallas femeninas más reconocida. Encuentra tu producto Kotex ideal (Toallas sanitarias, tampones, protectores diarios, shampoo íntimo). Aprende más sobre tu ciclo menstrual aquí o conoce más sobre cómo se ponen los tampones aquí. Si tienes dudas sobre tu primera menstruación, tenemos toda la información que necesitas aquí. ¿Tienes dolor de vientre o cólicos? Encuentra la solución aquí. Si tienes un retraso menstrual, puedes encontrar algunas de las razones aquí.
+                                                    *VS versión anterior
+                                                    Llámanos CDMX 55 5282-73-62 Int. República 800-46-56-839 Escríbenos aquí. 2020 Kimberly-Clark Wordwide, Inc. Todos los Derechos Reservados® Marcas Registradas por Kimberly-Clark Wordwide, Inc.<br>
+                                                    <br>
+                                                    <br>
+
+                                                    <a href="https://www.kotex.mx/contacto" target="_blank" style="color: #d04893; font-size: 16px; text-decoration: none;">Contacto</a> |
+
+                                                    <a href="https://www.kotex.mx/privacidad" target="_blank" style="color: #d04893; font-size: 16px; text-decoration: none;">Aviso de privacidad</a> |
+
+                                                    <a href="https://www.kimberly-clark.com.mx/legal.htm" target="_blank" style="color: #d04893; font-size: 16px; text-decoration: none;">Información legal</a>
+
+                                                </td>
+                                            </tr>
+                                            <tr></tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+            <td align="center" bgcolor="#dddddd" height="50" style="font-size: 0px; mso-line-height-rule: exactly; line-height: 50px; height: 50px;">
+                &nbsp;
+
+            </td>
+        </tr>
+    </table>
+    <!-- Start of : keep gmail android from collapsing table -->
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="620" class="mobileHide">
+        <tr>
+            <td height="1" style="font-size: 1px; line-height: 1px; min-width: 620px;">&nbsp;</td>
+        </tr>
+    </table>
+    <input type="hidden" data-ctrl="JFMGigyaEmail" value="${|Email|}" />
+    <input type="hidden" data-ctrl="JFMGigyaRegToken" value="${|RegToken|}" />
+</body>
+</html>
